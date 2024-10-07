@@ -36,6 +36,7 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
+        setLocation(new java.awt.Point(0, 0));
 
         jLabel1.setText("User ID");
 
@@ -96,6 +97,7 @@ public class Main extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
@@ -193,7 +195,7 @@ public class Main extends javax.swing.JFrame {
         String[] file = {"ppe.txt","hospitals.txt","suppliers.txt","transactions.txt","users.txt"};
         fh.createFile(file);
 
-        // Initialize item amount
+        // Initialise item amount
         String[] sp_item = {"SP1;HC;1000","SP1;FS;500","SP2;MS;10000","SP2;GL;10000","SP3;GW;100","SP3;SC;1000"};
         fh.initialize("suppliers.txt", sp_item);
 

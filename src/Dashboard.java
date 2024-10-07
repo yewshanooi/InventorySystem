@@ -53,6 +53,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dashboard");
+        setLocation(new java.awt.Point(0, 0));
 
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -269,6 +270,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     
@@ -345,24 +347,22 @@ public class Dashboard extends javax.swing.JFrame {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
         String query = searchField.getText().trim();
-
+        
         if (query.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a query", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
         ArrayList<String[]> fetch = new ArrayList<>();
         FileHandler fh = new FileHandler();
-
+        
         try {
-            ArrayList<ArrayList<String>> fileData = fh.to2dArray("users.txt");
+            ArrayList<ArrayList<String>> data = fh.to2dArray("users.txt");
 
-            for (ArrayList<String> row : fileData) {
-                for (String value : row) {
-                    if (value.equalsIgnoreCase(query)) { // Ignore lower/upper case differences
-                        fetch.add(row.toArray(new String[0]));
-                        break; // Avoid adding the same row if there are multiple matching values
-                    }
+            for (ArrayList<String> userData : data) {
+                if (!userData.isEmpty() && userData.get(0).equalsIgnoreCase(query)) { // Ignore lower/upper case differences
+                    fetch.add(new String[]{userData.get(0), userData.get(1), userData.get(2), userData.get(3)});
+                    break; // Avoid adding the same row if there are multiple matching values
                 }
             }
         } catch (Exception e) {
