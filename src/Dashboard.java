@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import javax.swing.JOptionPane;
@@ -54,6 +55,11 @@ public class Dashboard extends javax.swing.JFrame {
         setTitle("Dashboard");
 
         searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(450, 402));
 
@@ -155,16 +161,17 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(viewPanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, viewPanelLayout.createSequentialGroup()
-                        .addComponent(l9)
-                        .addGap(18, 18, 18)
-                        .addComponent(databaseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 192, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(viewPanelLayout.createSequentialGroup()
-                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                        .addComponent(searchButton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(viewPanelLayout.createSequentialGroup()
+                                .addComponent(l9)
+                                .addGap(18, 18, 18)
+                                .addComponent(databaseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 98, Short.MAX_VALUE))
+                            .addComponent(searchField))
+                        .addGap(18, 18, 18)
+                        .addComponent(searchButton)))
                 .addGap(40, 40, 40)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -274,7 +281,7 @@ public class Dashboard extends javax.swing.JFrame {
             String userType = objType.toString();
 
         if (userName.isEmpty() || userPassword.isEmpty() || userType.equals("None")) {
-            JOptionPane.showMessageDialog(this, "There are empty fields", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Fields are still empty", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -288,7 +295,7 @@ public class Dashboard extends javax.swing.JFrame {
         try {
             User user = new User();
             user.createUser(userName, userPassword, userType);
-            JOptionPane.showMessageDialog(this, "Successfully added user", "Success", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Successfully added user " + userName, "Add User", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "An error occurred while adding a user", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
@@ -306,7 +313,7 @@ public class Dashboard extends javax.swing.JFrame {
             viewTable.setModel(new DefaultTableModel());
         } else if (db.toString().equals("User")) {
             String[][] content = fh.readFile("users.txt", 4, this);
-            String[] header = {"User ID", "Name", "Password", "Type"};
+            String[] header = {"User ID", "Name", "Password", "Role"};
 
             viewTable.setModel(new DefaultTableModel(content, header));
         } else if (db.toString().equals("Item")) {
@@ -314,62 +321,102 @@ public class Dashboard extends javax.swing.JFrame {
             String[] header = {"Item ID", "Quantity", "Supplier ID"};
 
             viewTable.setModel(new DefaultTableModel(content, header));
-        } else {
-            return;
         }
     }//GEN-LAST:event_databaseTypeActionPerformed
 
     private void viewTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTableMouseClicked
         // TODO add your handling code here:
-        int row = viewTable.getSelectedRow();
-
-        if (row != -1) {
-            String click1 = viewTable.getModel().getValueAt(row, 0).toString();
-            value1.setText(click1);
-            String click2 = viewTable.getModel().getValueAt(row, 1).toString();
-            value2.setText(click2);
-            String click3 = viewTable.getModel().getValueAt(row, 2).toString();
-            value3.setText(click3);
-            String click4 = viewTable.getModel().getValueAt(row, 3).toString();
-            value4.setText(click4);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a row.");
-        }
+//        int row = viewTable.getSelectedRow();
+//
+//        if (row != -1) {
+//            String click1 = viewTable.getModel().getValueAt(row, 0).toString();
+//            value1.setText(click1);
+//            String click2 = viewTable.getModel().getValueAt(row, 1).toString();
+//            value2.setText(click2);
+//            String click3 = viewTable.getModel().getValueAt(row, 2).toString();
+//            value3.setText(click3);
+//            String click4 = viewTable.getModel().getValueAt(row, 3).toString();
+//            value4.setText(click4);
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Please select a row.");
+//        }
     }//GEN-LAST:event_viewTableMouseClicked
 
-            
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        String query = searchField.getText().trim();
+
+        if (query.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a query", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        ArrayList<String[]> fetch = new ArrayList<>();
+        FileHandler fh = new FileHandler();
+
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+            ArrayList<ArrayList<String>> fileData = fh.to2dArray("users.txt");
+
+            for (ArrayList<String> row : fileData) {
+                for (String value : row) {
+                    if (value.equalsIgnoreCase(query)) { // Ignore lower/upper case differences
+                        fetch.add(row.toArray(new String[0]));
+                        break; // Avoid adding the same row if there are multiple matching values
+                    }
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "An error occurred while reading the file", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Dashboard().setVisible(true);
-            }
-        });
-    }
+        String[][] results = new String[fetch.size()][];
+        for (int i = 0; i < fetch.size(); i++) {
+            results[i] = fetch.get(i);
+        }
+
+        String[] header = {"User ID", "Name", "Password", "Role"};
+
+        if (fetch.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No results found for:\n\n" + query, "Search", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            viewTable.setModel(new DefaultTableModel(results, header));
+        }
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+            
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Dashboard().setVisible(true);
+//            }
+//        });
+//    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

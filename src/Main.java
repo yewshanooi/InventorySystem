@@ -116,6 +116,7 @@ public class Main extends javax.swing.JFrame {
                 String[] part = line.split(";");
                 
                 String getID = part[0];
+                String getName = part[1];
                 String getPassword = part[2];
                 
                 if (id.equals(getID) && password.equals(getPassword)) {
@@ -123,7 +124,7 @@ public class Main extends javax.swing.JFrame {
                     user.setUID(id);
                     user.setUsername(part[1]);
                     authStatus = true;
-                    JOptionPane.showMessageDialog(this, "Welcome! Your ID and Password are valid", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Welcome, " + getName + "!", "Login", JOptionPane.INFORMATION_MESSAGE);
                     
                     Dashboard db = new Dashboard();
                     db.setVisible(true);
@@ -134,7 +135,7 @@ public class Main extends javax.swing.JFrame {
             }
 
             if (!authStatus) {
-                JOptionPane.showMessageDialog(this, "Incorrect ID or Password", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Your ID or password is incorrect", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
             br.close();
