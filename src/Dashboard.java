@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -82,13 +83,13 @@ public class Dashboard extends javax.swing.JFrame {
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        field1.setText("field1");
+        field1.setText("Field 1");
 
-        field2.setText("field2");
+        field2.setText("Field 2");
 
-        field3.setText("field3");
+        field3.setText("Field 3");
 
-        field4.setText("field4");
+        field4.setText("Field 4");
 
         modifyButton.setText("Modify");
 
@@ -118,7 +119,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(modifyButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(removeButton)))
-                .addGap(0, 45, Short.MAX_VALUE))
+                .addGap(0, 29, Short.MAX_VALUE))
         );
         viewUserPopupLayout.setVerticalGroup(
             viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +149,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         l9.setText("Database");
 
-        databaseType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "User", "Item" }));
+        databaseType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "User", "Item", "Transactions" }));
         databaseType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 databaseTypeActionPerformed(evt);
@@ -169,7 +170,7 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addComponent(l9)
                                 .addGap(18, 18, 18)
                                 .addComponent(databaseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 98, Short.MAX_VALUE))
+                                .addGap(0, 81, Short.MAX_VALUE))
                             .addComponent(searchField))
                         .addGap(18, 18, 18)
                         .addComponent(searchButton)))
@@ -273,14 +274,13 @@ public class Dashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         String userName = addName.getText();
         char[] charPass = addPassword.getPassword();
-            String userPassword = new String(charPass);
+        String userPassword = new String(charPass);
         Object objType = addType.getSelectedItem();
-            String userType = objType.toString();
+        String userType = objType.toString();
 
         if (userName.isEmpty() || userPassword.isEmpty() || userType.equals("None")) {
             JOptionPane.showMessageDialog(this, "Fields are still empty", "Error", JOptionPane.ERROR_MESSAGE);
@@ -347,15 +347,15 @@ public class Dashboard extends javax.swing.JFrame {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
         String query = searchField.getText().trim();
-        
+
         if (query.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a query", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         ArrayList<String[]> fetch = new ArrayList<>();
         FileHandler fh = new FileHandler();
-        
+
         try {
             ArrayList<ArrayList<String>> data = fh.to2dArray("users.txt");
 
@@ -384,7 +384,7 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchButtonActionPerformed
 
-            
+
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -399,13 +399,13 @@ public class Dashboard extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //        //</editor-fold>
