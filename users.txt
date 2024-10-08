@@ -1,2 +1,0 @@
-STF01;Karlson;pw123#;Manager
-STF02;Shan;pw456#;Staff
