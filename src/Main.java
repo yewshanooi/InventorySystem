@@ -1,4 +1,9 @@
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
@@ -9,13 +14,15 @@ import javax.swing.JOptionPane;
 public class Main extends javax.swing.JFrame {
 
     /**
-     * Creates new form Init
+     * Creates new form Login
      */
     public Main() {
         initComponents();
     }
     
+    public static boolean authStatus = false;
     public static boolean initStatus = false;
+    public static String userType;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,67 +35,98 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        loginUsername = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        initialiseButton = new javax.swing.JButton();
-        getStartedButton = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
+        loginPassword = new javax.swing.JPasswordField();
+        initButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Inventory System");
+        setTitle("Login");
         setLocation(new java.awt.Point(0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Welcome to Inventory System!");
+        jLabel1.setText("User ID");
 
-        jLabel2.setText("Note: Please initialise the required files before getting started");
+        jLabel2.setText("Password");
 
-        initialiseButton.setText("Initialise files");
-        initialiseButton.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                initialiseButtonActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
 
-        getStartedButton.setText("Get started");
-        getStartedButton.addActionListener(new java.awt.event.ActionListener() {
+        initButton.setText("Initialise Values");
+        initButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getStartedButtonActionPerformed(evt);
+                initButtonActionPerformed(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setText("Welcome to Inventory System");
+
+        jLabel4.setText("Note: Please initialise the values before getting started");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(15, 15, 15)
+                            .addComponent(jLabel3)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(initialiseButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(getStartedButton))
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(initButton)
+                                .addGap(46, 46, 46)
+                                .addComponent(loginButton))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(loginUsername)
+                                    .addComponent(loginPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
+                .addGap(64, 64, 64)
+                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(jLabel4)
+                .addGap(57, 57, 57)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(loginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(initialiseButton)
-                    .addComponent(getStartedButton))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(loginPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(loginButton)
+                    .addComponent(initButton))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,65 +137,77 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initialiseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initialiseButtonActionPerformed
-        // TODO add your handling code here:
-        
-        if (!initStatus) {
-            FileHandler fh = new FileHandler();
-            Transfer transfer = new Transfer();
-            Sort dateSort = new Sort();
-            User user = new User();
-
-            // Create file & initialise preset data
-            String[] file = {"ppe.txt","hospitals.txt","suppliers.txt","transactions.txt","users.txt"};
-            fh.createFile(file);
-
-            // Initialise item amount
-            String[] sp_item = {"SP1;HC;1000","SP1;FS;500","SP2;MS;10000","SP2;GL;10000","SP3;GW;100","SP3;SC;1000"};
-            fh.initialize("suppliers.txt", sp_item);
-
-            // String[] empty_item = {"HC;0;SP1","FS;0;SP1","MS;0;SP2","GL;0;SP2","GW;0;SP3","SC;0;SP3"};
-            // [TODO] Initialize hospital item
-            String[] fill_item = {"HC;100;SP1;Head Cover","FS;100;SP1;Face Shield","MS;100;SP2;Mask","GL;100;SP2;Glove","GW;100;SP3;Gown","SC;100;SP3;Shoe Cover"};
-            String[] users = {"STF01;David;man123;Manager","STF02;Joe;staff123;Staff"};
-            fh.initialize("ppe.txt", fill_item);
-            fh.initialize("users.txt", users);
-
-            // Receive Item
-            int HeadCover=0,FaceShield=0,Mask=0,Glove=0,Gown=0,ShoeCover=0;
-            String[][] itemUpdate = {{"HC;",Integer.toString(HeadCover)},{"FS;",Integer.toString(FaceShield)},{"MS;",Integer.toString(Mask)},{"GL;",Integer.toString(Glove)},{"GW;",Integer.toString(Gown)},{"SC;",Integer.toString(ShoeCover)}};
-            transfer.filterInvalid(itemUpdate, true); // True to receive, false to send out
-
-            // Filter date
-            dateSort.validRange("2024-10-3", "2024-10-10");
-
-            user.createUser("Karlson", "123", "Manager");
-
-
-            // Delete file
-            // fh.deleteFile(file);
-
-
-            JOptionPane.showMessageDialog(this, "Successfully created ppe.txt, hospitals.txt, suppliers.txt, transactions.txt, and users.txt", "Initialise", JOptionPane.INFORMATION_MESSAGE);
-            initStatus = true;
-        } else {
-            JOptionPane.showMessageDialog(this, "You have already initialised the files", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_initialiseButtonActionPerformed
-
-    private void getStartedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getStartedButtonActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         if (!initStatus) {
             JOptionPane.showMessageDialog(this, "You have not initialise the files", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            Login lg = new Login();
-            lg.setVisible(true);
+            String id = loginUsername.getText();
+            char[] passwordChar = loginPassword.getPassword(); // The .getText() method for password is deprecated as it returns value in String which is not secure
+                String password = new String(passwordChar); // Convert passwordChar (char) to password (String)
 
-            this.dispose();
+            try {
+                String file = "users.txt";
+                BufferedReader br = new BufferedReader(new FileReader(file));
+
+                String line;
+
+                while ((line = br.readLine()) != null) {
+                    String[] part = line.split(";");
+
+                    String getID = part[0];
+                    String getName = part[1];
+                    String getPassword = part[2];
+                    String getType = part[3];
+
+                    if (id.equals(getID) && password.equals(getPassword)) {
+                        User user = new User();
+                        user.setUID(id);
+                        user.setUsername(part[1]);
+                        authStatus = true;
+
+                        if (getType.equals("Manager")) {
+                            userType = "Manager";
+                            // [TODO] Redirect to manager dashboard
+                        } else if (getType.equals("Staff")) {
+                            userType = "Staff";
+                            // [TODO] Redirect to staff dashboard
+                        }
+
+                        JOptionPane.showMessageDialog(this, "Welcome, " + getName + "!\n" + "You are logged in as a " + userType, "Login", JOptionPane.INFORMATION_MESSAGE);
+
+                        Dashboard db = new Dashboard();
+                        db.setVisible(true);
+
+                        this.dispose();
+                        break;
+                    }
+                }
+
+                if (!authStatus) {
+                    JOptionPane.showMessageDialog(this, "Your ID or password is incorrect", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                br.close();
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "An error occurred while reading the file", "Error", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            } finally {
+                java.util.Arrays.fill(passwordChar, ' '); // Clear the passwordChar from memory for security purpose
+            }
         }
-    }//GEN-LAST:event_getStartedButtonActionPerformed
-    
-    
+    }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void initButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initButtonActionPerformed
+        // TODO add your handling code here:
+        if (!initStatus) {
+            // [TODO] Show init popup dialog
+        } else {
+            JOptionPane.showMessageDialog(this, "You have already initialised the files", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_initButtonActionPerformed
+
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -172,14 +222,16 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -189,14 +241,50 @@ public class Main extends javax.swing.JFrame {
                 new Main().setVisible(true);
             }
         });
+        
+        FileHandler fh = new FileHandler();
+        Transfer transfer = new Transfer();
+        Sort dateSort = new Sort();
+        // User user = new User();
+
+        // Create empty files
+        String[] file = {"ppe.txt","hospitals.txt","suppliers.txt","transactions.txt","users.txt"};
+        fh.createFile(file);
+
+        // Initialise items
+        String[] sp_item = {"SP1;HC;1000","SP1;FS;500","SP2;MS;10000","SP2;GL;10000","SP3;GW;100","SP3;SC;1000"};
+        fh.initialize("suppliers.txt", sp_item);
+        
+        String[] users = {"STF01;David;man123;Manager","STF02;Joe;staff123;Staff"};
+        fh.initialize("users.txt", users);
+        
+        String[] hp_item = {"HP1;HC;100","HP1;FS;100","HP1;MS;100","HP1;GL;100","HP1;GW;100","HP1;SC;100","HP2;HC;100","HP2;FS;100","HP2;MS;100","HP2;GL;100","HP2;GW;100","HP2;SC;100","HP3;HC;100","HP3;FS;100","HP3;MS;100","HP3;GL;100","HP3;GW;100","HP3;SC;100"};
+        fh.initialize("hospitals.txt", hp_item);
+        
+        // Receive items
+        int HeadCover=0,FaceShield=0,Mask=0,Glove=0,Gown=0,ShoeCover=0;
+        String[][] itemUpdate = {{"HC;",Integer.toString(HeadCover)},{"FS;",Integer.toString(FaceShield)},{"MS;",Integer.toString(Mask)},{"GL;",Integer.toString(Glove)},{"GW;",Integer.toString(Gown)},{"SC;",Integer.toString(ShoeCover)}};
+        transfer.filterInvalid(itemUpdate, true); // True to receive, false to send out
+
+        // Filter date
+        dateSort.validRange("2024-10-3", "2024-10-10");
+
+        // user.createUser("Karlson", "123", "Manager");
+
+        // Delete file
+        // fh.deleteFile(file);
     }
-    
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton getStartedButton;
-    private javax.swing.JButton initialiseButton;
+    private javax.swing.JButton initButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JPasswordField loginPassword;
+    private javax.swing.JTextField loginUsername;
     // End of variables declaration//GEN-END:variables
 }
