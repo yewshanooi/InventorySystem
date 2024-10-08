@@ -285,6 +285,7 @@ public class Main extends javax.swing.JFrame {
         
 
         // user.createUser("Karlson", "123", "Manager");
+        // user.deleteUser("STF01");
         // user.modifyUser("STF01", "Role", "Manager", "dwa");
 
         // Delete file

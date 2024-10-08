@@ -48,30 +48,38 @@ public class User {
         }
     }
 
-    public void deleteUser(String id) {
+    public void deleteUser(String UID) {
         try {
-            FileHandler fh = new FileHandler();
-            ArrayList<ArrayList<String>> users = fh.to2dArray("users.txt");
-            ArrayList<String> newUsers = new ArrayList<>();
-            int userCheck = 0;
+            String file = "users.txt";
 
-            for (int i = 0; i < users.size(); i++) {
-                if (!(users.get(i).get(0).equals(id))) {
-                    newUsers.add(String.join(";", users.get(i)));
+            FileHandler fh = new FileHandler();
+            ArrayList<ArrayList<String>> fileCont = fh.to2dArray(file);
+
+            int userCheck=0;
+            // To check if user is in database, if true then update data
+            for (int i=0;i<fileCont.size();i++) {
+                if (UID.equals(fileCont.get(i).get(0))) {
+                    fileCont.remove(i);
+                } else {
                     userCheck++;
-                } else if (users.get(i).get(0).equals(id)) {
-                    continue;
                 }
             }
 
-            if (userCheck == users.size()) {
-                // [TODO] Pop up message for cant find user
-            } else {
-                // [TODO] Successfully deleted
+            if (userCheck == fileCont.size()) {
+                // [TODO] Pop up cannot find user
+                System.out.println("Cant find user");
             }
 
-            String[] newUser = new String[newUsers.size()];
-            newUser = newUsers.toArray(newUser);
+            String[] newUser = new String[fileCont.size()];
+            ArrayList<String> alToList = new ArrayList<>();
+            for (int i=0;i<fileCont.size();i++) {
+                String[] dataJoin = new String[fileCont.get(i).size()];
+                dataJoin = fileCont.get(i).toArray(dataJoin);
+                String temp = String.join(";", dataJoin);
+                alToList.add(temp);
+            }
+
+            newUser = alToList.toArray(newUser);
             fh.initialize("users.txt", newUser);
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,7 +106,7 @@ public class User {
                 System.out.println("Invalid data type"); // [TODO] Pop up message
             }
 
-            // To check if user is in database
+            // To check if user is in database, if true then update data
             int userCheck = 0;
             
             for (int i=0;i<fileCont.size();i++) {
