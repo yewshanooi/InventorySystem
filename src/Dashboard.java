@@ -53,7 +53,6 @@ public class Dashboard extends javax.swing.JFrame {
         addPassword = new javax.swing.JPasswordField();
         addType = new javax.swing.JComboBox<>();
         addButton = new javax.swing.JButton();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dashboard");
@@ -271,7 +270,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Add User", addPanel);
-        jTabbedPane1.addTab("Transactions", jTabbedPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -324,69 +322,69 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         Object db = viewType.getSelectedItem();
         FileHandler fh = new FileHandler();
-        
+
         String[][] content;
         String[] header;
 
         switch (db.toString()) {
             case "Hospital":
-                // [TODO] Add content and header for Hospital
-                viewTable.setModel(new DefaultTableModel());
-                dbTypeText.setText("Hospital");
-                currentDB = "hospital";
-                break;
+            // [TODO] Add content and header for Hospital
+            viewTable.setModel(new DefaultTableModel());
+            dbTypeText.setText("Hospital");
+            currentDB = "hospital";
+            break;
             case "Item":
-                content = fh.readFile("ppe.txt", 3, this);
-                header = new String[]{"Item ID", "Quantity", "Supplier ID"};
-                viewTable.setModel(new DefaultTableModel(content, header));
-                dbTypeText.setText("Item");
-                currentDB = "item";
-                break;
+            content = fh.readFile("ppe.txt", 4, this);
+            header = new String[]{"Item ID", "Quantity", "Supplier ID", "Item Name"};
+            viewTable.setModel(new DefaultTableModel(content, header));
+            dbTypeText.setText("Item");
+            currentDB = "item";
+            break;
             case "Supplier":
-                content = fh.readFile("suppliers.txt", 3, this);
-                header = new String[]{"Supplier ID", "Item ID", "Quantity"};
-                viewTable.setModel(new DefaultTableModel(content, header));
-                dbTypeText.setText("Supplier");
-                currentDB = "supplier";
-                break;
+            content = fh.readFile("suppliers.txt", 3, this);
+            header = new String[]{"Supplier ID", "Item ID", "Quantity"};
+            viewTable.setModel(new DefaultTableModel(content, header));
+            dbTypeText.setText("Supplier");
+            currentDB = "supplier";
+            break;
             case "Transaction":
-                content = fh.readFile("transactions.txt", 4, this);
-                header = new String[]{"Date", "Item ID", "Amount", "?"};
-                viewTable.setModel(new DefaultTableModel(content, header));
-                dbTypeText.setText("Transaction");
-                currentDB = "transaction";
-                break;
+            content = fh.readFile("transactions.txt", 4, this);
+            header = new String[]{"Date", "Item ID", "Amount", "User ID"};
+            viewTable.setModel(new DefaultTableModel(content, header));
+            dbTypeText.setText("Transaction");
+            currentDB = "transaction";
+            break;
             case "User":
-                content = fh.readFile("users.txt", 4, this);
-                header = new String[]{"User ID", "Name", "Password", "Role"};
-                viewTable.setModel(new DefaultTableModel(content, header));
-                dbTypeText.setText("User");
-                currentDB = "user";
-                break;
+            content = fh.readFile("users.txt", 4, this);
+            header = new String[]{"User ID", "Name", "Password", "Role"};
+            viewTable.setModel(new DefaultTableModel(content, header));
+            dbTypeText.setText("User");
+            currentDB = "user";
+            break;
             default:
-                viewTable.setModel(new DefaultTableModel());
-                dbTypeText.setText("None");
-                currentDB = null;
-                break;
+            viewTable.setModel(new DefaultTableModel());
+            dbTypeText.setText("None");
+            currentDB = null;
+            break;
         }
     }//GEN-LAST:event_viewTypeActionPerformed
 
     private void viewTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTableMouseClicked
         // TODO add your handling code here:
-//        int row = viewTable.getSelectedRow();
-//
-//        if (row != -1) {
-//            String click1 = viewTable.getModel().getValueAt(row, 0).toString();
-//            value1.setText(click1);
-//            String click2 = viewTable.getModel().getValueAt(row, 1).toString();
-//            value2.setText(click2);
-//            String click3 = viewTable.getModel().getValueAt(row, 2).toString();
-//            value3.setText(click3);
-//            String click4 = viewTable.getModel().getValueAt(row, 3).toString();
-//            value4.setText(click4);
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Please select a row.");
-//        }
+        //        int row = viewTable.getSelectedRow();
+        //
+        //        if (row != -1) {
+            //            String click1 = viewTable.getModel().getValueAt(row, 0).toString();
+            //            value1.setText(click1);
+            //            String click2 = viewTable.getModel().getValueAt(row, 1).toString();
+            //            value2.setText(click2);
+            //            String click3 = viewTable.getModel().getValueAt(row, 2).toString();
+            //            value3.setText(click3);
+            //            String click4 = viewTable.getModel().getValueAt(row, 3).toString();
+            //            value4.setText(click4);
+            //        } else {
+            //            JOptionPane.showMessageDialog(this, "Please select a row.");
+            //        }
     }//GEN-LAST:event_viewTableMouseClicked
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
@@ -478,7 +476,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel l2;
     private javax.swing.JLabel l3;
     private javax.swing.JLabel l4;
