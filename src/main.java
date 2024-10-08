@@ -202,7 +202,7 @@ public class main extends javax.swing.JFrame {
         
         if (!initStatus) {
             String[] options = {"Yes", "No"};
-            int choice = JOptionPane.showOptionDialog(this, "Do you want to set the default values for items as 100?", "Initialise", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            int choice = JOptionPane.showOptionDialog(this, "Do you want to set the default values for Items as 100?", "Initialise", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
             if (choice == 0) {
                 String[] item = {"HC;100;SP1;Head Cover","FS;100;SP1;Face Shield","MS;100;SP2;Mask","GL;100;SP2;Glove","GW;100;SP3;Gown","SC;100;SP3;Shoe Cover"};
@@ -266,7 +266,7 @@ public class main extends javax.swing.JFrame {
         String[] sp_item = {"SP1;HC;1000","SP1;FS;500","SP2;MS;10000","SP2;GL;10000","SP3;GW;100","SP3;SC;1000"};
         fh.initialize("suppliers.txt", sp_item);
         
-        String[] users = {"STF01;David;man123;Manager","STF02;Joe;staff123;Staff"};
+        String[] users = {"STF01;Karlson;pw123#;Manager","STF02;Shan;pw456#;Staff"};
         fh.initialize("users.txt", users);
         
         String[] hp_item = {"HP1;HC;100","HP1;FS;100","HP1;MS;100","HP1;GL;100","HP1;GW;100","HP1;SC;100","HP2;HC;100","HP2;FS;100","HP2;MS;100","HP2;GL;100","HP2;GW;100","HP2;SC;100","HP3;HC;100","HP3;FS;100","HP3;MS;100","HP3;GL;100","HP3;GW;100","HP3;SC;100"};
