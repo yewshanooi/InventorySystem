@@ -114,10 +114,11 @@ public class Main extends javax.swing.JFrame {
 
             // Initialise item amount
             String[] sp_item = {"SP1;HC;1000","SP1;FS;500","SP2;MS;10000","SP2;GL;10000","SP3;GW;100","SP3;SC;1000"};
+            String[] hp_item = {"HP1;HC;100","HP1;FS;100","HP1;MS;100","HP1;GL;100","HP1;GW;100","HP1;SC;100","HP2;HC;100","HP2;FS;100","HP2;MS;100","HP2;GL;100","HP2;GW;100","HP2;SC;100","HP3;HC;100","HP3;FS;100","HP3;MS;100","HP3;GL;100","HP3;GW;100","HP3;SC;100"};
+            fh.initialize("hospitals.txt", hp_item);
             fh.initialize("suppliers.txt", sp_item);
 
             // String[] empty_item = {"HC;0;SP1","FS;0;SP1","MS;0;SP2","GL;0;SP2","GW;0;SP3","SC;0;SP3"};
-            // [TODO] Initialize hospital item
             String[] fill_item = {"HC;100;SP1;Head Cover","FS;100;SP1;Face Shield","MS;100;SP2;Mask","GL;100;SP2;Glove","GW;100;SP3;Gown","SC;100;SP3;Shoe Cover"};
             String[] users = {"STF01;David;man123;Manager","STF02;Joe;staff123;Staff"};
             fh.initialize("ppe.txt", fill_item);

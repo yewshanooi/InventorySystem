@@ -50,15 +50,28 @@ public class User {
         try {
             FileHandler fh = new FileHandler();
             ArrayList<ArrayList<String>> users = fh.to2dArray("users.txt");
-            ArrayList<ArrayList<String>> newUsers = new ArrayList<>();
+            ArrayList<String> newUsers = new ArrayList<>();
+            int userCheck = 0;
 
             for (int i = 0; i < users.size(); i++) {
-                if (users.get(i).get(0) != id) {
-                    newUsers.add(users.get(i));
+                if (!(users.get(i).get(0).equals(id))) {
+                    newUsers.add(String.join(";", users.get(i)));
+                    userCheck++;
+                } else if (users.get(i).get(0).equals(id)) {
+                    continue;
                 }
             }
 
-            // fh.write("users.txt", newUsers);
+
+            if (userCheck == users.size()) {
+                // [TODO] Pop up message for cant find user
+            } else {
+                // [TODO] Successfully deleted
+            }
+
+            String[] newUser = new String[newUsers.size()];
+            newUser = newUsers.toArray(newUser);
+            fh.initialize("users.txt", newUser);
         } catch (Exception e) {
             e.printStackTrace();
         }
