@@ -1,2 +1,0 @@
-STF01;David;man123;Manager
-STF02;Joe;staff123;Staff

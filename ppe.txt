@@ -1,6 +1,0 @@
-HC;100;SP1;Head Cover
-FS;100;SP1;Face Shield
-MS;100;SP2;Mask
-GL;100;SP2;Glove
-GW;100;SP3;Gown
-SC;100;SP3;Shoe Cover
