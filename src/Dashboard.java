@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -13,6 +12,8 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {
         initComponents();
     }
+    
+    public static String currentDB;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,7 +43,8 @@ public class Dashboard extends javax.swing.JFrame {
         modifyButton = new javax.swing.JButton();
         removeButton = new javax.swing.JButton();
         l9 = new javax.swing.JLabel();
-        databaseType = new javax.swing.JComboBox<>();
+        viewType = new javax.swing.JComboBox<>();
+        dbTypeText = new javax.swing.JLabel();
         addPanel = new javax.swing.JPanel();
         l2 = new javax.swing.JLabel();
         l3 = new javax.swing.JLabel();
@@ -51,6 +53,7 @@ public class Dashboard extends javax.swing.JFrame {
         addPassword = new javax.swing.JPasswordField();
         addType = new javax.swing.JComboBox<>();
         addButton = new javax.swing.JButton();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dashboard");
@@ -119,7 +122,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(modifyButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(removeButton)))
-                .addGap(0, 29, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
         viewUserPopupLayout.setVerticalGroup(
             viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,12 +152,15 @@ public class Dashboard extends javax.swing.JFrame {
 
         l9.setText("Database");
 
-        databaseType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "User", "Item", "Transactions" }));
-        databaseType.addActionListener(new java.awt.event.ActionListener() {
+        viewType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select option>", "Hospital", "Item", "Supplier", "Transaction", "User" }));
+        viewType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                databaseTypeActionPerformed(evt);
+                viewTypeActionPerformed(evt);
             }
         });
+
+        dbTypeText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        dbTypeText.setText("None");
 
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
         viewPanel.setLayout(viewPanelLayout);
@@ -162,32 +168,39 @@ public class Dashboard extends javax.swing.JFrame {
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(viewPanelLayout.createSequentialGroup()
-                        .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(dbTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(viewPanelLayout.createSequentialGroup()
+                        .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(viewPanelLayout.createSequentialGroup()
-                                .addComponent(l9)
+                                .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(viewPanelLayout.createSequentialGroup()
+                                        .addComponent(l9)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(viewType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 72, Short.MAX_VALUE))
+                                    .addComponent(searchField))
                                 .addGap(18, 18, 18)
-                                .addComponent(databaseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 81, Short.MAX_VALUE))
-                            .addComponent(searchField))
+                                .addComponent(searchButton)))
+                        .addGap(40, 40, 40)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(searchButton)))
-                .addGap(40, 40, 40)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(viewUserPopup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewUserPopup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         viewPanelLayout.setVerticalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPanelLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(36, 36, 36)
+                .addComponent(dbTypeText)
+                .addGap(18, 18, 18)
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l9)
-                    .addComponent(databaseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
+                    .addComponent(viewType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(viewUserPopup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
@@ -208,7 +221,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         l4.setText("Type");
 
-        addType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Staff", "Admin" }));
+        addType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select option>", "Staff", "Admin" }));
 
         addButton.setText("Submit");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -254,10 +267,11 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(addType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addComponent(addButton)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add User", addPanel);
+        jTabbedPane1.addTab("Transactions", jTabbedPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,7 +281,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -282,7 +296,7 @@ public class Dashboard extends javax.swing.JFrame {
         Object objType = addType.getSelectedItem();
         String userType = objType.toString();
 
-        if (userName.isEmpty() || userPassword.isEmpty() || userType.equals("None")) {
+        if (userName.isEmpty() || userPassword.isEmpty() || userType.equals("<Select option>")) {
             JOptionPane.showMessageDialog(this, "Fields are still empty", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -306,25 +320,56 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_addButtonActionPerformed
 
-    private void databaseTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseTypeActionPerformed
+    private void viewTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTypeActionPerformed
         // TODO add your handling code here:
-        Object db = databaseType.getSelectedItem();
+        Object db = viewType.getSelectedItem();
         FileHandler fh = new FileHandler();
+        
+        String[][] content;
+        String[] header;
 
-        if (db.toString().equals("None")) {
-            viewTable.setModel(new DefaultTableModel());
-        } else if (db.toString().equals("User")) {
-            String[][] content = fh.readFile("users.txt", 4, this);
-            String[] header = {"User ID", "Name", "Password", "Role"};
-
-            viewTable.setModel(new DefaultTableModel(content, header));
-        } else if (db.toString().equals("Item")) {
-            String[][] content = fh.readFile("ppe.txt", 3, this);
-            String[] header = {"Item ID", "Quantity", "Supplier ID"};
-
-            viewTable.setModel(new DefaultTableModel(content, header));
+        switch (db.toString()) {
+            case "Hospital":
+                // [TODO] Add content and header for Hospital
+                viewTable.setModel(new DefaultTableModel());
+                dbTypeText.setText("Hospital");
+                currentDB = "hospital";
+                break;
+            case "Item":
+                content = fh.readFile("ppe.txt", 3, this);
+                header = new String[]{"Item ID", "Quantity", "Supplier ID"};
+                viewTable.setModel(new DefaultTableModel(content, header));
+                dbTypeText.setText("Item");
+                currentDB = "item";
+                break;
+            case "Supplier":
+                content = fh.readFile("suppliers.txt", 3, this);
+                header = new String[]{"Supplier ID", "Item ID", "Quantity"};
+                viewTable.setModel(new DefaultTableModel(content, header));
+                dbTypeText.setText("Supplier");
+                currentDB = "supplier";
+                break;
+            case "Transaction":
+                content = fh.readFile("transactions.txt", 4, this);
+                header = new String[]{"Date", "Item ID", "Amount", "?"};
+                viewTable.setModel(new DefaultTableModel(content, header));
+                dbTypeText.setText("Transaction");
+                currentDB = "transaction";
+                break;
+            case "User":
+                content = fh.readFile("users.txt", 4, this);
+                header = new String[]{"User ID", "Name", "Password", "Role"};
+                viewTable.setModel(new DefaultTableModel(content, header));
+                dbTypeText.setText("User");
+                currentDB = "user";
+                break;
+            default:
+                viewTable.setModel(new DefaultTableModel());
+                dbTypeText.setText("None");
+                currentDB = null;
+                break;
         }
-    }//GEN-LAST:event_databaseTypeActionPerformed
+    }//GEN-LAST:event_viewTypeActionPerformed
 
     private void viewTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTableMouseClicked
         // TODO add your handling code here:
@@ -385,38 +430,38 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonActionPerformed
 
 
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Dashboard().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Dashboard().setVisible(true);
+            }
+        });
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -425,7 +470,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel addPanel;
     private javax.swing.JPasswordField addPassword;
     private javax.swing.JComboBox<String> addType;
-    private javax.swing.JComboBox<String> databaseType;
+    private javax.swing.JLabel dbTypeText;
     private javax.swing.JLabel field1;
     private javax.swing.JLabel field2;
     private javax.swing.JLabel field3;
@@ -433,6 +478,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel l2;
     private javax.swing.JLabel l3;
     private javax.swing.JLabel l4;
@@ -447,6 +493,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField value4;
     private javax.swing.JPanel viewPanel;
     private javax.swing.JTable viewTable;
+    private javax.swing.JComboBox<String> viewType;
     private javax.swing.JPanel viewUserPopup;
     // End of variables declaration//GEN-END:variables
 }

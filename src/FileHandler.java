@@ -120,7 +120,7 @@ public class FileHandler {
                 }
             }
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(parent, "File not found", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(parent, "File does not exist", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
 
