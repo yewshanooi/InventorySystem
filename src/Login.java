@@ -131,8 +131,10 @@ public class Login extends javax.swing.JFrame {
 
                     if (getType.equals("Manager")) {
                         userType = "Manager";
-                    } else if (getType.equals("Admin")) {
-                        userType = "Admin";
+                        // [TODO] Redirect to manager dashboard
+                    } else if (getType.equals("Staff")) {
+                        userType = "Staff";
+                        // [TODO] Redirect to staff dashboard
                     }
                     
                     JOptionPane.showMessageDialog(this, "Welcome, " + getName + "!\n" + "You are logged in as a " + userType, "Login", JOptionPane.INFORMATION_MESSAGE);

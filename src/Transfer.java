@@ -35,9 +35,18 @@ public class Transfer {
                 if (receive) {
                     temp += Integer.parseInt(data[1]);
                     operation = "+";
+                    // [TODO] incoming transactions
                 } else {
                     temp -= Integer.parseInt(data[1]);
                     operation = "-";
+                    // [TODO] outcoming transactions
+                    if (temp < 25) {
+                        // [TODO] Prompt user that item is in low quantity
+                    } else if (temp < 1) {
+                        // [TODO] Prompt user insufficient item
+                    } else {
+                        continue;
+                    }
                 }
                 nFileData.add(data[0] + ";" + Integer.toString(temp) + ";" + data[2]);
                 fh.append("transactions.txt", (date + ";" + data[0] + ";" + operation + calc[1] + ";" + user.getUID() + "\n"));

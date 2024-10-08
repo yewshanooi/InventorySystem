@@ -108,7 +108,7 @@ public class FileHandler {
         fh.write(file, items);
     }
     
-    public static String[][] readFile(String path, int column, Component parent) {
+    public String[][] readFile(String path, int column, Component parent) {
         ArrayList<String[]> data = new ArrayList<>();
         
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {

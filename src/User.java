@@ -46,4 +46,21 @@ public class User {
         }
     }
 
+    public void deleteUser(String id) {
+        try {
+            FileHandler fh = new FileHandler();
+            ArrayList<ArrayList<String>> users = fh.to2dArray("users.txt");
+            ArrayList<ArrayList<String>> newUsers = new ArrayList<>();
+
+            for (int i = 0; i < users.size(); i++) {
+                if (users.get(i).get(0) != id) {
+                    newUsers.add(users.get(i));
+                }
+            }
+
+            // fh.write("users.txt", newUsers);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

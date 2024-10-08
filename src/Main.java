@@ -117,13 +117,14 @@ public class Main extends javax.swing.JFrame {
             fh.initialize("suppliers.txt", sp_item);
 
             // String[] empty_item = {"HC;0;SP1","FS;0;SP1","MS;0;SP2","GL;0;SP2","GW;0;SP3","SC;0;SP3"};
-            String[] fill_item = {"HC;100;SP1","FS;100;SP1","MS;100;SP2","GL;100;SP2","GW;100;SP3","SC;100;SP3"};
+            // [TODO] Initialize hospital item
+            String[] fill_item = {"HC;100;SP1;Head Cover","FS;100;SP1;Face Shield","MS;100;SP2;Mask","GL;100;SP2;Glove","GW;100;SP3;Gown","SC;100;SP3;Shoe Cover"};
             String[] users = {"STF01;David;man123;Manager","STF02;Joe;staff123;Staff"};
             fh.initialize("ppe.txt", fill_item);
             fh.initialize("users.txt", users);
 
             // Receive Item
-            int HeadCover=0,FaceShield=50,Mask=50,Glove=0,Gown=0,ShoeCover=0;
+            int HeadCover=0,FaceShield=0,Mask=0,Glove=0,Gown=0,ShoeCover=0;
             String[][] itemUpdate = {{"HC;",Integer.toString(HeadCover)},{"FS;",Integer.toString(FaceShield)},{"MS;",Integer.toString(Mask)},{"GL;",Integer.toString(Glove)},{"GW;",Integer.toString(Gown)},{"SC;",Integer.toString(ShoeCover)}};
             transfer.filterInvalid(itemUpdate, true); // True to receive, false to send out
 
