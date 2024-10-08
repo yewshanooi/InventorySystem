@@ -2,8 +2,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
@@ -11,12 +9,12 @@ import javax.swing.JOptionPane;
  *
  * @author Ooi
  */
-public class Main extends javax.swing.JFrame {
+public class main extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public Main() {
+    public main() {
         initComponents();
     }
     
@@ -58,7 +56,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        initButton.setText("Initialise Values");
+        initButton.setText("Initialise values");
         initButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 initButtonActionPerformed(evt);
@@ -75,20 +73,17 @@ public class Main extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(15, 15, 15)
-                            .addComponent(jLabel3)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addGap(55, 55, 55)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(initButton)
-                                .addGap(46, 46, 46)
-                                .addComponent(loginButton))
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel3))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -96,8 +91,11 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(loginUsername)
-                                    .addComponent(loginPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(loginPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(loginButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(initButton)))))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -107,7 +105,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addGap(57, 57, 57)
+                .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(loginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -115,11 +113,11 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(loginPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginButton)
                     .addComponent(initButton))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,7 +174,7 @@ public class Main extends javax.swing.JFrame {
 
                         JOptionPane.showMessageDialog(this, "Welcome, " + getName + "!\n" + "You are logged in as a " + userType, "Login", JOptionPane.INFORMATION_MESSAGE);
 
-                        Dashboard db = new Dashboard();
+                        dashboard db = new dashboard();
                         db.setVisible(true);
 
                         this.dispose();
@@ -200,8 +198,23 @@ public class Main extends javax.swing.JFrame {
 
     private void initButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initButtonActionPerformed
         // TODO add your handling code here:
+        FileHandler fh = new FileHandler();
+        
         if (!initStatus) {
-            // [TODO] Show init popup dialog
+            String[] options = {"Yes", "No"};
+            int choice = JOptionPane.showOptionDialog(this, "Do you want to set the default values for items as 100?", "Initialise", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+            if (choice == 0) {
+                String[] item = {"HC;100;SP1;Head Cover","FS;100;SP1;Face Shield","MS;100;SP2;Mask","GL;100;SP2;Glove","GW;100;SP3;Gown","SC;100;SP3;Shoe Cover"};
+                fh.initialize("ppe.txt", item);
+
+                initStatus = true;
+            } else if (choice == 1) {
+                String[] item = {"HC;0;SP1;Head Cover","FS;0;SP1;Face Shield","MS;0;SP2;Mask","GL;0;SP2;Glove","GW;0;SP3;Gown","SC;0;SP3;Shoe Cover"};
+                fh.initialize("ppe.txt", item);
+
+                initStatus = true;
+            }
         } else {
             JOptionPane.showMessageDialog(this, "You have already initialised the files", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -222,23 +235,21 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new main().setVisible(true);
             }
         });
         

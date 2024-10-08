@@ -4,12 +4,12 @@ import java.util.regex.Matcher;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Dashboard extends javax.swing.JFrame {
+public class dashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public Dashboard() {
+    public dashboard() {
         initComponents();
     }
     
@@ -328,44 +328,45 @@ public class Dashboard extends javax.swing.JFrame {
 
         switch (db.toString()) {
             case "Hospital":
-            // [TODO] Add content and header for Hospital
-            viewTable.setModel(new DefaultTableModel());
-            dbTypeText.setText("Hospital");
-            currentDB = "hospital";
-            break;
+                content = fh.readFile("hospitals.txt", 3, this);
+                header = new String[]{"Hospital ID", "Item ID", "Quantity"};
+                viewTable.setModel(new DefaultTableModel(content, header));
+                dbTypeText.setText("Hospital");
+                currentDB = "hospital";
+                break;
             case "Item":
-            content = fh.readFile("ppe.txt", 4, this);
-            header = new String[]{"Item ID", "Quantity", "Supplier ID", "Item Name"};
-            viewTable.setModel(new DefaultTableModel(content, header));
-            dbTypeText.setText("Item");
-            currentDB = "item";
-            break;
+                content = fh.readFile("ppe.txt", 4, this);
+                header = new String[]{"Item ID", "Quantity", "Supplier ID", "Item Name"};
+                viewTable.setModel(new DefaultTableModel(content, header));
+                dbTypeText.setText("Item");
+                currentDB = "item";
+                break;
             case "Supplier":
-            content = fh.readFile("suppliers.txt", 3, this);
-            header = new String[]{"Supplier ID", "Item ID", "Quantity"};
-            viewTable.setModel(new DefaultTableModel(content, header));
-            dbTypeText.setText("Supplier");
-            currentDB = "supplier";
-            break;
+                content = fh.readFile("suppliers.txt", 3, this);
+                header = new String[]{"Supplier ID", "Item ID", "Quantity"};
+                viewTable.setModel(new DefaultTableModel(content, header));
+                dbTypeText.setText("Supplier");
+                currentDB = "supplier";
+                break;
             case "Transaction":
-            content = fh.readFile("transactions.txt", 4, this);
-            header = new String[]{"Date", "Item ID", "Amount", "User ID"};
-            viewTable.setModel(new DefaultTableModel(content, header));
-            dbTypeText.setText("Transaction");
-            currentDB = "transaction";
-            break;
+                content = fh.readFile("transactions.txt", 4, this);
+                header = new String[]{"Date", "Item ID", "Amount", "User ID"};
+                viewTable.setModel(new DefaultTableModel(content, header));
+                dbTypeText.setText("Transaction");
+                currentDB = "transaction";
+                break;
             case "User":
-            content = fh.readFile("users.txt", 4, this);
-            header = new String[]{"User ID", "Name", "Password", "Role"};
-            viewTable.setModel(new DefaultTableModel(content, header));
-            dbTypeText.setText("User");
-            currentDB = "user";
-            break;
+                content = fh.readFile("users.txt", 4, this);
+                header = new String[]{"User ID", "Name", "Password", "Role"};
+                viewTable.setModel(new DefaultTableModel(content, header));
+                dbTypeText.setText("User");
+                currentDB = "user";
+                break;
             default:
-            viewTable.setModel(new DefaultTableModel());
-            dbTypeText.setText("None");
-            currentDB = null;
-            break;
+                viewTable.setModel(new DefaultTableModel());
+                dbTypeText.setText("None");
+                currentDB = null;
+                break;
         }
     }//GEN-LAST:event_viewTypeActionPerformed
 
@@ -374,17 +375,17 @@ public class Dashboard extends javax.swing.JFrame {
         //        int row = viewTable.getSelectedRow();
         //
         //        if (row != -1) {
-            //            String click1 = viewTable.getModel().getValueAt(row, 0).toString();
-            //            value1.setText(click1);
-            //            String click2 = viewTable.getModel().getValueAt(row, 1).toString();
-            //            value2.setText(click2);
-            //            String click3 = viewTable.getModel().getValueAt(row, 2).toString();
-            //            value3.setText(click3);
-            //            String click4 = viewTable.getModel().getValueAt(row, 3).toString();
-            //            value4.setText(click4);
-            //        } else {
-            //            JOptionPane.showMessageDialog(this, "Please select a row.");
-            //        }
+        //            String click1 = viewTable.getModel().getValueAt(row, 0).toString();
+        //            value1.setText(click1);
+        //            String click2 = viewTable.getModel().getValueAt(row, 1).toString();
+        //            value2.setText(click2);
+        //            String click3 = viewTable.getModel().getValueAt(row, 2).toString();
+        //            value3.setText(click3);
+        //            String click4 = viewTable.getModel().getValueAt(row, 3).toString();
+        //            value4.setText(click4);
+        //        } else {
+        //            JOptionPane.showMessageDialog(this, "Please select a row.");
+        //        }
     }//GEN-LAST:event_viewTableMouseClicked
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
@@ -428,38 +429,38 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonActionPerformed
 
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Dashboard().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new dashboard().setVisible(true);
+//            }
+//        });
+//    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
