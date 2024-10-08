@@ -19,6 +19,7 @@ public class Login extends javax.swing.JFrame {
     }
     
     public static boolean authStatus = false;
+    public static String userType;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -120,13 +121,21 @@ public class Login extends javax.swing.JFrame {
                 String getID = part[0];
                 String getName = part[1];
                 String getPassword = part[2];
+                String getType = part[3];
                 
                 if (id.equals(getID) && password.equals(getPassword)) {
                     User user = new User();
                     user.setUID(id);
                     user.setUsername(part[1]);
                     authStatus = true;
-                    JOptionPane.showMessageDialog(this, "Welcome, " + getName + "!", "Login", JOptionPane.INFORMATION_MESSAGE);
+
+                    if (getType.equals("Manager")) {
+                        userType = "Manager";
+                    } else if (getType.equals("Admin")) {
+                        userType = "Admin";
+                    }
+                    
+                    JOptionPane.showMessageDialog(this, "Welcome, " + getName + "!\n" + "You are logged in as a " + userType, "Login", JOptionPane.INFORMATION_MESSAGE);
                     
                     Dashboard db = new Dashboard();
                     db.setVisible(true);
@@ -183,6 +192,7 @@ public class Login extends javax.swing.JFrame {
 //        });
 //    }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
