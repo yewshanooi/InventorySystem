@@ -4,12 +4,12 @@ import java.util.regex.Matcher;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class dashboard extends javax.swing.JFrame {
+public class Dashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public dashboard() {
+    public Dashboard() {
         initComponents();
     }
     
@@ -45,7 +45,7 @@ public class dashboard extends javax.swing.JFrame {
         l9 = new javax.swing.JLabel();
         viewType = new javax.swing.JComboBox<>();
         dbTypeText = new javax.swing.JLabel();
-        userOptions = new javax.swing.JComboBox<>();
+        userSettings = new javax.swing.JComboBox<>();
         addPanel = new javax.swing.JPanel();
         l2 = new javax.swing.JLabel();
         l3 = new javax.swing.JLabel();
@@ -162,10 +162,10 @@ public class dashboard extends javax.swing.JFrame {
         dbTypeText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         dbTypeText.setText("None");
 
-        userOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Settings", "Logout" }));
-        userOptions.addActionListener(new java.awt.event.ActionListener() {
+        userSettings.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Settings", "Logout" }));
+        userSettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userOptionsActionPerformed(evt);
+                userSettingsActionPerformed(evt);
             }
         });
 
@@ -197,7 +197,7 @@ public class dashboard extends javax.swing.JFrame {
                     .addGroup(viewPanelLayout.createSequentialGroup()
                         .addComponent(dbTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(userOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31))))
         );
         viewPanelLayout.setVerticalGroup(
@@ -206,7 +206,7 @@ public class dashboard extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dbTypeText)
-                    .addComponent(userOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l9)
@@ -440,58 +440,58 @@ public class dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchButtonActionPerformed
 
-    private void userOptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userOptionsActionPerformed
+    private void userSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userSettingsActionPerformed
         // TODO add your handling code here:
-        Object ut = userOptions.getSelectedItem();
+        Object ut = userSettings.getSelectedItem();
 
         switch (ut.toString()) {
             case "Logout":
-                main mn = new main();
+                Main mn = new Main();
                 mn.setVisible(true);
                 
                 this.dispose();
                 
-                main.authStatus = false;
-                main.initStatus = true;
+                Main.authStatus = false;
+                Main.initStatus = true;
                 break;
             default:
                 break;
         }
-    }//GEN-LAST:event_userOptionsActionPerformed
+    }//GEN-LAST:event_userSettingsActionPerformed
 
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new dashboard().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new dashboard().setVisible(true);
+//            }
+//        });
+//    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -516,7 +516,7 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JButton removeButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
-    private javax.swing.JComboBox<String> userOptions;
+    private javax.swing.JComboBox<String> userSettings;
     private javax.swing.JTextField value1;
     private javax.swing.JTextField value2;
     private javax.swing.JTextField value3;
