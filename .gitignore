@@ -1,3 +1,9 @@
 /dist/
 /nbproject/private/
 /build/
+
+hospitals.txt
+ppe.txt
+suppliers.txt
+transactions.txt
+users.txt

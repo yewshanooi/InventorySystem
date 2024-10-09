@@ -172,7 +172,7 @@ public class Dashboard extends javax.swing.JFrame {
         dbTypeText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         dbTypeText.setText("None");
 
-        userSettings.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "𝗦𝗲𝘁𝘁𝗶𝗻𝗴𝘀", "Logout" }));
+        userSettings.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Settings>", "Logout" }));
         userSettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userSettingsActionPerformed(evt);
