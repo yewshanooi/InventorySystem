@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.print.attribute.IntegerSyntax;
+
 public class test {
 
     public static void main(String[] args) {
@@ -23,7 +25,7 @@ public class test {
         }
     }
 
-    public static void itemManip(String value, boolean receive) throws Exception {
+    public static void itemManip(String value) throws Exception {
         String file = "ppe.txt";
         LocalDate date = LocalDate.now();
         FileHandler fh = new FileHandler();
@@ -40,20 +42,60 @@ public class test {
             String[] data = n.split(";");
             String operation = "";
             if (calc[0].equals(data[0])) {
-                if (receive) {
-                    temp += Integer.parseInt(data[1]);
-                    operation = "+";
-                    // [TODO] incoming transactions
-                    System.out.println(calc[0] + calc[1]);
-                    ArrayList<ArrayList<String>>temp2 = fh.to2dArray("suppliers.txt");
-                    System.out.println(temp2);
-                    for (int i=0; i<temp2.size(); i++) {
-                        
+                temp += Integer.parseInt(data[1]);
+
+                String fileName ="suppliers.txt";
+                ArrayList<ArrayList<String>>spItems = fh.to2dArray(fileName);
+                for (int i=0; i<spItems.size(); i++) {
+                    if (calc[0].equals(spItems.get(i).get(1))) {
+                        int item = Integer.parseInt(spItems.get(i).get(2));
+                        item -= Integer.parseInt(calc[1]);
+                        String newData = String.valueOf(item);
+                        spItems.get(i).set(2, newData);
                     }
-                } else {
+                }
+
+                String[] update = new String[spItems.size()];
+                ArrayList<String> alToList = new ArrayList<>();
+                for (int i=0;i<spItems.size();i++) {
+                    String[] dataJoin = new String[spItems.get(i).size()];
+                    dataJoin = spItems.get(i).toArray(dataJoin);
+                    String spItemsString = String.join(";", dataJoin);
+                    alToList.add(spItemsString);
+                }
+
+                update = alToList.toArray(update);
+
+                fh.initialize(fileName, update);
+
+                nFileData.add(data[0] + ";" + Integer.toString(temp) + ";" + data[2] + ";" + data[3]);
+                fh.append("transactions.txt", (date + ";" + data[0] + ";" + "+" + calc[1] + ";" + user.getUID() + "\n"));
+            } else {
+                nFileData.add(n);
+            }
+        }
+        
+        String FileData = String.join("\n", nFileData);
+        fh.write(file, FileData);
+    }
+
+    public static void itemManip(String value, String hpID) throws Exception {
+        String file = "ppe.txt";
+        LocalDate date = LocalDate.now();
+        FileHandler fh = new FileHandler();
+        User user = new User();
+
+        ArrayList<String> fileCont = new ArrayList<String>(fh.toArray(file));
+        
+        // Actual calculation
+        String[] calc = value.split(";");
+        ArrayList<String> nFileData = new ArrayList<String>();
+        int temp = Integer.parseInt(calc[1]);
+        
+        for (String n : fileCont) {
+            String[] data = n.split(";");
+            if (calc[0].equals(data[0])) {
                     temp -= Integer.parseInt(data[1]);
-                    operation = "-";
-                    // [TODO] outgoing transactions
                     if (temp < 25) {
                         // [TODO] Prompt user that item is in low quantity
                     } else if (temp < 1) {
@@ -61,9 +103,33 @@ public class test {
                     } else {
                         continue;
                     }
+
+                String fileName ="hospitals.txt";
+                ArrayList<ArrayList<String>>spItems = fh.to2dArray(fileName);
+                for (int i=0; i<spItems.size(); i++) {
+                    if (calc[0].equals(spItems.get(i).get(1))) {
+                        int item = Integer.parseInt(spItems.get(i).get(2));
+                        item += Integer.parseInt(calc[1]);
+                        String newData = String.valueOf(item);
+                        spItems.get(i).set(2, newData);
+                    }
                 }
+
+                String[] update = new String[spItems.size()];
+                ArrayList<String> alToList = new ArrayList<>();
+                for (int i=0;i<spItems.size();i++) {
+                    String[] dataJoin = new String[spItems.get(i).size()];
+                    dataJoin = spItems.get(i).toArray(dataJoin);
+                    String spItemsString = String.join(";", dataJoin);
+                    alToList.add(spItemsString);
+                }
+
+                update = alToList.toArray(update);
+
+                fh.initialize(fileName, update);
+
                 nFileData.add(data[0] + ";" + Integer.toString(temp) + ";" + data[2] + ";" + data[3]);
-                fh.append("transactions.txt", (date + ";" + data[0] + ";" + operation + calc[1] + ";" + user.getUID() + "\n"));
+                fh.append("transactions.txt", (date + ";" + data[0] + ";" + "-" + calc[1] + ";" + user.getUID() + "\n"));
             } else {
                 nFileData.add(n);
             }
