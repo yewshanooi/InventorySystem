@@ -95,8 +95,18 @@ public class Dashboard extends javax.swing.JFrame {
         field4.setText("Field 4");
 
         modifyButton.setText("Modify");
+        modifyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyButtonActionPerformed(evt);
+            }
+        });
 
         removeButton.setText("Remove");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout viewUserPopupLayout = new javax.swing.GroupLayout(viewUserPopup);
         viewUserPopup.setLayout(viewUserPopupLayout);
@@ -162,7 +172,7 @@ public class Dashboard extends javax.swing.JFrame {
         dbTypeText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         dbTypeText.setText("None");
 
-        userSettings.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Settings", "Logout" }));
+        userSettings.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "𝗦𝗲𝘁𝘁𝗶𝗻𝗴𝘀", "Logout" }));
         userSettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userSettingsActionPerformed(evt);
@@ -384,20 +394,20 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void viewTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTableMouseClicked
         // TODO add your handling code here:
-        //        int row = viewTable.getSelectedRow();
-        //
-        //        if (row != -1) {
-        //            String click1 = viewTable.getModel().getValueAt(row, 0).toString();
-        //            value1.setText(click1);
-        //            String click2 = viewTable.getModel().getValueAt(row, 1).toString();
-        //            value2.setText(click2);
-        //            String click3 = viewTable.getModel().getValueAt(row, 2).toString();
-        //            value3.setText(click3);
-        //            String click4 = viewTable.getModel().getValueAt(row, 3).toString();
-        //            value4.setText(click4);
-        //        } else {
-        //            JOptionPane.showMessageDialog(this, "Please select a row.");
-        //        }
+//        int row = viewTable.getSelectedRow();
+//
+//        if (row != -1) {
+//            String click1 = viewTable.getModel().getValueAt(row, 0).toString();
+//            value1.setText(click1);
+//            String click2 = viewTable.getModel().getValueAt(row, 1).toString();
+//            value2.setText(click2);
+//            String click3 = viewTable.getModel().getValueAt(row, 2).toString();
+//            value3.setText(click3);
+//            String click4 = viewTable.getModel().getValueAt(row, 3).toString();
+//            value4.setText(click4);
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Please select a row.");
+//        }
     }//GEN-LAST:event_viewTableMouseClicked
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
@@ -458,6 +468,14 @@ public class Dashboard extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_userSettingsActionPerformed
+
+    private void modifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modifyButtonActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeButtonActionPerformed
 
 
     public static void main(String args[]) {

@@ -284,11 +284,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Modify"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modifyButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="removeButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Remove"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -329,7 +335,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
-                    <StringItem index="0" value="Settings"/>
+                    <StringItem index="0" value="&#xd835;&#xdde6;&#xd835;&#xddf2;&#xd835;&#xde01;&#xd835;&#xde01;&#xd835;&#xddf6;&#xd835;&#xddfb;&#xd835;&#xddf4;&#xd835;&#xde00;"/>
                     <StringItem index="1" value="Logout"/>
                   </StringArray>
                 </Property>
