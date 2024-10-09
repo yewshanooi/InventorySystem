@@ -72,6 +72,8 @@
                               <Component id="l9" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="viewType" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="refreshButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -90,13 +92,14 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="l9" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="viewType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="refreshButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="viewUserPopup" min="-2" max="-2" attributes="0"/>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                      <EmptySpace pref="49" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -337,11 +340,11 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="6">
                     <StringItem index="0" value="&lt;Select option&gt;"/>
-                    <StringItem index="1" value="Hospital"/>
-                    <StringItem index="2" value="Item"/>
-                    <StringItem index="3" value="Supplier"/>
-                    <StringItem index="4" value="Transaction"/>
-                    <StringItem index="5" value="User"/>
+                    <StringItem index="1" value="hospitals.txt"/>
+                    <StringItem index="2" value="ppe.txt"/>
+                    <StringItem index="3" value="suppliers.txt"/>
+                    <StringItem index="4" value="transactions.txt"/>
+                    <StringItem index="5" value="users.txt"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -375,6 +378,14 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="refreshButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Refresh"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refreshButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

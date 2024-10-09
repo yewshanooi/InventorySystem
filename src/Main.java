@@ -201,7 +201,7 @@ public class Main extends javax.swing.JFrame {
         
         if (!initStatus) {
             String[] options = {"Yes", "No"};
-            int choice = JOptionPane.showOptionDialog(this, "Do you want to set the default values for Items as 100?", "Initialise", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            int choice = JOptionPane.showOptionDialog(this, "Do you want to set the default values for items as 100?", "Initialise", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
             if (choice == 0) {
                 String[] item = {"HC;100;SP1;Head Cover","FS;100;SP1;Face Shield","MS;100;SP2;Mask","GL;100;SP2;Glove","GW;100;SP3;Gown","SC;100;SP3;Shoe Cover"};

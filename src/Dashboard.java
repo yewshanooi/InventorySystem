@@ -47,6 +47,7 @@ public class Dashboard extends javax.swing.JFrame {
         viewType = new javax.swing.JComboBox<>();
         dbTypeText = new javax.swing.JLabel();
         userSettings = new javax.swing.JComboBox<>();
+        refreshButton = new javax.swing.JButton();
         addUserPanel = new javax.swing.JPanel();
         l2 = new javax.swing.JLabel();
         l3 = new javax.swing.JLabel();
@@ -196,7 +197,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         l9.setText("Database");
 
-        viewType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select option>", "Hospital", "Item", "Supplier", "Transaction", "User" }));
+        viewType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select option>", "hospitals.txt", "ppe.txt", "suppliers.txt", "transactions.txt", "users.txt" }));
         viewType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewTypeActionPerformed(evt);
@@ -210,6 +211,13 @@ public class Dashboard extends javax.swing.JFrame {
         userSettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userSettingsActionPerformed(evt);
+            }
+        });
+
+        refreshButton.setText("Refresh");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
             }
         });
 
@@ -234,6 +242,8 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(l9)
                         .addGap(18, 18, 18)
                         .addComponent(viewType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(refreshButton)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         viewPanelLayout.setVerticalGroup(
@@ -246,12 +256,13 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l9)
-                    .addComponent(viewType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(viewType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshButton))
                 .addGap(18, 18, 18)
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(viewUserPopup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("View Database", viewPanel);
@@ -378,35 +389,35 @@ public class Dashboard extends javax.swing.JFrame {
         resetViewUserPopup();
 
         switch (db.toString()) {
-            case "Hospital":
+            case "hospitals.txt":
                 content = fh.readFile("hospitals.txt", 3, this);
                 header = new String[]{"Hospital ID", "Item ID", "Quantity"};
                 viewTable.setModel(new DefaultTableModel(content, header));
                 dbTypeText.setText("Hospital");
                 currentDB = "hospital";
                 break;
-            case "Item":
+            case "ppe.txt":
                 content = fh.readFile("ppe.txt", 4, this);
                 header = new String[]{"Item ID", "Quantity", "Supplier ID", "Item Name"};
                 viewTable.setModel(new DefaultTableModel(content, header));
                 dbTypeText.setText("Item");
                 currentDB = "item";
                 break;
-            case "Supplier":
+            case "suppliers.txt":
                 content = fh.readFile("suppliers.txt", 3, this);
                 header = new String[]{"Supplier ID", "Item ID", "Quantity"};
                 viewTable.setModel(new DefaultTableModel(content, header));
                 dbTypeText.setText("Supplier");
                 currentDB = "supplier";
                 break;
-            case "Transaction":
+            case "transactions.txt":
                 content = fh.readFile("transactions.txt", 4, this);
                 header = new String[]{"Date", "Item ID", "Amount", "User ID"};
                 viewTable.setModel(new DefaultTableModel(content, header));
                 dbTypeText.setText("Transaction");
                 currentDB = "transaction";
                 break;
-            case "User":
+            case "users.txt":
                 content = fh.readFile("users.txt", 4, this);
                 header = new String[]{"User ID", "Name", "Password", "Role"};
                 viewTable.setModel(new DefaultTableModel(content, header));
@@ -524,11 +535,6 @@ public class Dashboard extends javax.swing.JFrame {
         String newUsername = viewUserName.getText();
         String newPassword = viewUserPassword.getText();
         String newRole = viewUserRole.getText();
-        
-        if (UID.equals("null")) {
-            JOptionPane.showMessageDialog(this, "Please select a user to modify", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
 
         if (newUsername.isEmpty() || newPassword.isEmpty() || newRole.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Fields must not be empty", "Error", JOptionPane.ERROR_MESSAGE);
@@ -578,7 +584,12 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_removeButtonActionPerformed
 
- 
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        // TODO add your handling code here:
+        viewTypeActionPerformed(null);
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -633,6 +644,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel l4;
     private javax.swing.JLabel l9;
     private javax.swing.JButton modifyButton;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JButton removeButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
