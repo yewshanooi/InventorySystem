@@ -278,18 +278,20 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(addUserPanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(addUserPanelLayout.createSequentialGroup()
                         .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(l3)
                             .addComponent(l4)
                             .addComponent(l2))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 19, Short.MAX_VALUE)
+                        .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(addType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 526, Short.MAX_VALUE))
+                            .addComponent(addName, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addComponent(addPassword))
+                        .addGap(516, 516, 516))
+                    .addGroup(addUserPanelLayout.createSequentialGroup()
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(506, 506, 506))))
         );
         addUserPanelLayout.setVerticalGroup(
             addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,6 +353,11 @@ public class Dashboard extends javax.swing.JFrame {
         try {
             User user = new User();
             user.createUser(userName, userPassword, userType);
+            
+            addName.setText("");
+            addPassword.setText("");
+            addType.setSelectedIndex(0);
+            
             JOptionPane.showMessageDialog(this, "Successfully added user " + userName, "Add User", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "An error occurred while adding a user", "Error", JOptionPane.ERROR_MESSAGE);
@@ -368,7 +375,7 @@ public class Dashboard extends javax.swing.JFrame {
         String[][] content;
         String[] header;
         
-        viewUserPopup.setVisible(false);
+        resetViewUserPopup();
 
         switch (db.toString()) {
             case "Hospital":
@@ -404,7 +411,6 @@ public class Dashboard extends javax.swing.JFrame {
                 header = new String[]{"User ID", "Name", "Password", "Role"};
                 viewTable.setModel(new DefaultTableModel(content, header));
                 dbTypeText.setText("User");
-                viewUserPopup.setVisible(true);
                 currentDB = "user";
                 break;
             default:
@@ -415,23 +421,36 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_viewTypeActionPerformed
 
+    public void resetViewUserPopup() {
+        viewUserPopup.setVisible(false);
+        
+        viewUserID.setText("");
+        viewUserName.setText("");
+        viewUserPassword.setText("");
+        viewUserRole.setText("");
+    }
+
     private void viewTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTableMouseClicked
         // TODO add your handling code here:
-        int row = viewTable.getSelectedRow();
-        int columnCount = viewTable.getColumnCount();
+        if (currentDB.equals("user")) {
+            int row = viewTable.getSelectedRow();
+            int columnCount = viewTable.getColumnCount();
 
-        if (row != -1) {
-            if (columnCount > 0) {
-                viewUserID.setText(getValueAt(row, 0));
-            } if (columnCount > 1) {
-                viewUserName.setText(getValueAt(row, 1));
-            } if (columnCount > 2) {
-                viewUserPassword.setText(getValueAt(row, 2));
-            } if (columnCount > 3) {
-                viewUserRole.setText(getValueAt(row, 3));
+            viewUserPopup.setVisible(true);
+
+            if (row != -1) {
+                if (columnCount > 0) {
+                    viewUserID.setText(getValueAt(row, 0));
+                } if (columnCount > 1) {
+                    viewUserName.setText(getValueAt(row, 1));
+                } if (columnCount > 2) {
+                    viewUserPassword.setText(getValueAt(row, 2));
+                } if (columnCount > 3) {
+                    viewUserRole.setText(getValueAt(row, 3));
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select a row", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a row", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_viewTableMouseClicked
 
@@ -551,13 +570,15 @@ public class Dashboard extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) viewTable.getModel();
             model.removeRow(row);
 
+            resetViewUserPopup();
+            
             JOptionPane.showMessageDialog(this, "Successfully removed user " + UID, "Remove", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a user to remove", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_removeButtonActionPerformed
 
-
+ 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

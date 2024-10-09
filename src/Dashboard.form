@@ -393,22 +393,25 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="addButton" min="-2" pref="75" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="l3" min="-2" max="-2" attributes="0"/>
                                   <Component id="l4" min="-2" max="-2" attributes="0"/>
                                   <Component id="l2" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="addName" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" pref="19" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="addType" min="-2" max="-2" attributes="0"/>
-                                  <Component id="addPassword" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="addName" pref="160" max="32767" attributes="0"/>
+                                  <Component id="addPassword" alignment="0" max="32767" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="516" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="addButton" min="-2" pref="75" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="506" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="526" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
