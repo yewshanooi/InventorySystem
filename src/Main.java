@@ -164,10 +164,10 @@ public class Main extends javax.swing.JFrame {
                         authStatus = true;
 
                         if (getType.equals("Admin")) {
-                            userType = "Admin";
+                            userType = "admin";
                             // [TODO] Redirect to admin dashboard
                         } else if (getType.equals("Staff")) {
-                            userType = "Staff";
+                            userType = "staff";
                             // [TODO] Redirect to staff dashboard
                         }
 

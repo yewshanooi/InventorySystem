@@ -48,6 +48,7 @@ public class Dashboard extends javax.swing.JFrame {
         dbTypeText = new javax.swing.JLabel();
         userSettings = new javax.swing.JComboBox<>();
         refreshButton = new javax.swing.JButton();
+        userSettingsAccess = new javax.swing.JLabel();
         addUserPanel = new javax.swing.JPanel();
         l2 = new javax.swing.JLabel();
         l3 = new javax.swing.JLabel();
@@ -138,7 +139,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        viewUserID.setText("null");
+        viewUserID.setText("{null}");
 
         javax.swing.GroupLayout viewUserPopupLayout = new javax.swing.GroupLayout(viewUserPopup);
         viewUserPopup.setLayout(viewUserPopupLayout);
@@ -221,6 +222,17 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        userSettingsAccess.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        userSettingsAccess.setText("{null}");
+        if (Main.userType == null) {
+            userSettingsAccess.setText("Guest");
+            // [TODO] You have found an easter egg! Guest access is for debugging purposes only. Do not remove it or you wont be able to run Dashboard.java's main class without logging in through Main.java.
+        } else if (Main.userType.equals("admin")) {
+            userSettingsAccess.setText("Admin");
+        } else if (Main.userType.equals("staff")) {
+            userSettingsAccess.setText("Staff");
+        }
+
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
         viewPanel.setLayout(viewPanelLayout);
         viewPanelLayout.setHorizontalGroup(
@@ -229,22 +241,26 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(viewPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addComponent(viewUserPopup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))
-                    .addGroup(viewPanelLayout.createSequentialGroup()
-                        .addComponent(dbTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))
-                    .addGroup(viewPanelLayout.createSequentialGroup()
                         .addComponent(l9)
                         .addGap(18, 18, 18)
                         .addComponent(viewType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(refreshButton)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPanelLayout.createSequentialGroup()
+                        .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dbTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(viewPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                                .addComponent(viewUserPopup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(viewPanelLayout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addComponent(userSettingsAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(31, 31, 31))))
         );
         viewPanelLayout.setVerticalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,7 +268,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dbTypeText)
-                    .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userSettingsAccess))
                 .addGap(18, 18, 18)
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l9)
@@ -649,6 +666,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
     private javax.swing.JComboBox<String> userSettings;
+    private javax.swing.JLabel userSettingsAccess;
     private javax.swing.JPanel viewPanel;
     private javax.swing.JTable viewTable;
     private javax.swing.JComboBox<String> viewType;
