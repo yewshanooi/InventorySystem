@@ -163,15 +163,15 @@ public class Main extends javax.swing.JFrame {
                         user.setUsername(part[1]);
                         authStatus = true;
 
-                        if (getType.equals("Manager")) {
-                            userType = "Manager";
-                            // [TODO] Redirect to manager dashboard
+                        if (getType.equals("Admin")) {
+                            userType = "Admin";
+                            // [TODO] Redirect to admin dashboard
                         } else if (getType.equals("Staff")) {
                             userType = "Staff";
                             // [TODO] Redirect to staff dashboard
                         }
 
-                        JOptionPane.showMessageDialog(this, "Welcome, " + getName + "!\n" + "You are logged in as a " + userType, "Login", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Welcome, " + getName + "!\n" + "You are logged in as " + userType, "Login", JOptionPane.INFORMATION_MESSAGE);
 
                         Dashboard db = new Dashboard();
                         db.setVisible(true);
@@ -267,7 +267,7 @@ public class Main extends javax.swing.JFrame {
         String[] sp_item = {"SP1;HC;1000","SP1;FS;500","SP2;MS;10000","SP2;GL;10000","SP3;GW;100","SP3;SC;1000"};
         fh.initialize("suppliers.txt", sp_item);
         
-        String[] users = {"STF01;Karlson;pw123#;Manager","STF02;Shan;pw456#;Staff"};
+        String[] users = {"STF01;Karlson;pw123#;Admin","STF02;Shan;pw456#;Staff"};
         fh.initialize("users.txt", users);
         
         String[] hp_item = {"HP1;HC;100","HP1;FS;100","HP1;MS;100","HP1;GL;100","HP1;GW;100","HP1;SC;100","HP2;HC;100","HP2;FS;100","HP2;MS;100","HP2;GL;100","HP2;GW;100","HP2;SC;100","HP3;HC;100","HP3;FS;100","HP3;MS;100","HP3;GL;100","HP3;GW;100","HP3;SC;100"};
@@ -283,9 +283,9 @@ public class Main extends javax.swing.JFrame {
 
         
 
-        // user.createUser("Karlson", "123", "Manager");
+        // user.createUser("Karlson", "123", "Admin");
         // user.deleteUser("STF01");
-        // user.modifyUser("STF01", "Role", "Manager", "dwa");
+        // user.modifyUser("STF01", "Role", "Admin", "dwa");
 
         // Delete file
         // fh.deleteFile(file);

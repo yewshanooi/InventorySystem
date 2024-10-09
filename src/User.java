@@ -39,10 +39,14 @@ public class User {
                 }
             }
 
-            String UID = ("STF" + filler.repeat(maxDigit - Integer.toString(newID).length()) + Integer.toString(newID));
-            String userInfo = "\n"+UID+";"+username+";"+password+";"+role;
+            String UID = "STF" + filler.repeat(maxDigit - Integer.toString(newID).length()) + newID;
+            String userInfo = UID + ";" + username + ";" + password + ";" + role;
 
-            fh.append(file, userInfo);
+            if (fileCont.isEmpty()) {
+                fh.append(file, userInfo);
+            } else {
+                fh.append(file, "\n" + userInfo);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,7 +71,7 @@ public class User {
 
             if (userCheck == fileCont.size()) {
                 // [TODO] Pop up cannot find user
-                System.out.println("Can\'t find user");
+                System.out.println("Cannot find user");
             }
 
             String[] newUser = new String[fileCont.size()];
@@ -119,7 +123,7 @@ public class User {
             
             if (userCheck == fileCont.size()) {
                 // [TODO] Pop up cannot find user
-                System.out.println("Cant find user");
+                System.out.println("Cannot find user");
             }
 
             String[] update = new String[fileCont.size()];
