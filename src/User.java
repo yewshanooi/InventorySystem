@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class User {
     private String Username;
@@ -46,34 +48,96 @@ public class User {
         }
     }
 
-    public void deleteUser(String id) {
+    public void deleteUser(String UID) {
         try {
-            FileHandler fh = new FileHandler();
-            ArrayList<ArrayList<String>> users = fh.to2dArray("users.txt");
-            ArrayList<String> newUsers = new ArrayList<>();
-            int userCheck = 0;
+            String file = "users.txt";
 
-            for (int i = 0; i < users.size(); i++) {
-                if (!(users.get(i).get(0).equals(id))) {
-                    newUsers.add(String.join(";", users.get(i)));
+            FileHandler fh = new FileHandler();
+            ArrayList<ArrayList<String>> fileCont = fh.to2dArray(file);
+
+            int userCheck=0;
+            // To check if user is in database, if true then update data
+            for (int i=0;i<fileCont.size();i++) {
+                if (UID.equals(fileCont.get(i).get(0))) {
+                    fileCont.remove(i);
+                } else {
                     userCheck++;
-                } else if (users.get(i).get(0).equals(id)) {
-                    continue;
                 }
             }
 
-
-            if (userCheck == users.size()) {
-                // [TODO] Pop up message for cant find user
-            } else {
-                // [TODO] Successfully deleted
+            if (userCheck == fileCont.size()) {
+                // [TODO] Pop up cannot find user
+                System.out.println("Cant find user");
             }
 
-            String[] newUser = new String[newUsers.size()];
-            newUser = newUsers.toArray(newUser);
+            String[] newUser = new String[fileCont.size()];
+            ArrayList<String> alToList = new ArrayList<>();
+            for (int i=0;i<fileCont.size();i++) {
+                String[] dataJoin = new String[fileCont.get(i).size()];
+                dataJoin = fileCont.get(i).toArray(dataJoin);
+                String temp = String.join(";", dataJoin);
+                alToList.add(temp);
+            }
+
+            newUser = alToList.toArray(newUser);
             fh.initialize("users.txt", newUser);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void modifyUser(String UID, String dataType, String oldData, String newData) {
+        try {
+            String file = "users.txt";
+            
+            FileHandler fh = new FileHandler();
+            BufferedReader bw = new BufferedReader(new FileReader(file));
+            ArrayList<ArrayList<String>> fileCont = fh.to2dArray(file);
+            
+            int index = 0;
+            
+            if (dataType.equals("Username")) {
+                index=1;
+            } else if (dataType.equals("Password"))  {
+                index=2;
+            } else if (dataType.equals("Role")) {
+                index=3;
+            } else {
+                System.out.println("Invalid data type"); // [TODO] Pop up message
+            }
+
+            // To check if user is in database, if true then update data
+            int userCheck = 0;
+            
+            for (int i=0;i<fileCont.size();i++) {
+                if (UID.equals(fileCont.get(i).get(0))) {
+                    fileCont.get(i).set(index, newData);
+                } else {
+                    userCheck++;
+                }
+            }
+            
+            if (userCheck == fileCont.size()) {
+                // [TODO] Pop up cannot find user
+                System.out.println("Cant find user");
+            }
+
+            String[] update = new String[fileCont.size()];
+            ArrayList<String> alToList = new ArrayList<>();
+            for (int i=0;i<fileCont.size();i++) {
+                String[] dataJoin = new String[fileCont.get(i).size()];
+                dataJoin = fileCont.get(i).toArray(dataJoin);
+                String temp = String.join(";", dataJoin);
+                alToList.add(temp);
+            }
+
+            update = alToList.toArray(update);
+
+            bw.close();
+            fh.initialize(file, update);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

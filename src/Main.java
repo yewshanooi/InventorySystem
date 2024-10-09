@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -282,7 +281,11 @@ public class Main extends javax.swing.JFrame {
         // Filter date
         dateSort.validRange("2024-10-3", "2024-10-10");
 
+        
+
         // user.createUser("Karlson", "123", "Manager");
+        // user.deleteUser("STF01");
+        // user.modifyUser("STF01", "Role", "Manager", "dwa");
 
         // Delete file
         // fh.deleteFile(file);
