@@ -46,7 +46,7 @@ public class Dashboard extends javax.swing.JFrame {
         viewType = new javax.swing.JComboBox<>();
         dbTypeText = new javax.swing.JLabel();
         userSettings = new javax.swing.JComboBox<>();
-        addPanel = new javax.swing.JPanel();
+        addUserPanel = new javax.swing.JPanel();
         l2 = new javax.swing.JLabel();
         l3 = new javax.swing.JLabel();
         l4 = new javax.swing.JLabel();
@@ -251,39 +251,39 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout addPanelLayout = new javax.swing.GroupLayout(addPanel);
-        addPanel.setLayout(addPanelLayout);
-        addPanelLayout.setHorizontalGroup(
-            addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout addUserPanelLayout = new javax.swing.GroupLayout(addUserPanel);
+        addUserPanel.setLayout(addUserPanelLayout);
+        addUserPanelLayout.setHorizontalGroup(
+            addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addUserPanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(addPanelLayout.createSequentialGroup()
-                        .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addUserPanelLayout.createSequentialGroup()
+                        .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(l3)
                             .addComponent(l4)
                             .addComponent(l2))
                         .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(addName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 445, Short.MAX_VALUE))
         );
-        addPanelLayout.setVerticalGroup(
-            addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addPanelLayout.createSequentialGroup()
+        addUserPanelLayout.setVerticalGroup(
+            addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addUserPanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l2)
                     .addComponent(addName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l3)
                     .addComponent(addPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l4)
                     .addComponent(addType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
@@ -291,7 +291,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap(182, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Add User", addPanel);
+        jTabbedPane1.addTab("Add User", addUserPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -475,6 +475,21 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         // TODO add your handling code here:
+        int row = viewTable.getSelectedRow();
+
+        if (row != -1) {
+            String UID = viewTable.getValueAt(row, 0).toString();
+
+            User user = new User();
+            user.deleteUser(UID);
+
+            DefaultTableModel model = (DefaultTableModel) viewTable.getModel();
+            model.removeRow(row);
+
+            JOptionPane.showMessageDialog(this, "Successfully deleted user " + UID, "Delete", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a user to delete", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_removeButtonActionPerformed
 
 
@@ -515,9 +530,9 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JTextField addName;
-    private javax.swing.JPanel addPanel;
     private javax.swing.JPasswordField addPassword;
     private javax.swing.JComboBox<String> addType;
+    private javax.swing.JPanel addUserPanel;
     private javax.swing.JLabel dbTypeText;
     private javax.swing.JLabel field1;
     private javax.swing.JLabel field2;

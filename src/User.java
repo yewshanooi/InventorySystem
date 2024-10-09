@@ -67,7 +67,7 @@ public class User {
 
             if (userCheck == fileCont.size()) {
                 // [TODO] Pop up cannot find user
-                System.out.println("Cant find user");
+                System.out.println("Can\'t find user");
             }
 
             String[] newUser = new String[fileCont.size()];
@@ -91,7 +91,7 @@ public class User {
             String file = "users.txt";
             
             FileHandler fh = new FileHandler();
-            BufferedReader bw = new BufferedReader(new FileReader(file));
+            BufferedReader br = new BufferedReader(new FileReader(file));
             ArrayList<ArrayList<String>> fileCont = fh.to2dArray(file);
             
             int index = 0;
@@ -133,7 +133,7 @@ public class User {
 
             update = alToList.toArray(update);
 
-            bw.close();
+            br.close();
             fh.initialize(file, update);
         } catch (Exception e) {
             e.printStackTrace();
