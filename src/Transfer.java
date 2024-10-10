@@ -1,16 +1,18 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import java.awt.Component;
 
 public class Transfer {
     // Receiving items from supplier
-    public void filterInvalid(String[][] value) {
+    public void filterInvalid(String[][] value, Component parent) {
         for (int i=0;i<value.length;i++) {
             try {
                 if(Integer.valueOf(value[i][1]) != 0) {
                     String validValue = value[i][0] + value[i][1];
                     itemManip(validValue);
                 } else if (Integer.valueOf(value[i][1]) <= 0) {
-                    // [TODO] Add pop up message "Item quantity cannot be below 0"
+                    JOptionPane.showMessageDialog(parent, "Item quantity cannot be below 0", "Error", JOptionPane.ERROR_MESSAGE);
                     // [TODO] Design of the input data must all have set value of 0 and is already
                     //        linked to the specific id value
                 }
@@ -22,7 +24,7 @@ public class Transfer {
     
     
     // Sending items to hospital
-    public void filterInvalid(String[][] value, String uid) {
+    public void filterInvalid(String[][] value, String uid, Component parent) {
         for (int i=0;i<value.length;i++) {
             try {
                 if(Integer.valueOf(value[i][1]) != 0) {
@@ -40,12 +42,12 @@ public class Transfer {
                             if (calc[0].equals(data[0])) {
                                 temp = Integer.parseInt(data[1]) - temp;
                                 if (temp < 1) {
-                                    // [TODO] MUST Add insufficient items here
-                                    System.out.println("Insufficient items");
+                                    JOptionPane.showMessageDialog(parent, "Insufficient items", "Error", JOptionPane.ERROR_MESSAGE);
+                                    // System.out.println("Insufficient items");
                                     break;
                                 } else if (temp < 25) {
-                                    // [TODO] Add low amount warning here
-                                    System.out.println("Need more");
+                                    JOptionPane.showMessageDialog(parent, "Quantity of items is below 25", "Error", JOptionPane.ERROR_MESSAGE);
+                                    //System.out.println("Need more");
                                     itemManip(validValue, uid);
                                 } else {
                                     itemManip(validValue, uid);
@@ -53,7 +55,7 @@ public class Transfer {
                             }
                         }
                 } else if (Integer.valueOf(value[i][1]) <= 0) {
-                     // [TODO] Add pop up message "Item quantity cannot be below 0"
+                    JOptionPane.showMessageDialog(parent, "Item quantity cannot be lower than 0", "Error", JOptionPane.ERROR_MESSAGE);
                      // [TODO] Design of the input data must all have set value of 0 and is already
                      //        linked to the specific id value
                 }
