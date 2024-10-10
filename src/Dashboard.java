@@ -1074,7 +1074,7 @@ public class Dashboard extends javax.swing.JFrame {
             sendHC.setText("");
             sendMS.setText("");
             sendSC.setText("");
-            sendHospitalID.setSelectedItem("<Select item>");
+            sendHospitalID.setSelectedItem("<Select option>");
         }
     }
 

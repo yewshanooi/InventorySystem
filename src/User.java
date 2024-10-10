@@ -69,10 +69,9 @@ public class User {
                 }
             }
 
-            if (userCheck == fileCont.size()) {
-                // [TODO] Pop up cannot find user
-                System.out.println("Cannot find user");
-            }
+//            if (userCheck == fileCont.size()) {
+//                System.out.println("Cannot find user");
+//            }
 
             String[] newUser = new String[fileCont.size()];
             ArrayList<String> alToList = new ArrayList<>();

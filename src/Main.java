@@ -182,6 +182,8 @@ public class Main extends javax.swing.JFrame {
                 }
 
                 if (!authStatus) {
+                    loginUsername.setText("");
+                    loginPassword.setText("");
                     JOptionPane.showMessageDialog(this, "Your ID or password is incorrect", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
