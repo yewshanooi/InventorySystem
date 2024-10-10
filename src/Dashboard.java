@@ -222,6 +222,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        userSettingsAccess.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         userSettingsAccess.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         userSettingsAccess.setText("{null}");
         if (Main.userType == null) {
