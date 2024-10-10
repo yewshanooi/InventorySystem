@@ -803,6 +803,8 @@ public class Dashboard extends javax.swing.JFrame {
 //        if (currentDB.equals("user")) {
 //            
 //        }
+
+        // [TODO] Add search functionality for items
     }//GEN-LAST:event_viewAllTableMouseClicked
     
     private void searchUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUserButtonActionPerformed

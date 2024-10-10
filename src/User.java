@@ -69,10 +69,6 @@ public class User {
                 }
             }
 
-//            if (userCheck == fileCont.size()) {
-//                System.out.println("Cannot find user");
-//            }
-
             String[] newUser = new String[fileCont.size()];
             ArrayList<String> alToList = new ArrayList<>();
             for (int i=0;i<fileCont.size();i++) {
@@ -105,8 +101,6 @@ public class User {
                 index=2;
             } else if (dataType.equals("Role")) {
                 index=3;
-            } else {
-                System.out.println("Invalid data type"); // [TODO] Pop up message
             }
 
             // To check if user is in database, if true then update data
@@ -118,11 +112,6 @@ public class User {
                 } else {
                     userCheck++;
                 }
-            }
-            
-            if (userCheck == fileCont.size()) {
-                // [TODO] Pop up cannot find user
-                System.out.println("Cannot find user");
             }
 
             String[] update = new String[fileCont.size()];

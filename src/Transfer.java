@@ -34,13 +34,13 @@ public class Transfer {
                     ArrayList<String> fileCont = new ArrayList<String>(fh.toArray(file));
 
                     for (String n : fileCont) {
-
                         String[] data = n.split(";");
                             if (calc[0].equals(data[0])) {
                                 temp = Integer.parseInt(data[1]) - temp;
                                 if (temp < 1) {
                                     JOptionPane.showMessageDialog(parent, "Insufficient items", "Error", JOptionPane.ERROR_MESSAGE);
                                     break;
+                                    // [TODO] break; is broken, program still continue even after not enough of items error
                                 } else if (temp < 25) {
                                     JOptionPane.showMessageDialog(parent, "Quantity of items is lower than 25", "Warning", JOptionPane.WARNING_MESSAGE);
                                     itemManip(validValue, uid);
@@ -48,7 +48,7 @@ public class Transfer {
                                     itemManip(validValue, uid);
                                 }
                             }
-                        }
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();

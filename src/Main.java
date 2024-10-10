@@ -165,10 +165,8 @@ public class Main extends javax.swing.JFrame {
 
                         if (getType.equals("Admin")) {
                             userType = "admin";
-                            // [TODO] Redirect to admin dashboard
                         } else if (getType.equals("Staff")) {
                             userType = "staff";
-                            // [TODO] Redirect to staff dashboard
                         }
 
                         JOptionPane.showMessageDialog(this, "Welcome, " + getName + "!\n" + "You are logged in as " + userType, "Login", JOptionPane.INFORMATION_MESSAGE);
