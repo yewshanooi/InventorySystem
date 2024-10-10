@@ -25,7 +25,7 @@ public class Dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        viewPanel = new javax.swing.JPanel();
+        viewDatabasePanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
@@ -49,6 +49,8 @@ public class Dashboard extends javax.swing.JFrame {
         userSettings = new javax.swing.JComboBox<>();
         refreshButton = new javax.swing.JButton();
         userSettingsAccess = new javax.swing.JLabel();
+        addItemPanel = new javax.swing.JPanel();
+        viewUserPanel = new javax.swing.JPanel();
         addUserPanel = new javax.swing.JPanel();
         l2 = new javax.swing.JLabel();
         l3 = new javax.swing.JLabel();
@@ -226,7 +228,7 @@ public class Dashboard extends javax.swing.JFrame {
         userSettingsAccess.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         userSettingsAccess.setText("{null}");
         if (Main.userType == null) {
-            userSettingsAccess.setText("Guest");
+            userSettingsAccess.setText("Developer");
             // [TODO] You have found an easter egg! Guest access is for debugging purposes only. Do not remove it or you wont be able to run Dashboard.java's main class without logging in through Main.java.
         } else if (Main.userType.equals("admin")) {
             userSettingsAccess.setText("Admin");
@@ -234,56 +236,82 @@ public class Dashboard extends javax.swing.JFrame {
             userSettingsAccess.setText("Staff");
         }
 
-        javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
-        viewPanel.setLayout(viewPanelLayout);
-        viewPanelLayout.setHorizontalGroup(
-            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout viewDatabasePanelLayout = new javax.swing.GroupLayout(viewDatabasePanel);
+        viewDatabasePanel.setLayout(viewDatabasePanelLayout);
+        viewDatabasePanelLayout.setHorizontalGroup(
+            viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(viewPanelLayout.createSequentialGroup()
+                .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                         .addComponent(l9)
                         .addGap(18, 18, 18)
                         .addComponent(viewType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(refreshButton)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPanelLayout.createSequentialGroup()
-                        .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewDatabasePanelLayout.createSequentialGroup()
+                        .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dbTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(viewPanelLayout.createSequentialGroup()
+                        .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                                 .addComponent(viewUserPopup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(viewPanelLayout.createSequentialGroup()
-                                .addGap(79, 79, 79)
+                            .addGroup(viewDatabasePanelLayout.createSequentialGroup()
+                                .addGap(85, 85, 85)
                                 .addComponent(userSettingsAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(31, 31, 31))))
         );
-        viewPanelLayout.setVerticalGroup(
-            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPanelLayout.createSequentialGroup()
+        viewDatabasePanelLayout.setVerticalGroup(
+            viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewDatabasePanelLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dbTypeText)
                     .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userSettingsAccess))
                 .addGap(18, 18, 18)
-                .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l9)
                     .addComponent(viewType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(refreshButton))
                 .addGap(18, 18, 18)
-                .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(viewUserPopup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("View Database", viewPanel);
+        jTabbedPane1.addTab("View Database", viewDatabasePanel);
+
+        javax.swing.GroupLayout addItemPanelLayout = new javax.swing.GroupLayout(addItemPanel);
+        addItemPanel.setLayout(addItemPanelLayout);
+        addItemPanelLayout.setHorizontalGroup(
+            addItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 780, Short.MAX_VALUE)
+        );
+        addItemPanelLayout.setVerticalGroup(
+            addItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 465, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Add Item", addItemPanel);
+
+        javax.swing.GroupLayout viewUserPanelLayout = new javax.swing.GroupLayout(viewUserPanel);
+        viewUserPanel.setLayout(viewUserPanelLayout);
+        viewUserPanelLayout.setHorizontalGroup(
+            viewUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 780, Short.MAX_VALUE)
+        );
+        viewUserPanelLayout.setVerticalGroup(
+            viewUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 465, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("View User", viewUserPanel);
 
         l2.setText("Name");
 
@@ -354,6 +382,12 @@ public class Dashboard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        if (Main.userType == null) {
+        } else if (Main.userType.equals("staff")) {
+            jTabbedPane1.removeTabAt(2);
+            jTabbedPane1.removeTabAt(2);
+        }
 
         pack();
         setLocationRelativeTo(null);
@@ -644,6 +678,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JPanel addItemPanel;
     private javax.swing.JTextField addName;
     private javax.swing.JPasswordField addPassword;
     private javax.swing.JComboBox<String> addType;
@@ -668,11 +703,12 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField searchField;
     private javax.swing.JComboBox<String> userSettings;
     private javax.swing.JLabel userSettingsAccess;
-    private javax.swing.JPanel viewPanel;
+    private javax.swing.JPanel viewDatabasePanel;
     private javax.swing.JTable viewTable;
     private javax.swing.JComboBox<String> viewType;
     private javax.swing.JLabel viewUserID;
     private javax.swing.JTextField viewUserName;
+    private javax.swing.JPanel viewUserPanel;
     private javax.swing.JTextField viewUserPassword;
     private javax.swing.JPanel viewUserPopup;
     private javax.swing.JTextField viewUserRole;
