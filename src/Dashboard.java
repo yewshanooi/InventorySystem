@@ -959,15 +959,15 @@ public class Dashboard extends javax.swing.JFrame {
         String sc = receiveSC.getText().trim();
   
         String[][] items = {
-            {"FS", fs},
-            {"GL", gl},
-            {"GW", gw},
-            {"HC", hc},
-            {"MS", ms},
-            {"SC", sc}
+            {"FS;", fs},
+            {"GL;", gl},
+            {"GW;", gw},
+            {"HC;", hc},
+            {"MS;", ms},
+            {"SC;", sc}
         };
         
-        tf.filterInvalid(items, this);
+        tf.filterInvalid(items);
     }//GEN-LAST:event_receiveButtonActionPerformed
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
