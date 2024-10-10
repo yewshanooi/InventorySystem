@@ -27,28 +27,14 @@ public class Dashboard extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         viewDatabasePanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        searchField = new javax.swing.JTextField();
-        searchButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        viewTable = new javax.swing.JTable();
-        viewUserPopup = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
-        field1 = new javax.swing.JLabel();
-        field2 = new javax.swing.JLabel();
-        field3 = new javax.swing.JLabel();
-        field4 = new javax.swing.JLabel();
-        viewUserName = new javax.swing.JTextField();
-        viewUserPassword = new javax.swing.JTextField();
-        viewUserRole = new javax.swing.JTextField();
-        modifyButton = new javax.swing.JButton();
-        removeButton = new javax.swing.JButton();
-        viewUserID = new javax.swing.JLabel();
+        viewAllTable = new javax.swing.JTable();
         l9 = new javax.swing.JLabel();
-        viewType = new javax.swing.JComboBox<>();
-        dbTypeText = new javax.swing.JLabel();
+        viewAllDropdown = new javax.swing.JComboBox<>();
+        viewAllType = new javax.swing.JLabel();
         userSettings = new javax.swing.JComboBox<>();
-        refreshButton = new javax.swing.JButton();
-        userSettingsAccess = new javax.swing.JLabel();
+        viewAllRefresh = new javax.swing.JButton();
+        userAccess = new javax.swing.JLabel();
         manageTransactionsPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -84,29 +70,41 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         sendHospitalID = new javax.swing.JTextField();
         viewUserPanel = new javax.swing.JPanel();
+        viewUserType = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        viewUserTable = new javax.swing.JTable();
+        searchUserField = new javax.swing.JTextField();
+        searchUserButton = new javax.swing.JButton();
+        viewUserRefresh = new javax.swing.JButton();
+        viewUserPopup = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        field1 = new javax.swing.JLabel();
+        field2 = new javax.swing.JLabel();
+        field3 = new javax.swing.JLabel();
+        field4 = new javax.swing.JLabel();
+        viewUserName = new javax.swing.JTextField();
+        viewUserPassword = new javax.swing.JTextField();
+        viewUserRole = new javax.swing.JTextField();
+        viewUserModifyButton = new javax.swing.JButton();
+        viewUserRemoveButton = new javax.swing.JButton();
+        viewUserID = new javax.swing.JLabel();
         addUserPanel = new javax.swing.JPanel();
         l2 = new javax.swing.JLabel();
         l3 = new javax.swing.JLabel();
         l4 = new javax.swing.JLabel();
-        addName = new javax.swing.JTextField();
-        addPassword = new javax.swing.JPasswordField();
-        addType = new javax.swing.JComboBox<>();
-        addButton = new javax.swing.JButton();
+        addUserName = new javax.swing.JTextField();
+        addUserPassword = new javax.swing.JPasswordField();
+        addUserType = new javax.swing.JComboBox<>();
+        addUserButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dashboard");
         setLocation(new java.awt.Point(0, 0));
 
-        searchButton.setText("Search");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
-            }
-        });
-
         jScrollPane1.setPreferredSize(new java.awt.Dimension(450, 402));
 
-        viewTable.setModel(new javax.swing.table.DefaultTableModel(
+        viewAllTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -114,13 +112,13 @@ public class Dashboard extends javax.swing.JFrame {
 
             }
         ));
-        viewTable.getTableHeader().setReorderingAllowed(false);
-        viewTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        viewAllTable.getTableHeader().setReorderingAllowed(false);
+        viewAllTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewTableMouseClicked(evt);
+                viewAllTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(viewTable);
+        jScrollPane1.setViewportView(viewAllTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,120 +126,28 @@ public class Dashboard extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(searchField)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchButton)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton))
-                .addGap(18, 18, 18)
+                .addGap(51, 51, 51)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        viewUserPopup.setVisible(false);
-
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        field1.setText("User ID");
-
-        field2.setText("Name");
-
-        field3.setText("Password");
-
-        field4.setText("Role");
-
-        modifyButton.setText("Modify");
-        modifyButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modifyButtonActionPerformed(evt);
-            }
-        });
-
-        removeButton.setText("Remove");
-        removeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeButtonActionPerformed(evt);
-            }
-        });
-
-        viewUserID.setText("{null}");
-
-        javax.swing.GroupLayout viewUserPopupLayout = new javax.swing.GroupLayout(viewUserPopup);
-        viewUserPopup.setLayout(viewUserPopupLayout);
-        viewUserPopupLayout.setHorizontalGroup(
-            viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewUserPopupLayout.createSequentialGroup()
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(viewUserPopupLayout.createSequentialGroup()
-                        .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(field2)
-                            .addComponent(field1)
-                            .addComponent(field3)
-                            .addComponent(field4))
-                        .addGap(18, 18, 18)
-                        .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(viewUserRole, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                .addComponent(viewUserName)
-                                .addComponent(viewUserPassword))
-                            .addComponent(viewUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(modifyButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(removeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))
-                .addGap(18, 18, 18))
-        );
-        viewUserPopupLayout.setVerticalGroup(
-            viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewUserPopupLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(viewUserPopupLayout.createSequentialGroup()
-                        .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(field1)
-                            .addComponent(viewUserID))
-                        .addGap(23, 23, 23)
-                        .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(field2)
-                            .addComponent(viewUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(field3)
-                            .addComponent(viewUserPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(field4)
-                            .addComponent(viewUserRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                        .addComponent(modifyButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeButton))
-                    .addComponent(jSeparator1))
                 .addContainerGap())
         );
 
         l9.setText("Database");
 
-        viewType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select option>", "hospitals.txt", "ppe.txt", "suppliers.txt", "transactions.txt", "users.txt" }));
-        viewType.addActionListener(new java.awt.event.ActionListener() {
+        viewAllDropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select option>", "hospitals.txt", "ppe.txt", "suppliers.txt", "transactions.txt" }));
+        viewAllDropdown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewTypeActionPerformed(evt);
+                viewAllDropdownActionPerformed(evt);
             }
         });
 
-        dbTypeText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        dbTypeText.setText("None");
+        viewAllType.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewAllType.setText("None");
 
         userSettings.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Settings>", "Logout" }));
         userSettings.addActionListener(new java.awt.event.ActionListener() {
@@ -250,23 +156,23 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        refreshButton.setText("Refresh");
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+        viewAllRefresh.setText("Refresh");
+        viewAllRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshButtonActionPerformed(evt);
+                viewAllRefreshActionPerformed(evt);
             }
         });
 
-        userSettingsAccess.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        userSettingsAccess.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        userSettingsAccess.setText("{null}");
+        userAccess.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        userAccess.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        userAccess.setText("{null}");
         if (Main.userType == null) {
-            userSettingsAccess.setText("Developer");
+            userAccess.setText("Developer");
             // [TODO] You have found an easter egg! Guest access is for debugging purposes only. Do not remove it or you wont be able to run Dashboard.java's main class without logging in through Main.java.
         } else if (Main.userType.equals("admin")) {
-            userSettingsAccess.setText("Admin");
+            userAccess.setText("Admin");
         } else if (Main.userType.equals("staff")) {
-            userSettingsAccess.setText("Staff");
+            userAccess.setText("Staff");
         }
 
         javax.swing.GroupLayout viewDatabasePanelLayout = new javax.swing.GroupLayout(viewDatabasePanel);
@@ -279,42 +185,35 @@ public class Dashboard extends javax.swing.JFrame {
                     .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                         .addComponent(l9)
                         .addGap(18, 18, 18)
-                        .addComponent(viewType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(refreshButton)
+                        .addComponent(viewAllRefresh)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewDatabasePanelLayout.createSequentialGroup()
                         .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dbTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(viewDatabasePanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                                .addComponent(viewUserPopup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(viewDatabasePanelLayout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addComponent(userSettingsAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(31, 31, 31))))
+                            .addComponent(viewAllType, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(79, 79, 79)
+                        .addComponent(userAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(48, Short.MAX_VALUE))))
         );
         viewDatabasePanelLayout.setVerticalGroup(
             viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewDatabasePanelLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dbTypeText)
+                    .addComponent(viewAllType)
                     .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userSettingsAccess))
+                    .addComponent(userAccess))
                 .addGap(18, 18, 18)
                 .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l9)
-                    .addComponent(viewType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(refreshButton))
+                    .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewAllRefresh))
                 .addGap(18, 18, 18)
-                .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(viewUserPopup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
@@ -580,15 +479,177 @@ public class Dashboard extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Manage Transaction", manageTransactionsPanel);
 
+        viewUserType.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewUserType.setText("User");
+
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(450, 402));
+
+        viewUserTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        viewUserTable.getTableHeader().setReorderingAllowed(false);
+        viewUserTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewUserTableMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(viewUserTable);
+
+        searchUserButton.setText("Search");
+        searchUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchUserButtonActionPerformed(evt);
+            }
+        });
+
+        viewUserRefresh.setText("Refresh");
+        viewUserRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewUserRefreshActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(searchUserField)
+                        .addGap(18, 18, 18)
+                        .addComponent(searchUserButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(viewUserRefresh)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchUserField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchUserButton)
+                    .addComponent(viewUserRefresh))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                .addGap(7, 7, 7))
+        );
+
+        viewUserPopup.setVisible(false);
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        field1.setText("User ID");
+
+        field2.setText("Name");
+
+        field3.setText("Password");
+
+        field4.setText("Role");
+
+        viewUserModifyButton.setText("Modify");
+        viewUserModifyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewUserModifyButtonActionPerformed(evt);
+            }
+        });
+
+        viewUserRemoveButton.setText("Remove");
+        viewUserRemoveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewUserRemoveButtonActionPerformed(evt);
+            }
+        });
+
+        viewUserID.setText("{null}");
+
+        javax.swing.GroupLayout viewUserPopupLayout = new javax.swing.GroupLayout(viewUserPopup);
+        viewUserPopup.setLayout(viewUserPopupLayout);
+        viewUserPopupLayout.setHorizontalGroup(
+            viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewUserPopupLayout.createSequentialGroup()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewUserPopupLayout.createSequentialGroup()
+                        .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(field2)
+                            .addComponent(field1)
+                            .addComponent(field3)
+                            .addComponent(field4))
+                        .addGap(18, 18, 18)
+                        .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(viewUserRole, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(viewUserName)
+                                .addComponent(viewUserPassword))
+                            .addComponent(viewUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(viewUserModifyButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewUserRemoveButton, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))
+                .addGap(18, 18, 18))
+        );
+        viewUserPopupLayout.setVerticalGroup(
+            viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewUserPopupLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewUserPopupLayout.createSequentialGroup()
+                        .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(field1)
+                            .addComponent(viewUserID))
+                        .addGap(23, 23, 23)
+                        .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(field2)
+                            .addComponent(viewUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(field3)
+                            .addComponent(viewUserPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(viewUserPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(field4)
+                            .addComponent(viewUserRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                        .addComponent(viewUserModifyButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(viewUserRemoveButton))
+                    .addComponent(jSeparator1))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout viewUserPanelLayout = new javax.swing.GroupLayout(viewUserPanel);
         viewUserPanel.setLayout(viewUserPanelLayout);
         viewUserPanelLayout.setHorizontalGroup(
             viewUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
+            .addGroup(viewUserPanelLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(viewUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(viewUserType)
+                    .addGroup(viewUserPanelLayout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(viewUserPopup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         viewUserPanelLayout.setVerticalGroup(
             viewUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGroup(viewUserPanelLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(viewUserType)
+                .addGap(66, 66, 66)
+                .addGroup(viewUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewUserPopup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("View User", viewUserPanel);
@@ -599,12 +660,12 @@ public class Dashboard extends javax.swing.JFrame {
 
         l4.setText("Type");
 
-        addType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select option>", "Admin", "Staff" }));
+        addUserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select option>", "Admin", "Staff" }));
 
-        addButton.setText("Submit");
-        addButton.addActionListener(new java.awt.event.ActionListener() {
+        addUserButton.setText("Submit");
+        addUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
+                addUserButtonActionPerformed(evt);
             }
         });
 
@@ -622,12 +683,12 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(l2))
                         .addGap(18, 19, Short.MAX_VALUE)
                         .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addName, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(addPassword))
+                            .addComponent(addUserType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addComponent(addUserPassword))
                         .addGap(516, 516, 516))
                     .addGroup(addUserPanelLayout.createSequentialGroup()
-                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(506, 506, 506))))
         );
         addUserPanelLayout.setVerticalGroup(
@@ -636,17 +697,17 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l2)
-                    .addComponent(addName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l3)
-                    .addComponent(addPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addUserPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(addUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(l4)
-                    .addComponent(addType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addUserType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, 70)
-                .addComponent(addButton)
+                .addComponent(addUserButton)
                 .addContainerGap(218, Short.MAX_VALUE))
         );
 
@@ -663,22 +724,26 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        // User access handling, with required null checking if running Dashboard.java first before Main.java
         if (Main.userType == null) {
         } else if (Main.userType.equals("staff")) {
             jTabbedPane1.removeTabAt(2);
             jTabbedPane1.removeTabAt(2);
         }
 
+        // Refresh View User tab once during initialisation
+        viewUserRefreshActionPerformed(null);
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+    private void addUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserButtonActionPerformed
         // TODO add your handling code here:
-        String userName = addName.getText();
-        char[] charPass = addPassword.getPassword();
+        String userName = addUserName.getText();
+        char[] charPass = addUserPassword.getPassword();
         String userPassword = new String(charPass);
-        Object objType = addType.getSelectedItem();
+        Object objType = addUserType.getSelectedItem();
         String userType = objType.toString();
 
         if (userName.isEmpty() || userPassword.isEmpty() || userType.equals("<Select option>")) {
@@ -697,9 +762,9 @@ public class Dashboard extends javax.swing.JFrame {
             User user = new User();
             user.createUser(userName, userPassword, userType);
             
-            addName.setText("");
-            addPassword.setText("");
-            addType.setSelectedIndex(0);
+            addUserName.setText("");
+            addUserPassword.setText("");
+            addUserType.setSelectedIndex(0);
             
             JOptionPane.showMessageDialog(this, "Successfully added user " + userName, "Add User", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
@@ -708,103 +773,63 @@ public class Dashboard extends javax.swing.JFrame {
         } finally {
             java.util.Arrays.fill(charPass, ' ');
         }
-    }//GEN-LAST:event_addButtonActionPerformed
+    }//GEN-LAST:event_addUserButtonActionPerformed
 
-    private void viewTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTypeActionPerformed
+    private void viewAllDropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllDropdownActionPerformed
         // TODO add your handling code here:
-        Object db = viewType.getSelectedItem();
+        Object db = viewAllDropdown.getSelectedItem();
         FileHandler fh = new FileHandler();
 
         String[][] content;
         String[] header;
-        
-        resetViewUserPopup();
 
         switch (db.toString()) {
             case "hospitals.txt":
                 content = fh.readFile("hospitals.txt", 3, this);
                 header = new String[]{"Hospital ID", "Item ID", "Quantity"};
-                viewTable.setModel(new DefaultTableModel(content, header));
-                dbTypeText.setText("Hospital");
+                viewAllTable.setModel(new DefaultTableModel(content, header));
+                viewAllType.setText("Hospital");
                 currentDB = "hospital";
                 break;
             case "ppe.txt":
                 content = fh.readFile("ppe.txt", 4, this);
                 header = new String[]{"Item ID", "Quantity", "Supplier ID", "Item Name"};
-                viewTable.setModel(new DefaultTableModel(content, header));
-                dbTypeText.setText("Item");
+                viewAllTable.setModel(new DefaultTableModel(content, header));
+                viewAllType.setText("Item");
                 currentDB = "item";
                 break;
             case "suppliers.txt":
                 content = fh.readFile("suppliers.txt", 3, this);
                 header = new String[]{"Supplier ID", "Item ID", "Quantity"};
-                viewTable.setModel(new DefaultTableModel(content, header));
-                dbTypeText.setText("Supplier");
+                viewAllTable.setModel(new DefaultTableModel(content, header));
+                viewAllType.setText("Supplier");
                 currentDB = "supplier";
                 break;
             case "transactions.txt":
                 content = fh.readFile("transactions.txt", 4, this);
                 header = new String[]{"Date", "Item ID", "Amount", "User ID"};
-                viewTable.setModel(new DefaultTableModel(content, header));
-                dbTypeText.setText("Transaction");
+                viewAllTable.setModel(new DefaultTableModel(content, header));
+                viewAllType.setText("Transaction");
                 currentDB = "transaction";
                 break;
-            case "users.txt":
-                content = fh.readFile("users.txt", 4, this);
-                header = new String[]{"User ID", "Name", "Password", "Role"};
-                viewTable.setModel(new DefaultTableModel(content, header));
-                dbTypeText.setText("User");
-                currentDB = "user";
-                break;
             default:
-                viewTable.setModel(new DefaultTableModel());
-                dbTypeText.setText("None");
+                viewAllTable.setModel(new DefaultTableModel());
+                viewAllType.setText("None");
                 currentDB = null;
                 break;
         }
-    }//GEN-LAST:event_viewTypeActionPerformed
+    }//GEN-LAST:event_viewAllDropdownActionPerformed
 
-    public void resetViewUserPopup() {
-        viewUserPopup.setVisible(false);
-        
-        viewUserID.setText("");
-        viewUserName.setText("");
-        viewUserPassword.setText("");
-        viewUserRole.setText("");
-    }
-
-    private void viewTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTableMouseClicked
+    private void viewAllTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewAllTableMouseClicked
         // TODO add your handling code here:
-        if (currentDB.equals("user")) {
-            int row = viewTable.getSelectedRow();
-            int columnCount = viewTable.getColumnCount();
-
-            viewUserPopup.setVisible(true);
-
-            if (row != -1) {
-                if (columnCount > 0) {
-                    viewUserID.setText(getValueAt(row, 0));
-                } if (columnCount > 1) {
-                    viewUserName.setText(getValueAt(row, 1));
-                } if (columnCount > 2) {
-                    viewUserPassword.setText(getValueAt(row, 2));
-                } if (columnCount > 3) {
-                    viewUserRole.setText(getValueAt(row, 3));
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Please select a row", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_viewTableMouseClicked
-
-    private String getValueAt(int row, int column) {
-        Object value = viewTable.getModel().getValueAt(row, column);
-        return value != null ? value.toString() : "";
-    }
+//        if (currentDB.equals("user")) {
+//            
+//        }
+    }//GEN-LAST:event_viewAllTableMouseClicked
     
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+    private void searchUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUserButtonActionPerformed
         // TODO add your handling code here:
-        String query = searchField.getText().trim();
+        String query = searchUserField.getText().trim();
 
         if (query.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a query", "Error", JOptionPane.ERROR_MESSAGE);
@@ -837,10 +862,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         if (fetch.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No results found for:\n\n" + query, "Search", JOptionPane.INFORMATION_MESSAGE);
+            searchUserField.setText("");
         } else {
-            viewTable.setModel(new DefaultTableModel(results, header));
+            viewUserTable.setModel(new DefaultTableModel(results, header));
         }
-    }//GEN-LAST:event_searchButtonActionPerformed
+    }//GEN-LAST:event_searchUserButtonActionPerformed
 
     private void userSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userSettingsActionPerformed
         // TODO add your handling code here:
@@ -861,7 +887,7 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_userSettingsActionPerformed
 
-    private void modifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyButtonActionPerformed
+    private void viewUserModifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUserModifyButtonActionPerformed
         // TODO add your handling code here:
         String UID = viewUserID.getText();
         String newUsername = viewUserName.getText();
@@ -892,20 +918,20 @@ public class Dashboard extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Successfully modified user " + UID, "Modify", JOptionPane.INFORMATION_MESSAGE);
         
-        viewTypeActionPerformed(null);
-    }//GEN-LAST:event_modifyButtonActionPerformed
+        viewUserRefreshActionPerformed(null);
+    }//GEN-LAST:event_viewUserModifyButtonActionPerformed
 
-    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+    private void viewUserRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUserRemoveButtonActionPerformed
         // TODO add your handling code here:
-        int row = viewTable.getSelectedRow();
+        int row = viewUserTable.getSelectedRow();
 
         if (row != -1) {
-            String UID = viewTable.getValueAt(row, 0).toString();
+            String UID = viewUserTable.getValueAt(row, 0).toString();
 
             User user = new User();
             user.deleteUser(UID);
 
-            DefaultTableModel model = (DefaultTableModel) viewTable.getModel();
+            DefaultTableModel model = (DefaultTableModel) viewUserTable.getModel();
             model.removeRow(row);
 
             resetViewUserPopup();
@@ -914,12 +940,12 @@ public class Dashboard extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Please select a user to remove", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_removeButtonActionPerformed
+    }//GEN-LAST:event_viewUserRemoveButtonActionPerformed
 
-    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+    private void viewAllRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllRefreshActionPerformed
         // TODO add your handling code here:
-        viewTypeActionPerformed(null);
-    }//GEN-LAST:event_refreshButtonActionPerformed
+        viewAllDropdownActionPerformed(null);
+    }//GEN-LAST:event_viewAllRefreshActionPerformed
 
     private void receiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiveButtonActionPerformed
         // TODO add your handling code here:
@@ -969,6 +995,55 @@ public class Dashboard extends javax.swing.JFrame {
         tf.filterInvalid(items, hospitalID, this);
     }//GEN-LAST:event_sendButtonActionPerformed
 
+    private void viewUserTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewUserTableMouseClicked
+        // TODO add your handling code here:
+        int row = viewUserTable.getSelectedRow();
+        int column = viewUserTable.getColumnCount();
+
+        viewUserPopup.setVisible(true);
+
+        if (row != -1) {
+            if (column > 0) {
+                viewUserID.setText(getValueAt(row, 0));
+            } if (column > 1) {
+                viewUserName.setText(getValueAt(row, 1));
+            } if (column > 2) {
+                viewUserPassword.setText(getValueAt(row, 2));
+            } if (column > 3) {
+                viewUserRole.setText(getValueAt(row, 3));
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a row", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_viewUserTableMouseClicked
+
+    private String getValueAt(int row, int column) {
+        Object value = viewUserTable.getModel().getValueAt(row, column);
+        return value != null ? value.toString() : "";
+    }
+        
+    private void viewUserRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUserRefreshActionPerformed
+        // TODO add your handling code here:
+        FileHandler fh = new FileHandler();
+
+        String[][] content;
+        String[] header;
+        
+        resetViewUserPopup();
+        
+        content = fh.readFile("users.txt", 4, this);
+        header = new String[]{"User ID", "Name", "Password", "Role"};
+        viewUserTable.setModel(new DefaultTableModel(content, header));
+    }//GEN-LAST:event_viewUserRefreshActionPerformed
+
+    public void resetViewUserPopup() {
+        viewUserPopup.setVisible(false);
+        
+        viewUserID.setText("");
+        viewUserName.setText("");
+        viewUserPassword.setText("");
+        viewUserRole.setText("");
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1005,16 +1080,19 @@ public class Dashboard extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
-    private javax.swing.JTextField addName;
-    private javax.swing.JPasswordField addPassword;
-    private javax.swing.JComboBox<String> addType;
+    private javax.swing.JButton addUserButton;
+    private javax.swing.JTextField addUserName;
     private javax.swing.JPanel addUserPanel;
-    private javax.swing.JLabel dbTypeText;
+    private javax.swing.JPasswordField addUserPassword;
+    private javax.swing.JComboBox<String> addUserType;
     private javax.swing.JLabel field1;
     private javax.swing.JLabel field2;
     private javax.swing.JLabel field3;
     private javax.swing.JLabel field4;
+    private javax.swing.JLabel field5;
+    private javax.swing.JLabel field6;
+    private javax.swing.JLabel field7;
+    private javax.swing.JLabel field8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1033,16 +1111,21 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel l2;
     private javax.swing.JLabel l3;
     private javax.swing.JLabel l4;
     private javax.swing.JLabel l9;
     private javax.swing.JPanel manageTransactionsPanel;
-    private javax.swing.JButton modifyButton;
+    private javax.swing.JButton modifyButton1;
     private javax.swing.JButton receiveButton;
     private javax.swing.JTextField receiveFS;
     private javax.swing.JTextField receiveGL;
@@ -1050,10 +1133,11 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField receiveHC;
     private javax.swing.JTextField receiveMS;
     private javax.swing.JTextField receiveSC;
-    private javax.swing.JButton refreshButton;
-    private javax.swing.JButton removeButton;
-    private javax.swing.JButton searchButton;
-    private javax.swing.JTextField searchField;
+    private javax.swing.JButton removeButton1;
+    private javax.swing.JButton searchButton1;
+    private javax.swing.JTextField searchField1;
+    private javax.swing.JButton searchUserButton;
+    private javax.swing.JTextField searchUserField;
     private javax.swing.JButton sendButton;
     private javax.swing.JTextField sendFS;
     private javax.swing.JTextField sendGL;
@@ -1062,16 +1146,29 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField sendHospitalID;
     private javax.swing.JTextField sendMS;
     private javax.swing.JTextField sendSC;
+    private javax.swing.JLabel userAccess;
     private javax.swing.JComboBox<String> userSettings;
-    private javax.swing.JLabel userSettingsAccess;
+    private javax.swing.JComboBox<String> viewAllDropdown;
+    private javax.swing.JButton viewAllRefresh;
+    private javax.swing.JTable viewAllTable;
+    private javax.swing.JLabel viewAllType;
     private javax.swing.JPanel viewDatabasePanel;
-    private javax.swing.JTable viewTable;
-    private javax.swing.JComboBox<String> viewType;
+    private javax.swing.JTable viewTable1;
     private javax.swing.JLabel viewUserID;
+    private javax.swing.JLabel viewUserID1;
+    private javax.swing.JButton viewUserModifyButton;
     private javax.swing.JTextField viewUserName;
+    private javax.swing.JTextField viewUserName1;
     private javax.swing.JPanel viewUserPanel;
     private javax.swing.JTextField viewUserPassword;
+    private javax.swing.JTextField viewUserPassword1;
     private javax.swing.JPanel viewUserPopup;
+    private javax.swing.JPanel viewUserPopup1;
+    private javax.swing.JButton viewUserRefresh;
+    private javax.swing.JButton viewUserRemoveButton;
     private javax.swing.JTextField viewUserRole;
+    private javax.swing.JTextField viewUserRole1;
+    private javax.swing.JTable viewUserTable;
+    private javax.swing.JLabel viewUserType;
     // End of variables declaration//GEN-END:variables
 }
