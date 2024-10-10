@@ -1,18 +1,19 @@
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.awt.Component;
 
 public class Transfer {
     // Receiving items from supplier
-    public void filterInvalid(String[][] value, Component parent) {
+    public void filterInvalid(String[][] value) {
         for (int i=0;i<value.length;i++) {
             try {
                 if(Integer.valueOf(value[i][1]) != 0) {
                     String validValue = value[i][0] + value[i][1];
                     itemManip(validValue);
                 } else if (Integer.valueOf(value[i][1]) <= 0) {
-                    JOptionPane.showMessageDialog(parent, "Item quantity cannot be below 0", "Error", JOptionPane.ERROR_MESSAGE);
+                    // JOptionPane.showMessageDialog(parent, "Item quantity cannot be below 0", "Error", JOptionPane.ERROR_MESSAGE);
                     // [TODO] Design of the input data must all have set value of 0 and is already
                     //        linked to the specific id value
                 }
@@ -68,9 +69,16 @@ public class Transfer {
     // This is for receiving item from supplier
     public void itemManip(String value) throws Exception {
         String file = "ppe.txt";
-        LocalDate date = LocalDate.now();
         FileHandler fh = new FileHandler();
         User user = new User();
+
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        String formattedDate = myDateObj.format(myFormatObj);
+        String[] sep = formattedDate.split(" ");
+        String date = sep[0];
+        String time = sep[1];
 
         ArrayList<String> fileCont = new ArrayList<String>(fh.toArray(file));
         
@@ -109,7 +117,7 @@ public class Transfer {
                 fh.initialize(fileName, update);
 
                 nFileData.add(data[0] + ";" + Integer.toString(temp) + ";" + data[2] + ";" + data[3]);
-                fh.append("transactions.txt", (date + ";" + data[0] + ";" + "+" + calc[1] + ";" + user.getUID() + "\n"));
+                fh.append("transactions.txt", (date + ";" + data[0] + ";" + "+" + calc[1] + ";" + user.getUID() + ";" + time +"\n"));
             } else {
                 nFileData.add(n);
             }
@@ -122,9 +130,16 @@ public class Transfer {
     // This is for sending out items to hospital
     public void itemManip(String value, String hpID) throws Exception {
         String file = "ppe.txt";
-        LocalDate date = LocalDate.now();
         FileHandler fh = new FileHandler();
         User user = new User();
+
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        String formattedDate = myDateObj.format(myFormatObj);
+        String[] sep = formattedDate.split(" ");
+        String date = sep[0];
+        String time = sep[1];
 
         ArrayList<String> fileCont = new ArrayList<String>(fh.toArray(file));
         
@@ -163,7 +178,7 @@ public class Transfer {
                 fh.initialize(fileName, update);
 
                 nFileData.add(data[0] + ";" + Integer.toString(temp) + ";" + data[2] + ";" + data[3]);
-                fh.append("transactions.txt", (date + ";" + data[0] + ";" + "-" + calc[1] + ";" + hpID + ";" + user.getUID() + "\n"));
+                fh.append("transactions.txt", (date + ";" + data[0] + ";" + "-" + calc[1] + ";" + hpID + ";" + user.getUID() + ";" + time +"\n"));
                 } else {
                     nFileData.add(n);
             }

@@ -278,10 +278,10 @@ public class Main extends javax.swing.JFrame {
         String hpID = "SP1";
         String[][] itemUpdate = {{"HC;",Integer.toString(HeadCover)},{"FS;",Integer.toString(FaceShield)},{"MS;",Integer.toString(Mask)},{"GL;",Integer.toString(Glove)},{"GW;",Integer.toString(Gown)},{"SC;",Integer.toString(ShoeCover)}};
         transfer.filterInvalid(itemUpdate); //This is to receive item
-        transfer.filterInvalid(itemUpdate, hpID); //This is to send item with the hospital code
+        // transfer.filterInvalid(itemUpdate, hpID); //This is to send item with the hospital code
 
         // Filter date
-        dateSort.validRange("2024-10-3", "2024-10-10");
+        dateSort.validRange("3-10-2024", "10-10-2024");
 
         
 

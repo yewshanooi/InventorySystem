@@ -16,7 +16,7 @@ public class Sort {
                 end[i] = Integer.parseInt(endString[i]);
             }
     
-            if (start[0] == end[0] && start[1] == end[1] && (end[2] - start[2] < 8)) {
+            if (start[2] == end[2] && start[1] == end[1] && (end[0] - start[0] < 8)) {
                 DateRange(start, end);
             } else {
                 // Print out invalid date or out of range (Maximum 7 days)
@@ -45,8 +45,8 @@ public class Sort {
                 data[d] = Integer.parseInt(dateString[d]);
             }
 
-            if (data[0] == startDate[0] && data[0] == endDate[0] && data[1] == startDate[1] && data[1] == endDate[1] && data[2] > (startDate[2] - 1) && data[2] < (endDate[2] + 1)) {
-                validDate.add(data[0] + "-" + data[1] + "-" + data[2] + ";" + fileDate[1] + ";" + fileDate[2]);
+            if (data[2] == startDate[2] && data[2] == endDate[2] && data[1] == startDate[1] && data[1] == endDate[1] && data[0] > (startDate[0] - 1) && data[0] < (endDate[0] + 1)) {
+                validDate.add(data[0] + "-" + data[1] + "-" + data[2] + ";" + fileDate[1] + ";" + fileDate[2] + ";" + fileDate[3] + ";" + fileDate[4]);
             }
         }
         
