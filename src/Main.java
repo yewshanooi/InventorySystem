@@ -257,7 +257,7 @@ public class Main extends javax.swing.JFrame {
         FileHandler fh = new FileHandler();
         Transfer transfer = new Transfer();
         Sort dateSort = new Sort();
-        // User user = new User();
+        User user = new User();
 
         // Create empty files
         String[] file = {"ppe.txt","hospitals.txt","suppliers.txt","transactions.txt","users.txt"};
@@ -274,9 +274,11 @@ public class Main extends javax.swing.JFrame {
         fh.initialize("hospitals.txt", hp_item);
         
         // Receive items
-        int HeadCover=0,FaceShield=0,Mask=0,Glove=0,Gown=0,ShoeCover=0;
+        int HeadCover=50,FaceShield=0,Mask=0,Glove=0,Gown=0,ShoeCover=0;
+        String hpID = "SP1";
         String[][] itemUpdate = {{"HC;",Integer.toString(HeadCover)},{"FS;",Integer.toString(FaceShield)},{"MS;",Integer.toString(Mask)},{"GL;",Integer.toString(Glove)},{"GW;",Integer.toString(Gown)},{"SC;",Integer.toString(ShoeCover)}};
-        transfer.filterInvalid(itemUpdate, true); // True to receive, false to send out
+        transfer.filterInvalid(itemUpdate); //This is to receive item
+        transfer.filterInvalid(itemUpdate, hpID); //This is to send item with the hospital code
 
         // Filter date
         dateSort.validRange("2024-10-3", "2024-10-10");
