@@ -3,6 +3,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.Arrays;
 
 public class Dashboard extends javax.swing.JFrame {
 
@@ -68,7 +69,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         sendFS = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        sendHospitalID = new javax.swing.JTextField();
+        sendHospitalID = new javax.swing.JComboBox<>();
         viewUserPanel = new javax.swing.JPanel();
         viewUserType = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -187,17 +188,16 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(viewAllRefresh)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewDatabasePanelLayout.createSequentialGroup()
+                        .addComponent(viewAllRefresh))
+                    .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                         .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(viewAllType, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(79, 79, 79)
                         .addComponent(userAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(48, Short.MAX_VALUE))))
+                        .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         viewDatabasePanelLayout.setVerticalGroup(
             viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,10 +229,6 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel4.setText("Glove");
 
-        receiveFS.setText("0");
-
-        receiveGL.setText("0");
-
         receiveButton.setText("Submit");
         receiveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,17 +238,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel7.setText("Gown");
 
-        receiveGW.setText("0");
-
-        receiveHC.setText("0");
-
         jLabel8.setText("Head Cover");
 
         jLabel9.setText("Mask");
-
-        receiveMS.setText("0");
-
-        receiveSC.setText("0");
 
         jLabel10.setText("Shoe Cover");
 
@@ -329,10 +317,6 @@ public class Dashboard extends javax.swing.JFrame {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        sendSC.setText("0");
-
-        sendGL.setText("0");
-
         jLabel14.setText("Shoe Cover");
 
         jLabel6.setText("Glove");
@@ -340,10 +324,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel11.setText("Head Cover");
 
         jLabel12.setText("Mask");
-
-        sendGW.setText("0");
-
-        sendMS.setText("0");
 
         sendButton.setText("Submit");
         sendButton.addActionListener(new java.awt.event.ActionListener() {
@@ -354,11 +334,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel5.setText("Face Shield");
 
-        sendHC.setText("0");
-
         jLabel13.setText("Gown");
-
-        sendFS.setText("0");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -429,7 +405,9 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel16.setText("Hospital ID");
+        jLabel16.setText("Hospital");
+
+        sendHospitalID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select option>", "HP1", "HP2", "HP3" }));
 
         javax.swing.GroupLayout manageTransactionsPanelLayout = new javax.swing.GroupLayout(manageTransactionsPanel);
         manageTransactionsPanel.setLayout(manageTransactionsPanelLayout);
@@ -450,7 +428,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
-                        .addComponent(sendHospitalID, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sendHospitalID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -950,51 +928,87 @@ public class Dashboard extends javax.swing.JFrame {
     private void receiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiveButtonActionPerformed
         // TODO add your handling code here:
         Transfer tf = new Transfer();
+
+        String[][] receiveItems = getFieldValues(true);
+        if (receiveItems == null) return;
+        tf.filterInvalid(receiveItems);
         
-        String fs = receiveFS.getText().trim();
-        String gl = receiveGL.getText().trim();
-        String gw = receiveGW.getText().trim();
-        String hc = receiveHC.getText().trim();
-        String ms = receiveMS.getText().trim();
-        String sc = receiveSC.getText().trim();
-  
-        String[][] items = {
-            {"FS;", fs},
-            {"GL;", gl},
-            {"GW;", gw},
-            {"HC;", hc},
-            {"MS;", ms},
-            {"SC;", sc}
-        };
-        
-        tf.filterInvalid(items);
+        resetTransactionFields(true);
+        JOptionPane.showMessageDialog(this, "Successfully receive items", "Receive", JOptionPane.INFORMATION_MESSAGE);
+        // System.out.println(Arrays.deepToString(receiveItems));
     }//GEN-LAST:event_receiveButtonActionPerformed
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
         // TODO add your handling code here:
         Transfer tf = new Transfer();
+
+        String[][] sendItems = getFieldValues(false);
+        if (sendItems == null) return;
+        String hospitalID = (String) sendHospitalID.getSelectedItem();
         
-        String fs = sendFS.getText().trim();
-        String gl = sendGL.getText().trim();
-        String gw = sendGW.getText().trim();
-        String hc = sendHC.getText().trim();
-        String ms = sendMS.getText().trim();
-        String sc = sendSC.getText().trim();
+        if (hospitalID == null || hospitalID.equals("<Select option>")) {
+            JOptionPane.showMessageDialog(this, "Please select a valid hospital", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        tf.filterInvalid(sendItems, hospitalID, this);
         
-        String hospitalID = sendHospitalID.getText().trim();
-  
-        String[][] items = {
-            {"FS;", fs},
-            {"GL;", gl},
-            {"GW;", gw},
-            {"HC;", hc},
-            {"MS;", ms},
-            {"SC;", sc}
-        };
-        
-        tf.filterInvalid(items, hospitalID);
+        resetTransactionFields(false);
+        JOptionPane.showMessageDialog(this, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
+        // System.out.println(Arrays.deepToString(sendItems));
     }//GEN-LAST:event_sendButtonActionPerformed
 
+    private String[][] getFieldValues(boolean isReceive) {
+        String[] labels = {"FS", "GL", "GW", "HC", "MS", "SC"};
+        String[] values = new String[labels.length];
+
+         for (int i = 0; i < labels.length; i++) {
+            String text = getTextFieldValue(labels[i], isReceive);
+            if (text.isEmpty()) {
+                values[i] = "0";
+            } else {
+                try {
+                    int value = Integer.parseInt(text.trim());
+                    if (value < 0) {
+                        JOptionPane.showMessageDialog(this, "Item quantity cannot be negative", "Error", JOptionPane.ERROR_MESSAGE);
+                        return null;
+                    }
+                    values[i] = String.valueOf(value);
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(this, "Item quantity must be a valid integer", "Error", JOptionPane.ERROR_MESSAGE);
+                    return null;
+                }
+            }
+        }
+
+        String[][] items = new String[labels.length][2];
+        for (int i = 0; i < labels.length; i++) {
+            items[i][0] = labels[i] + ";";
+            items[i][1] = values[i];
+        }
+
+        return items;
+    }
+    
+    private String getTextFieldValue(String label, boolean isReceive) {
+        switch (label) {
+            case "FS":
+                return isReceive ? receiveFS.getText() : sendFS.getText();
+            case "GL":
+                return isReceive ? receiveGL.getText() : sendGL.getText();
+            case "GW":
+                return isReceive ? receiveGW.getText() : sendGW.getText();
+            case "HC":
+                return isReceive ? receiveHC.getText() : sendHC.getText();
+            case "MS":
+                return isReceive ? receiveMS.getText() : sendMS.getText();
+            case "SC":
+                return isReceive ? receiveSC.getText() : sendSC.getText();
+            default:
+                return "";
+        }
+    }
+    
     private void viewUserTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewUserTableMouseClicked
         // TODO add your handling code here:
         int row = viewUserTable.getSelectedRow();
@@ -1045,6 +1059,25 @@ public class Dashboard extends javax.swing.JFrame {
         viewUserRole.setText("");
     }
     
+    public void resetTransactionFields(boolean isReceive) {
+        if (isReceive) {
+            receiveFS.setText("");
+            receiveGL.setText("");
+            receiveGW.setText("");
+            receiveHC.setText("");
+            receiveMS.setText("");
+            receiveSC.setText("");
+        } else {
+            sendFS.setText("");
+            sendGL.setText("");
+            sendGW.setText("");
+            sendHC.setText("");
+            sendMS.setText("");
+            sendSC.setText("");
+            sendHospitalID.setSelectedItem("<Select item>");
+        }
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1089,10 +1122,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel field2;
     private javax.swing.JLabel field3;
     private javax.swing.JLabel field4;
-    private javax.swing.JLabel field5;
-    private javax.swing.JLabel field6;
-    private javax.swing.JLabel field7;
-    private javax.swing.JLabel field8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1111,21 +1140,17 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel l2;
     private javax.swing.JLabel l3;
     private javax.swing.JLabel l4;
     private javax.swing.JLabel l9;
     private javax.swing.JPanel manageTransactionsPanel;
-    private javax.swing.JButton modifyButton1;
     private javax.swing.JButton receiveButton;
     private javax.swing.JTextField receiveFS;
     private javax.swing.JTextField receiveGL;
@@ -1133,9 +1158,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField receiveHC;
     private javax.swing.JTextField receiveMS;
     private javax.swing.JTextField receiveSC;
-    private javax.swing.JButton removeButton1;
-    private javax.swing.JButton searchButton1;
-    private javax.swing.JTextField searchField1;
     private javax.swing.JButton searchUserButton;
     private javax.swing.JTextField searchUserField;
     private javax.swing.JButton sendButton;
@@ -1143,7 +1165,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField sendGL;
     private javax.swing.JTextField sendGW;
     private javax.swing.JTextField sendHC;
-    private javax.swing.JTextField sendHospitalID;
+    private javax.swing.JComboBox<String> sendHospitalID;
     private javax.swing.JTextField sendMS;
     private javax.swing.JTextField sendSC;
     private javax.swing.JLabel userAccess;
@@ -1153,21 +1175,15 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTable viewAllTable;
     private javax.swing.JLabel viewAllType;
     private javax.swing.JPanel viewDatabasePanel;
-    private javax.swing.JTable viewTable1;
     private javax.swing.JLabel viewUserID;
-    private javax.swing.JLabel viewUserID1;
     private javax.swing.JButton viewUserModifyButton;
     private javax.swing.JTextField viewUserName;
-    private javax.swing.JTextField viewUserName1;
     private javax.swing.JPanel viewUserPanel;
     private javax.swing.JTextField viewUserPassword;
-    private javax.swing.JTextField viewUserPassword1;
     private javax.swing.JPanel viewUserPopup;
-    private javax.swing.JPanel viewUserPopup1;
     private javax.swing.JButton viewUserRefresh;
     private javax.swing.JButton viewUserRemoveButton;
     private javax.swing.JTextField viewUserRole;
-    private javax.swing.JTextField viewUserRole1;
     private javax.swing.JTable viewUserTable;
     private javax.swing.JLabel viewUserType;
     // End of variables declaration//GEN-END:variables

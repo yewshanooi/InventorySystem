@@ -276,7 +276,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="sendHospitalID" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="sendHospitalID" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -440,14 +440,8 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="receiveFS">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="receiveGL">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="receiveButton">
                   <Properties>
@@ -463,14 +457,8 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="receiveGW">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="receiveHC">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
@@ -483,14 +471,8 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="receiveMS">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="receiveSC">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel10">
                   <Properties>
@@ -598,14 +580,8 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="sendSC">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="sendGL">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel14">
                   <Properties>
@@ -628,14 +604,8 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="sendGW">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="sendMS">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="sendButton">
                   <Properties>
@@ -651,9 +621,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="sendHC">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel13">
                   <Properties>
@@ -661,18 +628,28 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="sendFS">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JLabel" name="jLabel16">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Hospital ID"/>
+                <Property name="text" type="java.lang.String" value="Hospital"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="sendHospitalID">
+            <Component class="javax.swing.JComboBox" name="sendHospitalID">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="&lt;Select option&gt;"/>
+                    <StringItem index="1" value="HP1"/>
+                    <StringItem index="2" value="HP2"/>
+                    <StringItem index="3" value="HP3"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
