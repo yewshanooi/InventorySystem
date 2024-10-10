@@ -806,8 +806,8 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "supplier";
                 break;
             case "transactions.txt":
-                content = fh.readFile("transactions.txt", 4, this);
-                header = new String[]{"Date", "Item ID", "Amount", "User ID"};
+                content = fh.readFile("transactions.txt", 5, this);
+                header = new String[]{"Date", "Item ID", "Amount", "User ID", "Time"};
                 viewAllTable.setModel(new DefaultTableModel(content, header));
                 viewAllType.setText("Transaction");
                 currentDB = "transaction";
