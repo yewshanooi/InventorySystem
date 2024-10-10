@@ -25,7 +25,7 @@ public class Transfer {
     
     
     // Sending items to hospital
-    public void filterInvalid(String[][] value, String uid, Component parent) {
+    public void filterInvalid(String[][] value, String uid) {
         for (int i=0;i<value.length;i++) {
             try {
                 if(Integer.valueOf(value[i][1]) != 0) {
@@ -43,12 +43,12 @@ public class Transfer {
                             if (calc[0].equals(data[0])) {
                                 temp = Integer.parseInt(data[1]) - temp;
                                 if (temp < 1) {
-                                    JOptionPane.showMessageDialog(parent, "Insufficient items", "Error", JOptionPane.ERROR_MESSAGE);
-                                    // System.out.println("Insufficient items");
+                                    // JOptionPane.showMessageDialog(parent, "Insufficient items", "Error", JOptionPane.ERROR_MESSAGE);
+                                    System.out.println("Insufficient items");
                                     break;
                                 } else if (temp < 25) {
-                                    JOptionPane.showMessageDialog(parent, "Quantity of items is below 25", "Error", JOptionPane.ERROR_MESSAGE);
-                                    //System.out.println("Need more");
+                                    // JOptionPane.showMessageDialog(parent, "Quantity of items is below 25", "Error", JOptionPane.ERROR_MESSAGE);
+                                    System.out.println("Need more");
                                     itemManip(validValue, uid);
                                 } else {
                                     itemManip(validValue, uid);
@@ -56,9 +56,10 @@ public class Transfer {
                             }
                         }
                 } else if (Integer.valueOf(value[i][1]) <= 0) {
-                    JOptionPane.showMessageDialog(parent, "Item quantity cannot be lower than 0", "Error", JOptionPane.ERROR_MESSAGE);
+                    // JOptionPane.showMessageDialog(parent, "Item quantity cannot be lower than 0", "Error", JOptionPane.ERROR_MESSAGE);
                      // [TODO] Design of the input data must all have set value of 0 and is already
                      //        linked to the specific id value
+                     System.out.println("Item quantity lower than 0 err");
                 }
             } catch (Exception e) {
                 e.printStackTrace();

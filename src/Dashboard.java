@@ -984,15 +984,15 @@ public class Dashboard extends javax.swing.JFrame {
         String hospitalID = sendHospitalID.getText().trim();
   
         String[][] items = {
-            {"FS", fs},
-            {"GL", gl},
-            {"GW", gw},
-            {"HC", hc},
-            {"MS", ms},
-            {"SC", sc}
+            {"FS;", fs},
+            {"GL;", gl},
+            {"GW;", gw},
+            {"HC;", hc},
+            {"MS;", ms},
+            {"SC;", sc}
         };
         
-        tf.filterInvalid(items, hospitalID, this);
+        tf.filterInvalid(items, hospitalID);
     }//GEN-LAST:event_sendButtonActionPerformed
 
     private void viewUserTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewUserTableMouseClicked
