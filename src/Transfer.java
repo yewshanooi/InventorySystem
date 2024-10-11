@@ -22,17 +22,18 @@ public class Transfer {
     
     // Sending items to hospital
     public void filterInvalid(String[][] value, String uid, Component parent) {
+        
         for (int i=0;i<value.length;i++) {
             try {
                 if(Integer.valueOf(value[i][1]) != 0) {
                     String file = "ppe.txt";
                     FileHandler fh = new FileHandler();
                     String validValue = value[i][0] + value[i][1];
-
+                    
                     String[] calc = validValue.split(";");
                     int temp = Integer.parseInt(calc[1]);
                     ArrayList<String> fileCont = new ArrayList<String>(fh.toArray(file));
-
+                    
                     for (String n : fileCont) {
                         String[] data = n.split(";");
                             if (calc[0].equals(data[0])) {
@@ -43,8 +44,10 @@ public class Transfer {
                                     // [TODO] break; is broken, program still continue even after not enough of items error
                                 } else if (temp < 25) {
                                     JOptionPane.showMessageDialog(parent, "Quantity of items is lower than 25", "Warning", JOptionPane.WARNING_MESSAGE);
+                                    JOptionPane.showMessageDialog(parent, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
                                     itemManip(validValue, uid);
                                 } else {
+                                    JOptionPane.showMessageDialog(parent, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
                                     itemManip(validValue, uid);
                                 }
                             }

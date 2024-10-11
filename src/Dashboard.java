@@ -936,7 +936,6 @@ public class Dashboard extends javax.swing.JFrame {
         tf.filterInvalid(sendItems, hospitalID, this);
         
         resetTransactionFields(false);
-        JOptionPane.showMessageDialog(this, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
         // System.out.println(Arrays.deepToString(sendItems));
     }//GEN-LAST:event_sendButtonActionPerformed
 
