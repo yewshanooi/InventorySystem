@@ -127,7 +127,7 @@ public class Dashboard extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -188,7 +188,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(sortByAmountButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortByDateButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         viewFiltersPanelLayout.setVerticalGroup(
             viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,7 +255,7 @@ public class Dashboard extends javax.swing.JFrame {
             viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(l9)
@@ -263,8 +263,8 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(viewAllRefresh))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewFiltersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(viewFiltersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewDatabasePanelLayout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
@@ -835,15 +835,11 @@ public class Dashboard extends javax.swing.JFrame {
         String[][] content;
         String[] header;
         
-        viewFiltersPanel.setVisible(false);
-        sortByAmountButton.setVisible(false);
-        sortByDateButton.setVisible(false);
-        searchAllField.setVisible(true);
-        searchAllButton.setVisible(true);
+        filterVisibility(false, false, false, false, false);
 
         switch (db.toString()) {
             case "hospitals.txt":
-                viewFiltersPanel.setVisible(true);
+                filterVisibility(true, true, true, false, false);
 
                 content = fh.readFile("hospitals.txt", 3, this);
                 header = new String[]{"Hospital ID", "Item ID", "Quantity"};
@@ -852,8 +848,7 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "hospital";
                 break;
             case "ppe.txt":
-                viewFiltersPanel.setVisible(true);
-                sortByAmountButton.setVisible(true);
+                filterVisibility(true, true, true, true, false);
 
                 content = fh.readFile("ppe.txt", 4, this);
                 header = new String[]{"Item ID", "Quantity", "Supplier ID", "Item Name"};
@@ -862,7 +857,7 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "item";
                 break;
             case "suppliers.txt":
-                viewFiltersPanel.setVisible(true);
+                filterVisibility(true, true, true, false, false);
  
                 content = fh.readFile("suppliers.txt", 3, this);
                 header = new String[]{"Supplier ID", "Item ID", "Quantity"};
@@ -871,10 +866,7 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "supplier";
                 break;
             case "transactions.txt":
-                viewFiltersPanel.setVisible(true);
-                sortByDateButton.setVisible(true);
-                searchAllField.setVisible(false);
-                searchAllButton.setVisible(false);
+                filterVisibility(true, false, false, false, true);
                  
                 content = fh.readFile("transactions.txt", 6, this);
                 header = new String[]{"Date", "Item ID", "Amount", "From / To", "User ID", "Time"};
@@ -887,8 +879,16 @@ public class Dashboard extends javax.swing.JFrame {
                 viewAllType.setText("None");
                 currentDB = null;
                 break;
-        }
+        }        
     }//GEN-LAST:event_viewAllDropdownActionPerformed
+    
+    private void filterVisibility(boolean a, boolean b, boolean c, boolean d, boolean e) {
+        viewFiltersPanel.setVisible(a);
+        searchAllField.setVisible(b);
+        searchAllButton.setVisible(c);
+        sortByAmountButton.setVisible(d);
+        sortByDateButton.setVisible(e);
+    }
     
     private void searchUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUserButtonActionPerformed
         // TODO add your handling code here:
