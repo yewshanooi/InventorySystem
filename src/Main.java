@@ -156,11 +156,11 @@ public class Main extends javax.swing.JFrame {
                     String getName = part[1];
                     String getPassword = part[2];
                     String getType = part[3];
-
+    
                     if (id.equals(getID) && password.equals(getPassword)) {
                         User user = new User();
-                        user.setUID(id);
-                        user.setUsername(part[1]);
+                        user.setUID(getID);
+                        user.setUsername(getName);
                         authStatus = true;
 
                         if (getType.equals("Admin")) {

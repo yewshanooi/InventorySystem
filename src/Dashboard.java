@@ -168,12 +168,10 @@ public class Dashboard extends javax.swing.JFrame {
         userAccess.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         userAccess.setText("{null}");
         if (Main.userType == null) {
-            userAccess.setText("Developer");
+            userAccess.setText("Welcome, Developer!");
             // [TODO] You have found an easter egg! Guest access is for debugging purposes only. Do not remove it or you wont be able to run Dashboard.java's main class without logging in through Main.java.
-        } else if (Main.userType.equals("admin")) {
-            userAccess.setText("Admin");
-        } else if (Main.userType.equals("staff")) {
-            userAccess.setText("Staff");
+        } else if (Main.userType.equals("admin") || Main.userType.equals("staff")) {
+            userAccess.setText("Welcome, " + User.getUsername() + "!");
         }
 
         javax.swing.GroupLayout viewDatabasePanelLayout = new javax.swing.GroupLayout(viewDatabasePanel);
@@ -193,11 +191,11 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(viewAllType, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(79, 79, 79)
-                        .addComponent(userAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(userAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         viewDatabasePanelLayout.setVerticalGroup(
             viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -784,8 +782,8 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "supplier";
                 break;
             case "transactions.txt":
-                content = fh.readFile("transactions.txt", 5, this);
-                header = new String[]{"Date", "Item ID", "Amount", "User ID", "Time"};
+                content = fh.readFile("transactions.txt", 6, this);
+                header = new String[]{"Date", "Item ID", "Amount", "From / To", "User ID", "Time"};
                 viewAllTable.setModel(new DefaultTableModel(content, header));
                 viewAllType.setText("Transaction");
                 currentDB = "transaction";

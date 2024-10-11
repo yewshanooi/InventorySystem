@@ -71,13 +71,13 @@
                                   <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="viewAllType" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                              <Component id="userAccess" min="-2" pref="80" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="userAccess" min="-2" pref="140" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="userSettings" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -242,7 +242,7 @@
                 <Property name="text" type="java.lang.String" value="{null}"/>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="if (Main.userType == null) {&#xa;    userAccess.setText(&quot;Developer&quot;);&#xa;    // [TODO] You have found an easter egg! Guest access is for debugging purposes only. Do not remove it or you wont be able to run Dashboard.java&apos;s main class without logging in through Main.java.&#xa;} else if (Main.userType.equals(&quot;admin&quot;)) {&#xa;    userAccess.setText(&quot;Admin&quot;);&#xa;} else if (Main.userType.equals(&quot;staff&quot;)) {&#xa;    userAccess.setText(&quot;Staff&quot;);&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="if (Main.userType == null) {&#xa;    userAccess.setText(&quot;Welcome, Developer!&quot;);&#xa;    // [TODO] You have found an easter egg! Guest access is for debugging purposes only. Do not remove it or you wont be able to run Dashboard.java&apos;s main class without logging in through Main.java.&#xa;} else if (Main.userType.equals(&quot;admin&quot;) || Main.userType.equals(&quot;staff&quot;)) {&#xa;    userAccess.setText(&quot;Welcome, &quot; + User.getUsername() + &quot;!&quot;);&#xa;}"/>
               </AuxValues>
             </Component>
           </SubComponents>

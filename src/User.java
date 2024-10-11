@@ -3,23 +3,23 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class User {
-    private String Username;
-    private String UID;
-    
-    public String getUID() {
-        return UID;
-    }
+    private static String Username;
+    private static String UID;
 
-    public void setUID(String uID) {
-        UID = uID;
-    }
-
-    public String getUsername() {
+    public static String getUsername() {
         return Username;
     }
 
-    public void setUsername(String username) {
-        Username = username;
+    public static void setUsername(String Username) {
+        User.Username = Username;
+    }
+
+    public static String getUID() {
+        return UID;
+    }
+
+    public static void setUID(String UID) {
+        User.UID = UID;
     }
 
     public void createUser(String username, String password, String role) {
