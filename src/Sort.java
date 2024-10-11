@@ -78,57 +78,63 @@ public class Sort {
         return dataInArray;
     }
 
-    public String[][] SortBy(String file, boolean asc) throws Exception {
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        FileHandler fh = new FileHandler();
-        ArrayList<ArrayList<String>> fileCont = fh.to2dArray(file);;
-        
-        boolean swapped;
-        for (int i=0; i<fileCont.size(); i++) {
-            ArrayList<String> temp;
-            int value1,value2;
-            swapped = false;
-            if (asc) {
-                for (int j=0; j<fileCont.size()-i-1; j++) {
-                    if (Integer.parseInt(fileCont.get(j).get(1)) > Integer.parseInt(fileCont.get(j+1).get(1))) {
-                        temp = fileCont.get(j);
-                        fileCont.set(j, fileCont.get(j+1));
-                        fileCont.set(j+1, temp);
-                        swapped = true;
+    public String[][] SortBy(String file, boolean asc) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            FileHandler fh = new FileHandler();
+            ArrayList<ArrayList<String>> fileCont = fh.to2dArray(file);;
+
+            boolean swapped;
+            for (int i=0; i<fileCont.size(); i++) {
+                ArrayList<String> temp;
+                int value1,value2;
+                swapped = false;
+                if (asc) {
+                    for (int j=0; j<fileCont.size()-i-1; j++) {
+                        if (Integer.parseInt(fileCont.get(j).get(1)) > Integer.parseInt(fileCont.get(j+1).get(1))) {
+                            temp = fileCont.get(j);
+                            fileCont.set(j, fileCont.get(j+1));
+                            fileCont.set(j+1, temp);
+                            swapped = true;
+                        }
                     }
-                }
-            } else {
-                for (int j=0; j<fileCont.size()-i-1; j++) {
-                    if (Integer.parseInt(fileCont.get(j).get(1)) < Integer.parseInt(fileCont.get(j+1).get(1))) {
-                        temp = fileCont.get(j);
-                        fileCont.set(j, fileCont.get(j+1));
-                        fileCont.set(j+1, temp);
-                        swapped = true;
+                } else {
+                    for (int j=0; j<fileCont.size()-i-1; j++) {
+                        if (Integer.parseInt(fileCont.get(j).get(1)) < Integer.parseInt(fileCont.get(j+1).get(1))) {
+                            temp = fileCont.get(j);
+                            fileCont.set(j, fileCont.get(j+1));
+                            fileCont.set(j+1, temp);
+                            swapped = true;
+                        }
                     }
+
                 }
 
+                if (swapped == false)
+                break;
             }
-            
-            if (swapped == false)
-            break;
-        }
 
-        // Convert Array List to String List
-        int wad = fileCont.size();
-        int daw = fileCont.get(0).size();
-        String[][] sortedList = new String[wad][daw];
-        for(int i=0;i<fileCont.size();i++){
-            for(int j=0;j<fileCont.get(i).size();j++){
-                sortedList[i][j]=fileCont.get(i).get(j);
+            // Convert Array List to String List
+            int wad = fileCont.size();
+            int daw = fileCont.get(0).size();
+            String[][] sortedList = new String[wad][daw];
+            for(int i=0;i<fileCont.size();i++){
+                for(int j=0;j<fileCont.get(i).size();j++){
+                    sortedList[i][j]=fileCont.get(i).get(j);
+                }
             }
+
+            // For testing output
+            // for (String[] n : sortedList) {
+            //     System.out.println(n[0]+" "+n[1]+" "+n[2]+" "+n[3]+" ");
+            // }
+
+            br.close();
+            return sortedList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
-
-        // For testing output
-        // for (String[] n : sortedList) {
-        //     System.out.println(n[0]+" "+n[1]+" "+n[2]+" "+n[3]+" ");
-        // }
-
-        br.close();
-        return sortedList;
     }
+    
 }

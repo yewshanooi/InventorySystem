@@ -41,7 +41,6 @@ public class Transfer {
                                 if (temp < 1) {
                                     JOptionPane.showMessageDialog(parent, "Insufficient items\nCurrent stock on hand: "+data[1], "Error", JOptionPane.ERROR_MESSAGE);
                                     break;
-                                    // [TODO] break; is broken, program still continue even after not enough of items error
                                 } else if (temp < 25) {
                                     JOptionPane.showMessageDialog(parent, "Quantity of items is lower than 25", "Warning", JOptionPane.WARNING_MESSAGE);
                                     JOptionPane.showMessageDialog(parent, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);

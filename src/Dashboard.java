@@ -34,9 +34,11 @@ public class Dashboard extends javax.swing.JFrame {
         userSettings = new javax.swing.JComboBox<>();
         viewAllRefresh = new javax.swing.JButton();
         userAccess = new javax.swing.JLabel();
-        viewAllOptionsPanel = new javax.swing.JPanel();
+        viewSearchPanel = new javax.swing.JPanel();
         searchAllField = new javax.swing.JTextField();
         searchAllButton = new javax.swing.JButton();
+        viewFilterPanel = new javax.swing.JPanel();
+        sortByButton = new javax.swing.JButton();
         manageTransactionsPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -129,8 +131,8 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -177,24 +179,48 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout viewAllOptionsPanelLayout = new javax.swing.GroupLayout(viewAllOptionsPanel);
-        viewAllOptionsPanel.setLayout(viewAllOptionsPanelLayout);
-        viewAllOptionsPanelLayout.setHorizontalGroup(
-            viewAllOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewAllOptionsPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout viewSearchPanelLayout = new javax.swing.GroupLayout(viewSearchPanel);
+        viewSearchPanel.setLayout(viewSearchPanelLayout);
+        viewSearchPanelLayout.setHorizontalGroup(
+            viewSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewSearchPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(searchAllField)
                 .addGap(18, 18, 18)
                 .addComponent(searchAllButton)
                 .addContainerGap())
         );
-        viewAllOptionsPanelLayout.setVerticalGroup(
-            viewAllOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewAllOptionsPanelLayout.createSequentialGroup()
+        viewSearchPanelLayout.setVerticalGroup(
+            viewSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewSearchPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(viewAllOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(viewSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchAllButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        sortByButton.setText("Asc / Desc");
+        sortByButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortByButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout viewFilterPanelLayout = new javax.swing.GroupLayout(viewFilterPanel);
+        viewFilterPanel.setLayout(viewFilterPanelLayout);
+        viewFilterPanelLayout.setHorizontalGroup(
+            viewFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewFilterPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(sortByButton)
+                .addContainerGap())
+        );
+        viewFilterPanelLayout.setVerticalGroup(
+            viewFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewFilterPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(sortByButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -215,7 +241,8 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(viewAllType, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewAllOptionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(viewSearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(viewFilterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(26, 26, 26)
                         .addComponent(userAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -236,10 +263,12 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewAllRefresh))
                 .addGap(18, 18, 18)
-                .addComponent(viewAllOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addComponent(viewSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewFilterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("View Database", viewDatabasePanel);
@@ -477,7 +506,7 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator2)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Manage Transaction", manageTransactionsPanel);
@@ -652,7 +681,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(viewUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewUserPopup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("View User", viewUserPanel);
@@ -711,7 +740,7 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(addUserType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, 70)
                 .addComponent(addUserButton)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add User", addUserPanel);
@@ -724,7 +753,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1)
         );
 
         // User access handling, with required null checking if running Dashboard.java first before Main.java
@@ -738,7 +767,10 @@ public class Dashboard extends javax.swing.JFrame {
         viewUserRefreshActionPerformed(null);
 
         // Hide options panel during initialisation
-        viewAllOptionsPanel.setVisible(false);
+        viewSearchPanel.setVisible(false);
+
+        // Hide filter panel during initialisation
+        viewFilterPanel.setVisible(false);
 
         pack();
         setLocationRelativeTo(null);
@@ -788,10 +820,13 @@ public class Dashboard extends javax.swing.JFrame {
 
         String[][] content;
         String[] header;
+        
+        viewSearchPanel.setVisible(false);
+        viewFilterPanel.setVisible(false);
 
         switch (db.toString()) {
             case "hospitals.txt":
-                viewAllOptionsPanel.setVisible(true);
+                viewSearchPanel.setVisible(true);
 
                 content = fh.readFile("hospitals.txt", 3, this);
                 header = new String[]{"Hospital ID", "Item ID", "Quantity"};
@@ -800,7 +835,8 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "hospital";
                 break;
             case "ppe.txt":
-                viewAllOptionsPanel.setVisible(true);
+                viewSearchPanel.setVisible(true);
+                viewFilterPanel.setVisible(true);
 
                 content = fh.readFile("ppe.txt", 4, this);
                 header = new String[]{"Item ID", "Quantity", "Supplier ID", "Item Name"};
@@ -809,7 +845,7 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "item";
                 break;
             case "suppliers.txt":
-                viewAllOptionsPanel.setVisible(true);
+                viewSearchPanel.setVisible(true);
  
                 content = fh.readFile("suppliers.txt", 3, this);
                 header = new String[]{"Supplier ID", "Item ID", "Quantity"};
@@ -818,8 +854,6 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "supplier";
                 break;
             case "transactions.txt":
-                viewAllOptionsPanel.setVisible(false);
-
                 content = fh.readFile("transactions.txt", 6, this);
                 header = new String[]{"Date", "Item ID", "Amount", "From / To", "User ID", "Time"};
                 viewAllTable.setModel(new DefaultTableModel(content, header));
@@ -827,8 +861,6 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "transaction";
                 break;
             default:
-                viewAllOptionsPanel.setVisible(false);
-
                 viewAllTable.setModel(new DefaultTableModel());
                 viewAllType.setText("None");
                 currentDB = null;
@@ -934,6 +966,7 @@ public class Dashboard extends javax.swing.JFrame {
     private void viewAllRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllRefreshActionPerformed
         // TODO add your handling code here:
         viewAllDropdownActionPerformed(null);
+        searchAllField.setText("");
     }//GEN-LAST:event_viewAllRefreshActionPerformed
 
     private void receiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiveButtonActionPerformed
@@ -1059,6 +1092,7 @@ public class Dashboard extends javax.swing.JFrame {
         header = new String[]{"User ID", "Name", "Password", "Role"};
         
         viewUserTable.setModel(new DefaultTableModel(content, header));
+        searchUserField.setText("");
     }//GEN-LAST:event_viewUserRefreshActionPerformed
 
     private void searchAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAllButtonActionPerformed
@@ -1102,6 +1136,20 @@ public class Dashboard extends javax.swing.JFrame {
             searchAllField.setText("");
         }
     }//GEN-LAST:event_searchAllButtonActionPerformed
+
+    private boolean sortOrder = true;
+    
+    private void sortByButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByButtonActionPerformed
+        // TODO add your handling code here:
+        Sort st = new Sort();
+        
+        String[][] content = st.SortBy("ppe.txt", sortOrder);
+        sortOrder = !sortOrder;
+
+        String[]header = {"Item ID", "Quantity", "Supplier ID", "Item Name"};
+
+        viewAllTable.setModel(new DefaultTableModel(content, header));
+    }//GEN-LAST:event_sortByButtonActionPerformed
 
     public void resetViewUserPopup() {  
         viewUserPopup.setVisible(false);
@@ -1223,14 +1271,16 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> sendHospitalID;
     private javax.swing.JTextField sendMS;
     private javax.swing.JTextField sendSC;
+    private javax.swing.JButton sortByButton;
     private javax.swing.JLabel userAccess;
     private javax.swing.JComboBox<String> userSettings;
     private javax.swing.JComboBox<String> viewAllDropdown;
-    private javax.swing.JPanel viewAllOptionsPanel;
     private javax.swing.JButton viewAllRefresh;
     private javax.swing.JTable viewAllTable;
     private javax.swing.JLabel viewAllType;
     private javax.swing.JPanel viewDatabasePanel;
+    private javax.swing.JPanel viewFilterPanel;
+    private javax.swing.JPanel viewSearchPanel;
     private javax.swing.JLabel viewUserID;
     private javax.swing.JButton viewUserModifyButton;
     private javax.swing.JTextField viewUserName;
