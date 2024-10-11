@@ -1,8 +1,6 @@
-import java.awt.Component;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 public class Sort {
     // Call this method to use this class
@@ -58,50 +56,25 @@ public class Sort {
         br.close();
     }
 
-    public void searchID(String table, Component parent) {
-        // TODO add your handling code here:
-        String query = searchUserField.getText().trim();
-
-        if (query.isEmpty()) {
-            JOptionPane.showMessageDialog(parent, "Please enter a query", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
+    public String[][] searchByID(String tableName, String query) {
         ArrayList<String[]> fetch = new ArrayList<>();
         FileHandler fh = new FileHandler();
 
         try {
-            ArrayList<ArrayList<String>> fileData = fh.to2dArray(table);
+            ArrayList<ArrayList<String>> fileData = fh.to2dArray(tableName);
 
             for (ArrayList<String> data : fileData) {
-                if (!data.isEmpty() && data.get(0).equalsIgnoreCase(query)) { // Ignore lower/upper case differences
-                    fetch.add(new String[]{data.get(0), data.get(1), data.get(2), data.get(3)});
-                    break; // Avoid adding the same row if there are multiple matching values
+                if (!data.isEmpty() && data.get(0).equalsIgnoreCase(query)) {
+                    fetch.add(data.toArray(new String[0]));
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(parent, "An error occurred while reading the file", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
+            e.printStackTrace();
         }
+        
+        String[][] dataInArray = new String[fetch.size()][];
+        fetch.toArray(dataInArray);
 
-        String[][] results = new String[fetch.size()][];
-        for (int i = 0; i < fetch.size(); i++) {
-            results[i] = fetch.get(i);
-        }
-
-        if(Dashboard.currentDB.equals("item")) {
-            String[] header = {"Item ID", "Quantity", "Supplier ID", "Item Name"};
-        } else {
-            String[] header = {"User ID", "Name", "Password", "Role"};
-        }
-
-        if (fetch.isEmpty()) {
-            JOptionPane.showMessageDialog(parent, "No results found for:\n\n" + query, "Search", JOptionPane.INFORMATION_MESSAGE);
-            // searchUserField.setText("");
-        } else {
-            // viewUserTable.setModel(new DefaultTableModel(results, header));
-        }
-    }//GEN-LAST:event_searchUserButtonActionPerformed
-
-    
+        return dataInArray;
+    }
 }

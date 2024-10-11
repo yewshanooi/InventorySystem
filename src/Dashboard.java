@@ -1,9 +1,7 @@
-import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import java.util.Arrays;
 
 public class Dashboard extends javax.swing.JFrame {
 
@@ -812,9 +810,21 @@ public class Dashboard extends javax.swing.JFrame {
     private void searchUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUserButtonActionPerformed
         // TODO add your handling code here:
         Sort st = new Sort();
+        String query = searchUserField.getText().trim();
         
-        if (currentDB.equals("item")) {
-            st.searchID("ppe.txt", this);
+        if (query.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a query", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        String[][] content = st.searchByID("users.txt", query);
+        String[] header = {"User ID", "Name", "Password", "Role"};
+
+        if (content.length > 0) {
+            viewUserTable.setModel(new DefaultTableModel(content, header));
+        } else {
+            JOptionPane.showMessageDialog(this, "No results found for:\n\n" + query, "Search", JOptionPane.INFORMATION_MESSAGE);
+            searchUserField.setText("");
         }
     }//GEN-LAST:event_searchUserButtonActionPerformed
 
@@ -1019,11 +1029,29 @@ public class Dashboard extends javax.swing.JFrame {
         
         content = fh.readFile("users.txt", 4, this);
         header = new String[]{"User ID", "Name", "Password", "Role"};
+        
         viewUserTable.setModel(new DefaultTableModel(content, header));
     }//GEN-LAST:event_viewUserRefreshActionPerformed
 
     private void searchAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAllButtonActionPerformed
         // TODO add your handling code here:
+        Sort st = new Sort();
+        String query = searchAllField.getText().trim();
+        
+        if (query.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a query", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        String[][] content = st.searchByID("ppe.txt", query);
+        String[] header = {"Item ID", "Quantity", "Supplier ID", "Item Name"};
+
+        if (content.length > 0) {
+            viewAllTable.setModel(new DefaultTableModel(content, header));
+        } else {
+            JOptionPane.showMessageDialog(this, "No results found for:\n\n" + query, "Search", JOptionPane.INFORMATION_MESSAGE);
+            searchAllField.setText("");
+        }
     }//GEN-LAST:event_searchAllButtonActionPerformed
 
     public void resetViewUserPopup() {
