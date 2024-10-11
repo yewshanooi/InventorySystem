@@ -209,7 +209,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(l9)
                         .addGap(18, 18, 18)
                         .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(viewAllRefresh))
                     .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                         .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -648,11 +648,11 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(viewUserPanelLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(viewUserType)
-                .addGap(66, 66, 66)
+                .addGap(18, 18, 18)
                 .addGroup(viewUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewUserPopup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("View User", viewUserPanel);
@@ -791,6 +791,8 @@ public class Dashboard extends javax.swing.JFrame {
 
         switch (db.toString()) {
             case "hospitals.txt":
+                viewAllOptionsPanel.setVisible(true);
+
                 content = fh.readFile("hospitals.txt", 3, this);
                 header = new String[]{"Hospital ID", "Item ID", "Quantity"};
                 viewAllTable.setModel(new DefaultTableModel(content, header));
@@ -798,6 +800,8 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "hospital";
                 break;
             case "ppe.txt":
+                viewAllOptionsPanel.setVisible(true);
+
                 content = fh.readFile("ppe.txt", 4, this);
                 header = new String[]{"Item ID", "Quantity", "Supplier ID", "Item Name"};
                 viewAllTable.setModel(new DefaultTableModel(content, header));
@@ -805,6 +809,8 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "item";
                 break;
             case "suppliers.txt":
+                viewAllOptionsPanel.setVisible(true);
+ 
                 content = fh.readFile("suppliers.txt", 3, this);
                 header = new String[]{"Supplier ID", "Item ID", "Quantity"};
                 viewAllTable.setModel(new DefaultTableModel(content, header));
@@ -812,6 +818,8 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "supplier";
                 break;
             case "transactions.txt":
+                viewAllOptionsPanel.setVisible(false);
+
                 content = fh.readFile("transactions.txt", 6, this);
                 header = new String[]{"Date", "Item ID", "Amount", "From / To", "User ID", "Time"};
                 viewAllTable.setModel(new DefaultTableModel(content, header));
@@ -819,6 +827,8 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "transaction";
                 break;
             default:
+                viewAllOptionsPanel.setVisible(false);
+
                 viewAllTable.setModel(new DefaultTableModel());
                 viewAllType.setText("None");
                 currentDB = null;
