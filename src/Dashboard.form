@@ -56,28 +56,27 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="l9" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="viewAllDropdown" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                      <Component id="viewAllRefresh" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="viewSearchPanel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="viewSearchPanel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="31" max="32767" attributes="0"/>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanel4" min="-2" pref="722" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="l9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="viewAllDropdown" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="viewAllRefresh" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -92,11 +91,11 @@
                           <Component id="viewAllDropdown" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="viewAllRefresh" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="viewSearchPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                      <EmptySpace pref="51" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -291,10 +290,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="viewAllType" min="-2" pref="150" max="-2" attributes="0"/>
-                          <EmptySpace pref="286" max="32767" attributes="0"/>
-                          <Component id="userAccess" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
+                          <Component id="userAccess" min="-2" pref="250" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="userSettings" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="userSettings" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -320,10 +319,10 @@
                       <Font name="Segoe UI" size="12" style="1"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="4"/>
-                    <Property name="text" type="java.lang.String" value="{null}"/>
+                    <Property name="text" type="java.lang.String" value="Welcome, [{role}] {username}!"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="if (Main.userType == null) {&#xa;    userAccess.setText(&quot;Welcome, Developer!&quot;);&#xa;    // [TODO] You have found an easter egg! Guest access is for debugging purposes only. Do not remove it or you wont be able to run Dashboard.java&apos;s main class without logging in through Main.java.&#xa;} else if (Main.userType.equals(&quot;admin&quot;) || Main.userType.equals(&quot;staff&quot;)) {&#xa;    userAccess.setText(&quot;Welcome, &quot; + User.getUsername() + &quot;!&quot;);&#xa;}"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="if (Main.userType == null) {&#xa;    userAccess.setText(&quot;You are not logged in&quot;);&#xa;} else if (Main.userType.equals(&quot;admin&quot;)) {&#xa;    userAccess.setText(&quot;Welcome, [Admin] &quot; + User.getUsername() + &quot;!&quot;);&#xa;} else if (Main.userType.equals(&quot;staff&quot;)) {&#xa;    userAccess.setText(&quot;Welcome, [Staff] &quot; + User.getUsername() + &quot;!&quot;);&#xa;} else {&#xa;    userAccess.setText(&quot;No user type found&quot;);&#xa;}"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="userSettings">

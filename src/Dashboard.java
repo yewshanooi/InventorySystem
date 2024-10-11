@@ -212,12 +212,15 @@ public class Dashboard extends javax.swing.JFrame {
 
         userAccess.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         userAccess.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        userAccess.setText("{null}");
+        userAccess.setText("Welcome, [{role}] {username}!");
         if (Main.userType == null) {
-            userAccess.setText("Welcome, Developer!");
-            // [TODO] You have found an easter egg! Guest access is for debugging purposes only. Do not remove it or you wont be able to run Dashboard.java's main class without logging in through Main.java.
-        } else if (Main.userType.equals("admin") || Main.userType.equals("staff")) {
-            userAccess.setText("Welcome, " + User.getUsername() + "!");
+            userAccess.setText("You are not logged in");
+        } else if (Main.userType.equals("admin")) {
+            userAccess.setText("Welcome, [Admin] " + User.getUsername() + "!");
+        } else if (Main.userType.equals("staff")) {
+            userAccess.setText("Welcome, [Staff] " + User.getUsername() + "!");
+        } else {
+            userAccess.setText("No user type found");
         }
 
         userSettings.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Settings>", "Logout" }));
@@ -237,10 +240,10 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(viewAllType, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 286, Short.MAX_VALUE)
-                .addComponent(userAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(201, 201, 201)
+                .addComponent(userAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(userSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -259,22 +262,23 @@ public class Dashboard extends javax.swing.JFrame {
         viewDatabasePanelLayout.setHorizontalGroup(
             viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewDatabasePanelLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(viewDatabasePanelLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(viewDatabasePanelLayout.createSequentialGroup()
-                                .addComponent(l9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(viewAllRefresh))
-                            .addComponent(viewSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(viewDatabasePanelLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(viewSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewDatabasePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(viewDatabasePanelLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(l9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(viewAllRefresh)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         viewDatabasePanelLayout.setVerticalGroup(
             viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,11 +290,11 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(l9)
                     .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewAllRefresh))
-                .addGap(16, 16, 16)
+                .addGap(15, 15, 15)
                 .addComponent(viewSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("View Database", viewDatabasePanel);
