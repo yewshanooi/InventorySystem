@@ -13,6 +13,7 @@ public class Dashboard extends javax.swing.JFrame {
     }
     
     public static String currentDB;
+    private boolean sortOrder = true;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,11 +32,11 @@ public class Dashboard extends javax.swing.JFrame {
         l9 = new javax.swing.JLabel();
         viewAllDropdown = new javax.swing.JComboBox<>();
         viewAllRefresh = new javax.swing.JButton();
-        viewSearchPanel = new javax.swing.JPanel();
+        viewFiltersPanel = new javax.swing.JPanel();
         searchAllField = new javax.swing.JTextField();
         searchAllButton = new javax.swing.JButton();
-        viewSortByPanel = new javax.swing.JPanel();
-        sortByButton = new javax.swing.JButton();
+        sortByAmountButton = new javax.swing.JButton();
+        sortByDateButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         userAccess = new javax.swing.JLabel();
         userSettings = new javax.swing.JComboBox<>();
@@ -160,54 +161,45 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        sortByButton.setText("Sort by");
-        sortByButton.addActionListener(new java.awt.event.ActionListener() {
+        sortByAmountButton.setText("Asc / Desc");
+        sortByAmountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sortByButtonActionPerformed(evt);
+                sortByAmountButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout viewSortByPanelLayout = new javax.swing.GroupLayout(viewSortByPanel);
-        viewSortByPanel.setLayout(viewSortByPanelLayout);
-        viewSortByPanelLayout.setHorizontalGroup(
-            viewSortByPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewSortByPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(sortByButton)
-                .addContainerGap())
-        );
-        viewSortByPanelLayout.setVerticalGroup(
-            viewSortByPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewSortByPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(sortByButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        sortByDateButton.setText("Date");
+        sortByDateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortByDateButtonActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout viewSearchPanelLayout = new javax.swing.GroupLayout(viewSearchPanel);
-        viewSearchPanel.setLayout(viewSearchPanelLayout);
-        viewSearchPanelLayout.setHorizontalGroup(
-            viewSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewSearchPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout viewFiltersPanelLayout = new javax.swing.GroupLayout(viewFiltersPanel);
+        viewFiltersPanel.setLayout(viewFiltersPanelLayout);
+        viewFiltersPanelLayout.setHorizontalGroup(
+            viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewFiltersPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(searchAllField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(searchAllButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(viewSortByPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        viewSearchPanelLayout.setVerticalGroup(
-            viewSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewSearchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(viewSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchAllButton))
+                .addComponent(sortByAmountButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sortByDateButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewSearchPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(viewSortByPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        viewFiltersPanelLayout.setVerticalGroup(
+            viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewFiltersPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchAllButton)
+                    .addComponent(sortByAmountButton)
+                    .addComponent(sortByDateButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         userAccess.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -263,22 +255,21 @@ public class Dashboard extends javax.swing.JFrame {
             viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(viewSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(viewDatabasePanelLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(l9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(viewAllRefresh))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewFiltersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewDatabasePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(viewDatabasePanelLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(l9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(viewAllRefresh)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         viewDatabasePanelLayout.setVerticalGroup(
             viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,7 +282,7 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewAllRefresh))
                 .addGap(15, 15, 15)
-                .addComponent(viewSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(viewFiltersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(51, Short.MAX_VALUE))
@@ -792,11 +783,8 @@ public class Dashboard extends javax.swing.JFrame {
         // Refresh View User tab once during initialisation
         viewUserRefreshActionPerformed(null);
 
-        // Hide options panel during initialisation
-        viewSearchPanel.setVisible(false);
-
-        // Hide filter panel during initialisation
-        viewSortByPanel.setVisible(false);
+        // Hide filters panel during initialisation
+        viewFiltersPanel.setVisible(false);
 
         pack();
         setLocationRelativeTo(null);
@@ -847,12 +835,15 @@ public class Dashboard extends javax.swing.JFrame {
         String[][] content;
         String[] header;
         
-        viewSearchPanel.setVisible(false);
-        viewSortByPanel.setVisible(false);
+        viewFiltersPanel.setVisible(false);
+        sortByAmountButton.setVisible(false);
+        sortByDateButton.setVisible(false);
+        searchAllField.setVisible(true);
+        searchAllButton.setVisible(true);
 
         switch (db.toString()) {
             case "hospitals.txt":
-                viewSearchPanel.setVisible(true);
+                viewFiltersPanel.setVisible(true);
 
                 content = fh.readFile("hospitals.txt", 3, this);
                 header = new String[]{"Hospital ID", "Item ID", "Quantity"};
@@ -861,8 +852,8 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "hospital";
                 break;
             case "ppe.txt":
-                viewSearchPanel.setVisible(true);
-                viewSortByPanel.setVisible(true);
+                viewFiltersPanel.setVisible(true);
+                sortByAmountButton.setVisible(true);
 
                 content = fh.readFile("ppe.txt", 4, this);
                 header = new String[]{"Item ID", "Quantity", "Supplier ID", "Item Name"};
@@ -871,7 +862,7 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "item";
                 break;
             case "suppliers.txt":
-                viewSearchPanel.setVisible(true);
+                viewFiltersPanel.setVisible(true);
  
                 content = fh.readFile("suppliers.txt", 3, this);
                 header = new String[]{"Supplier ID", "Item ID", "Quantity"};
@@ -880,6 +871,11 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "supplier";
                 break;
             case "transactions.txt":
+                viewFiltersPanel.setVisible(true);
+                sortByDateButton.setVisible(true);
+                searchAllField.setVisible(false);
+                searchAllButton.setVisible(false);
+                 
                 content = fh.readFile("transactions.txt", 6, this);
                 header = new String[]{"Date", "Item ID", "Amount", "From / To", "User ID", "Time"};
                 viewAllTable.setModel(new DefaultTableModel(content, header));
@@ -993,7 +989,9 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         viewAllDropdownActionPerformed(null);
         searchAllField.setText("");
-        sortByButton.setText("Sort by");
+
+        sortOrder = true;
+        sortByAmountButton.setText("Asc / Desc");
     }//GEN-LAST:event_viewAllRefreshActionPerformed
 
     private void receiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiveButtonActionPerformed
@@ -1005,7 +1003,7 @@ public class Dashboard extends javax.swing.JFrame {
         tf.itemTransfer(receiveItems);
         
         resetTransactionFields(true);
-        JOptionPane.showMessageDialog(this, "Successfully receive items", "Receive", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Successfully received items", "Receive", JOptionPane.INFORMATION_MESSAGE);
         // System.out.println(Arrays.deepToString(receiveItems));
     }//GEN-LAST:event_receiveButtonActionPerformed
 
@@ -1164,9 +1162,7 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchAllButtonActionPerformed
 
-    private boolean sortOrder = true;
-    
-    private void sortByButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByButtonActionPerformed
+    private void sortByAmountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByAmountButtonActionPerformed
         // TODO add your handling code here:
         Sort st = new Sort();
         
@@ -1174,15 +1170,30 @@ public class Dashboard extends javax.swing.JFrame {
         sortOrder = !sortOrder;
         
         if (sortOrder) {
-            sortByButton.setText("Descending ↓");
+            sortByAmountButton.setText("Descending ↓");
         } else {
-            sortByButton.setText("Ascending ↑");
+            sortByAmountButton.setText("Ascending ↑");
         }
 
         String[]header = {"Item ID", "Quantity", "Supplier ID", "Item Name"};
 
         viewAllTable.setModel(new DefaultTableModel(content, header));
-    }//GEN-LAST:event_sortByButtonActionPerformed
+    }//GEN-LAST:event_sortByAmountButtonActionPerformed
+
+    private void sortByDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByDateButtonActionPerformed
+        // TODO add your handling code here:
+        
+        Sort st = new Sort();
+        String startDate = "2024-10-01";
+        String endDate = "2024-10-07";
+
+        try {
+            st.validRange(startDate, endDate);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_sortByDateButtonActionPerformed
 
     public void resetViewUserPopup() {  
         viewUserPopup.setVisible(false);
@@ -1305,7 +1316,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> sendHospitalID;
     private javax.swing.JTextField sendMS;
     private javax.swing.JTextField sendSC;
-    private javax.swing.JButton sortByButton;
+    private javax.swing.JButton sortByAmountButton;
+    private javax.swing.JButton sortByDateButton;
     private javax.swing.JLabel userAccess;
     private javax.swing.JComboBox<String> userSettings;
     private javax.swing.JComboBox<String> viewAllDropdown;
@@ -1313,8 +1325,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTable viewAllTable;
     private javax.swing.JLabel viewAllType;
     private javax.swing.JPanel viewDatabasePanel;
-    private javax.swing.JPanel viewSearchPanel;
-    private javax.swing.JPanel viewSortByPanel;
+    private javax.swing.JPanel viewFiltersPanel;
     private javax.swing.JLabel viewUserID;
     private javax.swing.JButton viewUserModifyButton;
     private javax.swing.JTextField viewUserName;

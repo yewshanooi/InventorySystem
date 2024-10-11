@@ -55,7 +55,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        initButton.setText("Initialise values");
+        initButton.setText("Initialisation");
         initButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 initButtonActionPerformed(evt);
@@ -65,7 +65,7 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Welcome to Inventory System");
 
-        jLabel4.setText("Note: Please initialise the values before getting started");
+        jLabel4.setText("Inventory management, made easy.");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -74,12 +74,8 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel3))))
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(76, 76, 76)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -96,15 +92,19 @@ public class Main extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(initButton)))))
                 .addContainerGap(56, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(92, 92, 92))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
-                .addGap(60, 60, 60)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(loginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -136,9 +136,9 @@ public class Main extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-
         boolean isEmpty = false;
-        String[] files = {"ppe.txt","hospitals.txt","suppliers.txt","transactions.txt","users.txt"};
+
+        String[] files = {"ppe.txt","hospitals.txt","suppliers.txt","users.txt"};
 
         try {
             for (String n : files) {
@@ -154,7 +154,7 @@ public class Main extends javax.swing.JFrame {
         }
 
         if (isEmpty) {
-            JOptionPane.showMessageDialog(this, "You have empty files", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Files are currently empty. Please initialise first before logging in!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             String id = loginUsername.getText();
             char[] passwordChar = loginPassword.getPassword(); // The .getText() method for password is deprecated as it returns value in String which is not secure
@@ -217,13 +217,12 @@ public class Main extends javax.swing.JFrame {
         
         if (!initStatus) {
             String[] options = {"Yes", "No"};
-            int choice = JOptionPane.showOptionDialog(this, "Do you want to set the default values for items as 100?", "Initialise", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-            int choice2 = JOptionPane.showOptionDialog(this, "Do you want to reset User, Supplier & Hospital data to initial value", "Initialise", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            int choice = JOptionPane.showOptionDialog(this, "Do you want to set the item values as 100?", "Initialise", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            int choice2 = JOptionPane.showOptionDialog(this, "Do you want to reset Hospital, Supplier and User data?", "Initialise", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
-            String[] users = {"STF01;Karlson;pw123#;Admin","STF02;Shan;pw456#;Staff"};
+            String[] users = {"STF01;Karlson;pw123#;Admin","STF02;Shan;pw456#;Staff","STF03;John Doe;pw789$;Staff","STF04;Jane Doe;pw012$;Admin"};
             String[] sp_item = {"SP1;HC;1000","SP1;FS;500","SP2;MS;10000","SP2;GL;10000","SP3;GW;100","SP3;SC;1000"};
             String[] hp_item = {"HP1;HC;100","HP1;FS;100","HP1;MS;100","HP1;GL;100","HP1;GW;100","HP1;SC;100","HP2;HC;100","HP2;FS;100","HP2;MS;100","HP2;GL;100","HP2;GW;100","HP2;SC;100","HP3;HC;100","HP3;FS;100","HP3;MS;100","HP3;GL;100","HP3;GW;100","HP3;SC;100"};
-            
             
             if (choice == 0) {
                 String[] item = {"HC;100;SP1;Head Cover","FS;100;SP1;Face Shield","MS;100;SP2;Mask","GL;100;SP2;Glove","GW;100;SP3;Gown","SC;100;SP3;Shoe Cover"};
@@ -242,6 +241,7 @@ public class Main extends javax.swing.JFrame {
                 fh.initialize("suppliers.txt", sp_item);
                 fh.initialize("hospitals.txt", hp_item);
             } else if (choice2 == 1) {
+                // [TODO] Handle (choice2 == 1)
             }
             
         } else {

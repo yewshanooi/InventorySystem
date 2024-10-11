@@ -21,6 +21,7 @@ public class Sort {
             } else {
                 // Print out invalid date or out of range (Maximum 7 days)
                 System.out.println("Invalid Date");
+                // [TODO] validRange() method is broken somehow?!
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,7 +88,6 @@ public class Sort {
             boolean swapped;
             for (int i=0; i<fileCont.size(); i++) {
                 ArrayList<String> temp;
-                int value1,value2;
                 swapped = false;
                 if (asc) {
                     for (int j=0; j<fileCont.size()-i-1; j++) {
