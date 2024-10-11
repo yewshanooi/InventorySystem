@@ -220,17 +220,13 @@ public class Main extends javax.swing.JFrame {
         if (!initStatus) {
             String[] options = {"Yes", "No"};
             int choice = JOptionPane.showOptionDialog(this, "Do you want to set the default values for items as 100?", "Initialise", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            int choice2 = JOptionPane.showOptionDialog(this, "Do you want to reset User, Supplier & Hospital data to initial value", "Initialise", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
-            // String[] users = {"STF01;Karlson;pw123#;Admin","STF02;Shan;pw456#;Staff"};
-            // String[] sp_item = {"SP1;HC;1000","SP1;FS;500","SP2;MS;10000","SP2;GL;10000","SP3;GW;100","SP3;SC;1000"};
-            // String[] hp_item = {"HP1;HC;100","HP1;FS;100","HP1;MS;100","HP1;GL;100","HP1;GW;100","HP1;SC;100","HP2;HC;100","HP2;FS;100","HP2;MS;100","HP2;GL;100","HP2;GW;100","HP2;SC;100","HP3;HC;100","HP3;FS;100","HP3;MS;100","HP3;GL;100","HP3;GW;100","HP3;SC;100"};
-            // fh.initialize("users.txt", users);
-            // fh.initialize("suppliers.txt", sp_item);
-            // fh.initialize("hospitals.txt", hp_item);
-
-            // [TODO] A second pop up to ask if user want to reset User, Supplier & Hospital data to initial value
-            // Yes will initialize, no will just continue with the code
-
+            String[] users = {"STF01;Karlson;pw123#;Admin","STF02;Shan;pw456#;Staff"};
+            String[] sp_item = {"SP1;HC;1000","SP1;FS;500","SP2;MS;10000","SP2;GL;10000","SP3;GW;100","SP3;SC;1000"};
+            String[] hp_item = {"HP1;HC;100","HP1;FS;100","HP1;MS;100","HP1;GL;100","HP1;GW;100","HP1;SC;100","HP2;HC;100","HP2;FS;100","HP2;MS;100","HP2;GL;100","HP2;GW;100","HP2;SC;100","HP3;HC;100","HP3;FS;100","HP3;MS;100","HP3;GL;100","HP3;GW;100","HP3;SC;100"};
+            
+            
             if (choice == 0) {
                 String[] item = {"HC;100;SP1;Head Cover","FS;100;SP1;Face Shield","MS;100;SP2;Mask","GL;100;SP2;Glove","GW;100;SP3;Gown","SC;100;SP3;Shoe Cover"};
                 fh.initialize("ppe.txt", item);
@@ -239,9 +235,17 @@ public class Main extends javax.swing.JFrame {
             } else if (choice == 1) {
                 String[] item = {"HC;0;SP1;Head Cover","FS;0;SP1;Face Shield","MS;0;SP2;Mask","GL;0;SP2;Glove","GW;0;SP3;Gown","SC;0;SP3;Shoe Cover"};
                 fh.initialize("ppe.txt", item);
-
+                
                 initStatus = true;
             }
+            
+            if (choice2 == 0) {
+                fh.initialize("users.txt", users);
+                fh.initialize("suppliers.txt", sp_item);
+                fh.initialize("hospitals.txt", hp_item);
+            } else if (choice2 == 1) {
+            }
+            
         } else {
             JOptionPane.showMessageDialog(this, "You have already initialised the files", "Error", JOptionPane.ERROR_MESSAGE);
         }
