@@ -39,7 +39,7 @@ public class Transfer {
                             if (calc[0].equals(data[0])) {
                                 temp = Integer.parseInt(data[1]) - temp;
                                 if (temp < 1) {
-                                    JOptionPane.showMessageDialog(parent, "Insufficient items", "Error", JOptionPane.ERROR_MESSAGE);
+                                    JOptionPane.showMessageDialog(parent, "Insufficient items\nCurrent stock on hand: "+data[1], "Error", JOptionPane.ERROR_MESSAGE);
                                     break;
                                     // [TODO] break; is broken, program still continue even after not enough of items error
                                 } else if (temp < 25) {
