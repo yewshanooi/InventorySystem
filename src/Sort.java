@@ -2,6 +2,9 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class Sort {
     // Call this method to use this class
     public void validRange(String startDate, String endDate) {
@@ -27,6 +30,7 @@ public class Sort {
         }
     }
 
+    // Dont call this
     public void DateRange(int[] startDate, int[] endDate) throws Exception {
         String file = "transactions.txt";
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -54,4 +58,49 @@ public class Sort {
         // System.out.println(validDate);
         br.close();
     }
+
+    private void searchID(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUserButtonActionPerformed
+        // TODO add your handling code here:
+        // String query = searchUserField.getText().trim();
+
+        // if (query.isEmpty()) {
+        //     JOptionPane.showMessageDialog(this, "Please enter a query", "Error", JOptionPane.ERROR_MESSAGE);
+        //     return;
+        // }
+
+        ArrayList<String[]> fetch = new ArrayList<>();
+        FileHandler fh = new FileHandler();
+
+        try {
+            ArrayList<ArrayList<String>> fileData = fh.to2dArray(Dashboard.currentDB + ".txt");
+
+            for (ArrayList<String> data : fileData) {
+                if (!data.isEmpty() && data.get(0).equalsIgnoreCase(query)) { // Ignore lower/upper case differences
+                    fetch.add(new String[]{data.get(0), data.get(1), data.get(2), data.get(3)});
+                    break; // Avoid adding the same row if there are multiple matching values
+                }
+            }
+        } catch (Exception e) {
+            // JOptionPane.showMessageDialog(this, "An error occurred while reading the file", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String[][] results = new String[fetch.size()][];
+        for (int i = 0; i < fetch.size(); i++) {
+            results[i] = fetch.get(i);
+        }
+
+        if(Dashboard.currentDB.equals("item")) {
+            String[] header = {"Item ID", "Quantity", "Supplier ID", "Item Name"};
+        } else {
+            String[] header = {"User ID", "Name", "Password", "Role"};
+        }
+
+        if (fetch.isEmpty()) {
+            // JOptionPane.showMessageDialog(this, "No results found for:\n\n" + query, "Search", JOptionPane.INFORMATION_MESSAGE);
+            // searchUserField.setText("");
+        } else {
+            // viewUserTable.setModel(new DefaultTableModel(results, header));
+        }
+    }//GEN-LAST:event_searchUserButtonActionPerformed
 }
