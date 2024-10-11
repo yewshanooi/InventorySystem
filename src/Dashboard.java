@@ -913,7 +913,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         String[][] receiveItems = getFieldValues(true);
         if (receiveItems == null) return;
-        tf.filterInvalid(receiveItems);
+        tf.itemTransfer(receiveItems);
         
         resetTransactionFields(true);
         JOptionPane.showMessageDialog(this, "Successfully receive items", "Receive", JOptionPane.INFORMATION_MESSAGE);
@@ -933,7 +933,7 @@ public class Dashboard extends javax.swing.JFrame {
             return;
         }
 
-        tf.filterInvalid(sendItems, hospitalID, this);
+        tf.itemTransfer(sendItems, hospitalID, this);
         
         resetTransactionFields(false);
         // System.out.println(Arrays.deepToString(sendItems));
