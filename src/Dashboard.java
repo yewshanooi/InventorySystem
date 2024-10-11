@@ -1042,10 +1042,31 @@ public class Dashboard extends javax.swing.JFrame {
             return;
         }
         
-        String[][] content = st.searchByID("ppe.txt", query);
-        String[] header = {"Item ID", "Quantity", "Supplier ID", "Item Name"};
-
-        if (content.length > 0) {
+        String[][] content;
+        String[] header = null;
+        String fileName = null;
+        
+        switch (currentDB) {
+            case "hospital":
+                fileName = "hospitals.txt";
+                header = new String[]{"Hospital ID", "Item ID", "Quantity"};
+                break;
+            case "item":
+                fileName = "ppe.txt";
+                header = new String[]{"Item ID", "Quantity", "Supplier ID", "Item Name"};
+                break;
+            case "supplier":
+                fileName = "suppliers.txt";
+                header = new String[]{"Supplier ID", "Item ID", "Quantity"};
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "No valid file", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
+        }
+        
+        content = st.searchByID(fileName, query);
+        
+        if (content.length > 0 ) {
             viewAllTable.setModel(new DefaultTableModel(content, header));
         } else {
             JOptionPane.showMessageDialog(this, "No results found for:\n\n" + query, "Search", JOptionPane.INFORMATION_MESSAGE);
@@ -1053,7 +1074,7 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchAllButtonActionPerformed
 
-    public void resetViewUserPopup() {
+    public void resetViewUserPopup() {  
         viewUserPopup.setVisible(false);
         
         viewUserID.setText("");
