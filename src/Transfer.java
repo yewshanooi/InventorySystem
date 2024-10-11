@@ -6,7 +6,7 @@ import java.awt.Component;
 
 public class Transfer {
     // Receiving items from supplier
-    public void filterInvalid(String[][] value) {
+    public void itemTransfer(String[][] value) {
         for (int i=0;i<value.length;i++) {
             try {
                 if(Integer.valueOf(value[i][1]) != 0) {
@@ -21,7 +21,7 @@ public class Transfer {
     
     
     // Sending items to hospital
-    public void filterInvalid(String[][] value, String hpID, Component parent) {
+    public void itemTransfer(String[][] value, String hpID, Component parent) {
         
         for (int i=0;i<value.length;i++) {
             try {
