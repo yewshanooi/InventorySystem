@@ -30,6 +30,8 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         viewAllTable = new javax.swing.JTable();
+        searchAllField = new javax.swing.JTextField();
+        searchAllButton = new javax.swing.JButton();
         l9 = new javax.swing.JLabel();
         viewAllDropdown = new javax.swing.JComboBox<>();
         viewAllType = new javax.swing.JLabel();
@@ -114,12 +116,14 @@ public class Dashboard extends javax.swing.JFrame {
             }
         ));
         viewAllTable.getTableHeader().setReorderingAllowed(false);
-        viewAllTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewAllTableMouseClicked(evt);
+        jScrollPane1.setViewportView(viewAllTable);
+
+        searchAllButton.setText("Search");
+        searchAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchAllButtonActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(viewAllTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -127,13 +131,22 @@ public class Dashboard extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(searchAllField)
+                        .addGap(18, 18, 18)
+                        .addComponent(searchAllButton)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchAllButton))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -795,54 +808,13 @@ public class Dashboard extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_viewAllDropdownActionPerformed
-
-    private void viewAllTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewAllTableMouseClicked
-        // TODO add your handling code here:
-//        if (currentDB.equals("user")) {
-//            
-//        }
-
-        // [TODO] Add search functionality for items
-    }//GEN-LAST:event_viewAllTableMouseClicked
     
     private void searchUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUserButtonActionPerformed
         // TODO add your handling code here:
-        String query = searchUserField.getText().trim();
-
-        if (query.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a query", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        ArrayList<String[]> fetch = new ArrayList<>();
-        FileHandler fh = new FileHandler();
-
-        try {
-            ArrayList<ArrayList<String>> data = fh.to2dArray("users.txt");
-
-            for (ArrayList<String> userData : data) {
-                if (!userData.isEmpty() && userData.get(0).equalsIgnoreCase(query)) { // Ignore lower/upper case differences
-                    fetch.add(new String[]{userData.get(0), userData.get(1), userData.get(2), userData.get(3)});
-                    break; // Avoid adding the same row if there are multiple matching values
-                }
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "An error occurred while reading the file", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        String[][] results = new String[fetch.size()][];
-        for (int i = 0; i < fetch.size(); i++) {
-            results[i] = fetch.get(i);
-        }
-
-        String[] header = {"User ID", "Name", "Password", "Role"};
-
-        if (fetch.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No results found for:\n\n" + query, "Search", JOptionPane.INFORMATION_MESSAGE);
-            searchUserField.setText("");
-        } else {
-            viewUserTable.setModel(new DefaultTableModel(results, header));
+        Sort st = new Sort();
+        
+        if (currentDB.equals("item")) {
+            st.searchID("ppe.txt", this);
         }
     }//GEN-LAST:event_searchUserButtonActionPerformed
 
@@ -1050,6 +1022,10 @@ public class Dashboard extends javax.swing.JFrame {
         viewUserTable.setModel(new DefaultTableModel(content, header));
     }//GEN-LAST:event_viewUserRefreshActionPerformed
 
+    private void searchAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAllButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchAllButtonActionPerformed
+
     public void resetViewUserPopup() {
         viewUserPopup.setVisible(false);
         
@@ -1158,6 +1134,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField receiveHC;
     private javax.swing.JTextField receiveMS;
     private javax.swing.JTextField receiveSC;
+    private javax.swing.JButton searchAllButton;
+    private javax.swing.JTextField searchAllField;
     private javax.swing.JButton searchUserButton;
     private javax.swing.JTextField searchUserField;
     private javax.swing.JButton sendButton;

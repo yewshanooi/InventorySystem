@@ -1,9 +1,8 @@
+import java.awt.Component;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class Sort {
     // Call this method to use this class
@@ -59,20 +58,20 @@ public class Sort {
         br.close();
     }
 
-    private void searchID(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUserButtonActionPerformed
+    public void searchID(String table, Component parent) {
         // TODO add your handling code here:
-        // String query = searchUserField.getText().trim();
+        String query = searchUserField.getText().trim();
 
-        // if (query.isEmpty()) {
-        //     JOptionPane.showMessageDialog(this, "Please enter a query", "Error", JOptionPane.ERROR_MESSAGE);
-        //     return;
-        // }
+        if (query.isEmpty()) {
+            JOptionPane.showMessageDialog(parent, "Please enter a query", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         ArrayList<String[]> fetch = new ArrayList<>();
         FileHandler fh = new FileHandler();
 
         try {
-            ArrayList<ArrayList<String>> fileData = fh.to2dArray(Dashboard.currentDB + ".txt");
+            ArrayList<ArrayList<String>> fileData = fh.to2dArray(table);
 
             for (ArrayList<String> data : fileData) {
                 if (!data.isEmpty() && data.get(0).equalsIgnoreCase(query)) { // Ignore lower/upper case differences
@@ -81,7 +80,7 @@ public class Sort {
                 }
             }
         } catch (Exception e) {
-            // JOptionPane.showMessageDialog(this, "An error occurred while reading the file", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(parent, "An error occurred while reading the file", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -97,10 +96,10 @@ public class Sort {
         }
 
         if (fetch.isEmpty()) {
-            // JOptionPane.showMessageDialog(this, "No results found for:\n\n" + query, "Search", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(parent, "No results found for:\n\n" + query, "Search", JOptionPane.INFORMATION_MESSAGE);
             // searchUserField.setText("");
         } else {
             // viewUserTable.setModel(new DefaultTableModel(results, header));
         }
-    }//GEN-LAST:event_searchUserButtonActionPerformed
+    }
 }
