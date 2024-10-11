@@ -83,6 +83,7 @@ public class Transfer {
                 temp += Integer.parseInt(data[1]);
 
                 String fileName ="suppliers.txt";
+                String spID = "";
                 ArrayList<ArrayList<String>>spItems = fh.to2dArray(fileName);
                 for (int i=0; i<spItems.size(); i++) {
                     if (calc[0].equals(spItems.get(i).get(1))) {
@@ -90,6 +91,7 @@ public class Transfer {
                         item -= Integer.parseInt(calc[1]);
                         String newData = String.valueOf(item);
                         spItems.get(i).set(2, newData);
+                        spID = spItems.get(i).get(0);
                     }
                 }
 
@@ -107,7 +109,7 @@ public class Transfer {
                 fh.initialize(fileName, update);
 
                 nFileData.add(data[0] + ";" + Integer.toString(temp) + ";" + data[2] + ";" + data[3]);
-                fh.append("transactions.txt", (date + ";" + data[0] + ";" + "+" + calc[1] + ";" + user.getUID() + ";" + time +"\n"));
+                fh.append("transactions.txt", (date + ";" + data[0] + ";" + "+" + calc[1] + ";" + spID + ";" + user.getUID() + ";" + time +"\n"));
             } else {
                 nFileData.add(n);
             }
