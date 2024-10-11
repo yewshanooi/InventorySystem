@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.Buffer;
+
 import javax.swing.JOptionPane;
 
 
@@ -136,8 +138,25 @@ public class Main extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        if (!initStatus) {
-            JOptionPane.showMessageDialog(this, "You have not initialise the files", "Error", JOptionPane.ERROR_MESSAGE);
+
+        boolean isEmpty = false;
+        String[] files = {"ppe.txt","hospitals.txt","suppliers.txt","transactions.txt","users.txt"};
+
+        try {
+            for (String n : files) {
+                BufferedReader bw = new BufferedReader(new FileReader(n));
+                if (bw.readLine() == null) {
+                    isEmpty = true;
+                    break;
+                }
+                bw.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (isEmpty) {
+            JOptionPane.showMessageDialog(this, "You have empty files", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             String id = loginUsername.getText();
             char[] passwordChar = loginPassword.getPassword(); // The .getText() method for password is deprecated as it returns value in String which is not secure
@@ -158,9 +177,8 @@ public class Main extends javax.swing.JFrame {
                     String getType = part[3];
     
                     if (id.equals(getID) && password.equals(getPassword)) {
-                        User user = new User();
-                        user.setUID(getID);
-                        user.setUsername(getName);
+                        User.setUID(getID);
+                        User.setUsername(getName);
                         authStatus = true;
 
                         if (getType.equals("Admin")) {
@@ -203,10 +221,20 @@ public class Main extends javax.swing.JFrame {
             String[] options = {"Yes", "No"};
             int choice = JOptionPane.showOptionDialog(this, "Do you want to set the default values for items as 100?", "Initialise", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
+            // String[] users = {"STF01;Karlson;pw123#;Admin","STF02;Shan;pw456#;Staff"};
+            // String[] sp_item = {"SP1;HC;1000","SP1;FS;500","SP2;MS;10000","SP2;GL;10000","SP3;GW;100","SP3;SC;1000"};
+            // String[] hp_item = {"HP1;HC;100","HP1;FS;100","HP1;MS;100","HP1;GL;100","HP1;GW;100","HP1;SC;100","HP2;HC;100","HP2;FS;100","HP2;MS;100","HP2;GL;100","HP2;GW;100","HP2;SC;100","HP3;HC;100","HP3;FS;100","HP3;MS;100","HP3;GL;100","HP3;GW;100","HP3;SC;100"};
+            // fh.initialize("users.txt", users);
+            // fh.initialize("suppliers.txt", sp_item);
+            // fh.initialize("hospitals.txt", hp_item);
+
+            // [TODO] A second pop up to ask if user want to reset User, Supplier & Hospital data to initial value
+            // Yes will initialize, no will just continue with the code
+
             if (choice == 0) {
                 String[] item = {"HC;100;SP1;Head Cover","FS;100;SP1;Face Shield","MS;100;SP2;Mask","GL;100;SP2;Glove","GW;100;SP3;Gown","SC;100;SP3;Shoe Cover"};
                 fh.initialize("ppe.txt", item);
-
+                
                 initStatus = true;
             } else if (choice == 1) {
                 String[] item = {"HC;0;SP1;Head Cover","FS;0;SP1;Face Shield","MS;0;SP2;Mask","GL;0;SP2;Glove","GW;0;SP3;Gown","SC;0;SP3;Shoe Cover"};
@@ -261,33 +289,11 @@ public class Main extends javax.swing.JFrame {
 
         // Create empty files
         String[] file = {"ppe.txt","hospitals.txt","suppliers.txt","transactions.txt","users.txt"};
+
         fh.createFile(file);
 
-        // Initialise items
-        String[] sp_item = {"SP1;HC;1000","SP1;FS;500","SP2;MS;10000","SP2;GL;10000","SP3;GW;100","SP3;SC;1000"};
-        fh.initialize("suppliers.txt", sp_item);
-        
-        String[] users = {"STF01;Karlson;pw123#;Admin","STF02;Shan;pw456#;Staff"};
-        fh.initialize("users.txt", users);
-        
-        String[] hp_item = {"HP1;HC;100","HP1;FS;100","HP1;MS;100","HP1;GL;100","HP1;GW;100","HP1;SC;100","HP2;HC;100","HP2;FS;100","HP2;MS;100","HP2;GL;100","HP2;GW;100","HP2;SC;100","HP3;HC;100","HP3;FS;100","HP3;MS;100","HP3;GL;100","HP3;GW;100","HP3;SC;100"};
-        fh.initialize("hospitals.txt", hp_item);
-        
-        // Receive items
-        int HeadCover=50,FaceShield=0,Mask=0,Glove=0,Gown=0,ShoeCover=0;
-        // String hpID = "SP1";
-        String[][] itemUpdate = {{"HC;",Integer.toString(HeadCover)},{"FS;",Integer.toString(FaceShield)},{"MS;",Integer.toString(Mask)},{"GL;",Integer.toString(Glove)},{"GW;",Integer.toString(Gown)},{"SC;",Integer.toString(ShoeCover)}};
-        transfer.filterInvalid(itemUpdate); //This is to receive item
-        // transfer.filterInvalid(itemUpdate, hpID); //This is to send item with the hospital code
-
         // Filter date
-        dateSort.validRange("3-10-2024", "10-10-2024");
-
-        
-
-        // user.createUser("Karlson", "123", "Admin");
-        // user.deleteUser("STF01");
-        // user.modifyUser("STF01", "Role", "Admin", "dwa");
+        // dateSort.validRange("3-10-2024", "10-10-2024");
 
         // Delete file
         // fh.deleteFile(file);
