@@ -28,14 +28,15 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         viewAllTable = new javax.swing.JTable();
-        searchAllField = new javax.swing.JTextField();
-        searchAllButton = new javax.swing.JButton();
         l9 = new javax.swing.JLabel();
         viewAllDropdown = new javax.swing.JComboBox<>();
         viewAllType = new javax.swing.JLabel();
         userSettings = new javax.swing.JComboBox<>();
         viewAllRefresh = new javax.swing.JButton();
         userAccess = new javax.swing.JLabel();
+        viewAllOptionsPanel = new javax.swing.JPanel();
+        searchAllField = new javax.swing.JTextField();
+        searchAllButton = new javax.swing.JButton();
         manageTransactionsPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -116,36 +117,20 @@ public class Dashboard extends javax.swing.JFrame {
         viewAllTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(viewAllTable);
 
-        searchAllButton.setText("Search");
-        searchAllButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchAllButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(searchAllField)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchAllButton)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchAllButton))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -185,6 +170,34 @@ public class Dashboard extends javax.swing.JFrame {
             userAccess.setText("Welcome, " + User.getUsername() + "!");
         }
 
+        searchAllButton.setText("Search");
+        searchAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchAllButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout viewAllOptionsPanelLayout = new javax.swing.GroupLayout(viewAllOptionsPanel);
+        viewAllOptionsPanel.setLayout(viewAllOptionsPanelLayout);
+        viewAllOptionsPanelLayout.setHorizontalGroup(
+            viewAllOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewAllOptionsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(searchAllField)
+                .addGap(18, 18, 18)
+                .addComponent(searchAllButton)
+                .addContainerGap())
+        );
+        viewAllOptionsPanelLayout.setVerticalGroup(
+            viewAllOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewAllOptionsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(viewAllOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchAllButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout viewDatabasePanelLayout = new javax.swing.GroupLayout(viewDatabasePanel);
         viewDatabasePanel.setLayout(viewDatabasePanelLayout);
         viewDatabasePanelLayout.setHorizontalGroup(
@@ -199,9 +212,10 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(viewAllRefresh))
                     .addGroup(viewDatabasePanelLayout.createSequentialGroup()
-                        .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewAllType, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(viewAllType, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewAllOptionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(26, 26, 26)
                         .addComponent(userAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -222,6 +236,8 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewAllRefresh))
                 .addGap(18, 18, 18)
+                .addComponent(viewAllOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(49, Short.MAX_VALUE))
         );
@@ -721,6 +737,9 @@ public class Dashboard extends javax.swing.JFrame {
         // Refresh View User tab once during initialisation
         viewUserRefreshActionPerformed(null);
 
+        // Hide options panel during initialisation
+        viewAllOptionsPanel.setVisible(false);
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -1197,6 +1216,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel userAccess;
     private javax.swing.JComboBox<String> userSettings;
     private javax.swing.JComboBox<String> viewAllDropdown;
+    private javax.swing.JPanel viewAllOptionsPanel;
     private javax.swing.JButton viewAllRefresh;
     private javax.swing.JTable viewAllTable;
     private javax.swing.JLabel viewAllType;
