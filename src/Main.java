@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.Buffer;
-
 import javax.swing.JOptionPane;
 
 
@@ -287,10 +285,8 @@ public class Main extends javax.swing.JFrame {
         });
         
         FileHandler fh = new FileHandler();
-        Transfer transfer = new Transfer();
-        Sort dateSort = new Sort();
         // User user = new User();
-
+        
         // Create empty files
         String[] file = {"ppe.txt","hospitals.txt","suppliers.txt","transactions.txt","users.txt"};
 

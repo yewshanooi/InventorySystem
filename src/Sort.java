@@ -128,7 +128,7 @@ public class Sort {
         //     System.out.println(n[0]+" "+n[1]+" "+n[2]+" "+n[3]+" ");
         // }
 
-
+        br.close();
         return sortedList;
     }
 }

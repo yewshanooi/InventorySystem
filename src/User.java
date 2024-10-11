@@ -81,8 +81,7 @@ public class User {
             newUser = alToList.toArray(newUser);
             fh.initialize("users.txt", newUser);
 
-            User user = new User();
-            if (UID.equals(user.getUID())) {
+            if (UID.equals(User.getUID())) {
 
             }
         } catch (Exception e) {

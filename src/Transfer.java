@@ -21,7 +21,7 @@ public class Transfer {
     
     
     // Sending items to hospital
-    public void filterInvalid(String[][] value, String uid, Component parent) {
+    public void filterInvalid(String[][] value, String hpID, Component parent) {
         
         for (int i=0;i<value.length;i++) {
             try {
@@ -45,10 +45,10 @@ public class Transfer {
                                 } else if (temp < 25) {
                                     JOptionPane.showMessageDialog(parent, "Quantity of items is lower than 25", "Warning", JOptionPane.WARNING_MESSAGE);
                                     JOptionPane.showMessageDialog(parent, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
-                                    itemManip(validValue, uid);
+                                    itemManip(validValue, hpID);
                                 } else {
                                     JOptionPane.showMessageDialog(parent, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
-                                    itemManip(validValue, uid);
+                                    itemManip(validValue, hpID);
                                 }
                             }
                     }
@@ -63,7 +63,6 @@ public class Transfer {
     public void itemManip(String value) throws Exception {
         String file = "ppe.txt";
         FileHandler fh = new FileHandler();
-        User user = new User();
 
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -112,7 +111,7 @@ public class Transfer {
                 fh.initialize(fileName, update);
 
                 nFileData.add(data[0] + ";" + Integer.toString(temp) + ";" + data[2] + ";" + data[3]);
-                fh.append("transactions.txt", (date + ";" + data[0] + ";" + "+" + calc[1] + ";" + spID + ";" + user.getUID() + ";" + time +"\n"));
+                fh.append("transactions.txt", (date + ";" + data[0] + ";" + "+" + calc[1] + ";" + spID + ";" + User.getUID() + ";" + time +"\n"));
             } else {
                 nFileData.add(n);
             }
@@ -126,7 +125,6 @@ public class Transfer {
     public void itemManip(String value, String hpID) throws Exception {
         String file = "ppe.txt";
         FileHandler fh = new FileHandler();
-        User user = new User();
 
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
