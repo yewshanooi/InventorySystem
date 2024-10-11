@@ -101,11 +101,7 @@ public class Sort {
         } else {
             // viewUserTable.setModel(new DefaultTableModel(results, header));
         }
-<<<<<<< HEAD
-    }
-=======
     }//GEN-LAST:event_searchUserButtonActionPerformed
 
     
->>>>>>> f00a391ce4f54f6508662d3c843431e87aa02686
 }
