@@ -170,7 +170,8 @@ public class Transfer {
                 fh.initialize(fileName, update);
 
                 nFileData.add(data[0] + ";" + Integer.toString(temp) + ";" + data[2] + ";" + data[3]);
-                fh.append("transactions.txt", (date + ";" + data[0] + ";" + "-" + calc[1] + ";" + hpID + ";" + user.getUID() + ";" + time +"\n"));
+                System.out.println(User.getUID());
+                fh.append("transactions.txt", (date + ";" + data[0] + ";" + "-" + calc[1] + ";" + hpID + ";" + User.getUID() + ";" + time +"\n"));
                 } else {
                     nFileData.add(n);
             }
