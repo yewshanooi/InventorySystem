@@ -38,11 +38,11 @@ public class Transfer {
                         String[] data = n.split(";");
                             if (calc[0].equals(data[0])) {
                                 temp = Integer.parseInt(data[1]) - temp;
-                                if (temp < 1) {
+                                if (temp < 0) {
                                     JOptionPane.showMessageDialog(parent, "Insufficient items\nCurrent stock on hand: "+data[1], "Error", JOptionPane.ERROR_MESSAGE);
                                     break;
                                 } else if (temp < 25) {
-                                    JOptionPane.showMessageDialog(parent, "Quantity of items is lower than 25", "Warning", JOptionPane.WARNING_MESSAGE);
+                                    JOptionPane.showMessageDialog(parent, "Quantity of items is lower than 25\nAfter transaction stock on hand: " + temp, "Warning", JOptionPane.WARNING_MESSAGE);
                                     JOptionPane.showMessageDialog(parent, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
                                     itemManip(validValue, hpID);
                                 } else {

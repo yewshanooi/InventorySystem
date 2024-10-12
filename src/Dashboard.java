@@ -923,7 +923,6 @@ public class Dashboard extends javax.swing.JFrame {
                 this.dispose();
                 
                 Main.authStatus = false;
-                Main.initStatus = true;
                 break;
             default:
                 break;
