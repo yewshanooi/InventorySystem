@@ -1207,8 +1207,9 @@ public class Dashboard extends javax.swing.JFrame {
                     viewDates();
                 }
             });
-        } catch (Exception e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
+            // [TODO] Pop up message saying "No transactions between these 2 dates"
         }
     }//GEN-LAST:event_sortByDateButtonActionPerformed
 
