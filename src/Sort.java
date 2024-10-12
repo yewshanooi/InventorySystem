@@ -21,7 +21,6 @@ public class Sort {
             } else {
                 // Print out invalid date or out of range (Maximum 7 days)
                 System.out.println("Invalid Date");
-                // [TODO] validRange() method is broken somehow?!
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,7 +52,7 @@ public class Sort {
         }
         
         // This displays the range of dates
-        // System.out.println(validDate);
+        System.out.println(validDate);
         br.close();
     }
 

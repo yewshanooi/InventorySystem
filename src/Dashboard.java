@@ -1194,7 +1194,7 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Sort st = new Sort();
-        String startDate = "05-10-2024";
+        String startDate = "10-10-2024";
         String endDate = "12-10-2024";
 
         try {
@@ -1203,6 +1203,20 @@ public class Dashboard extends javax.swing.JFrame {
             e.printStackTrace();
         }
         
+        
+//        String[] header = {"Date", "Item ID", "Amount", "From / To", "User ID", "Time"};
+//        
+//        int numRows = validDate.size();
+//        int numColumns = header.length;
+//        
+//        Object[][] content = new Object[numRows][numColumns];
+//        
+//        for (int i = 0; i < numRows; i++) {
+//            String[] trnsDtls = validDate.get(i).split(";");
+//            System.arraycopy(trnsDtls, 0, data[i], 0, Math.min(trnsDtls.length, numColumns))
+//        }
+//
+//        viewAllTable.setModel(new DefaultTableModel(content, header));
     }//GEN-LAST:event_sortByDateButtonActionPerformed
 
     public void resetViewUserPopup() {  

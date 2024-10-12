@@ -3,7 +3,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Ooi
@@ -221,6 +220,7 @@ public class Main extends javax.swing.JFrame {
         String[] users = {"STF01;Karlson;pw123#;Admin","STF02;Shan;pw456#;Staff","STF03;John Doe;pw789$;Staff","STF04;Jane Doe;pw012$;Admin"};
         String[] sp_item = {"SP1;HC;1000","SP1;FS;500","SP2;MS;10000","SP2;GL;10000","SP3;GW;100","SP3;SC;1000"};
         String[] hp_item = {"HP1;HC;100","HP1;FS;100","HP1;MS;100","HP1;GL;100","HP1;GW;100","HP1;SC;100","HP2;HC;100","HP2;FS;100","HP2;MS;100","HP2;GL;100","HP2;GW;100","HP2;SC;100","HP3;HC;100","HP3;FS;100","HP3;MS;100","HP3;GL;100","HP3;GW;100","HP3;SC;100"};
+        String[] transactions = {};
         
         if (choice == 0) {
             String[] item = {"HC;100;SP1;Head Cover","FS;100;SP1;Face Shield","MS;100;SP2;Mask","GL;100;SP2;Glove","GW;100;SP3;Gown","SC;100;SP3;Shoe Cover"};
@@ -234,8 +234,7 @@ public class Main extends javax.swing.JFrame {
             fh.initialize("users.txt", users);
             fh.initialize("suppliers.txt", sp_item);
             fh.initialize("hospitals.txt", hp_item);
-        } else if (choice2 == 1) {
-            // [TODO] Handle (choice2 == 1)
+            fh.initialize("transactions.txt", transactions);
         }
     }//GEN-LAST:event_initButtonActionPerformed
 

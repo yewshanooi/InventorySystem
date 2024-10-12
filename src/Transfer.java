@@ -39,10 +39,10 @@ public class Transfer {
                             if (calc[0].equals(data[0])) {
                                 temp = Integer.parseInt(data[1]) - temp;
                                 if (temp < 0) {
-                                    JOptionPane.showMessageDialog(parent, "Insufficient items\nCurrent stock on hand: "+data[1], "Error", JOptionPane.ERROR_MESSAGE);
+                                    JOptionPane.showMessageDialog(parent, "Insufficient items\nCurrent stock on hand: " + data[1], "Error", JOptionPane.ERROR_MESSAGE);
                                     break;
                                 } else if (temp < 25) {
-                                    JOptionPane.showMessageDialog(parent, "Quantity of items is lower than 25\nAfter transaction stock on hand: " + temp, "Warning", JOptionPane.WARNING_MESSAGE);
+                                    JOptionPane.showMessageDialog(parent, "Quantity of items is lower than 25\nRemaining stock on hand: " + temp, "Warning", JOptionPane.WARNING_MESSAGE);
                                     JOptionPane.showMessageDialog(parent, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
                                     itemManip(validValue, hpID);
                                 } else {
@@ -170,7 +170,7 @@ public class Transfer {
                 fh.initialize(fileName, update);
 
                 nFileData.add(data[0] + ";" + Integer.toString(temp) + ";" + data[2] + ";" + data[3]);
-                System.out.println(User.getUID());
+                // System.out.println(User.getUID());
                 fh.append("transactions.txt", (date + ";" + data[0] + ";" + "-" + calc[1] + ";" + hpID + ";" + User.getUID() + ";" + time +"\n"));
                 } else {
                     nFileData.add(n);
