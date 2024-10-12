@@ -42,7 +42,7 @@ public class Transfer {
                                     JOptionPane.showMessageDialog(parent, "Insufficient items\nCurrent stock on hand: " + data[1], "Error", JOptionPane.ERROR_MESSAGE);
                                     break;
                                 } else if (temp < 25) {
-                                    JOptionPane.showMessageDialog(parent, "Quantity of items is lower than 25\nRemaining stock on hand: " + temp, "Warning", JOptionPane.WARNING_MESSAGE);
+                                    JOptionPane.showMessageDialog(parent, "Quantity of items is lower than 25\nRemaining quantity: " + temp, "Warning", JOptionPane.WARNING_MESSAGE);
                                     JOptionPane.showMessageDialog(parent, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
                                     itemManip(validValue, hpID);
                                 } else {
