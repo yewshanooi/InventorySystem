@@ -28,7 +28,7 @@ public class Sort {
     }
 
     // Dont call this
-    public void DateRange(int[] startDate, int[] endDate) throws Exception {
+    public String[][] DateRange(int[] startDate, int[] endDate) throws Exception {
         String file = "transactions.txt";
         BufferedReader br = new BufferedReader(new FileReader(file));
         FileHandler fh = new FileHandler();
@@ -36,7 +36,7 @@ public class Sort {
         ArrayList<String> fileCont = new ArrayList<String>();
         fileCont = fh.toArray(file);
         String[] fileDate = new String[1];
-        ArrayList<String> validDate = new ArrayList<>();
+        ArrayList<ArrayList<String>> validDates = new ArrayList<>();
         
         for (int i = 0; i < fileCont.size(); i++) {
             fileDate = fileCont.get(i).split(";");
@@ -45,15 +45,28 @@ public class Sort {
             for (int d = 0; d < 3; d++) {
                 data[d] = Integer.parseInt(dateString[d]);
             }
-
+            
             if (data[2] == startDate[2] && data[2] == endDate[2] && data[1] == startDate[1] && data[1] == endDate[1] && data[0] > (startDate[0] - 1) && data[0] < (endDate[0] + 1)) {
-                validDate.add(data[0] + "-" + data[1] + "-" + data[2] + ";" + fileDate[1] + ";" + fileDate[2] + ";" + fileDate[3] + ";" + fileDate[4]);
+                ArrayList<String> validDate = new ArrayList<>();
+                validDate.add(data[0] + "-" + data[1] + "-" + data[2]);
+                validDate.add(fileDate[1]);
+                validDate.add(fileDate[2]);
+                validDate.add(fileDate[3]);
+                validDate.add(fileDate[4]);
+                validDates.add(validDate);
             }
         }
-        
-        // This displays the range of dates
-        System.out.println(validDate);
+
+        String[][] validDatesString = new String[validDates.size()][];
+
+        for(int i=0;i<validDates.size();i++){
+            for(int j=0;j<validDates.get(i).size();j++){
+                validDatesString[i][j]=validDates.get(i).get(j);
+            }
+        }
+
         br.close();
+        return validDatesString;
     }
 
     public String[][] searchByID(String tableName, String query) {
@@ -113,9 +126,9 @@ public class Sort {
             }
 
             // Convert Array List to String List
-            int wad = fileCont.size();
-            int daw = fileCont.get(0).size();
-            String[][] sortedList = new String[wad][daw];
+            int index1 = fileCont.size();
+            int index2 = fileCont.get(0).size();
+            String[][] sortedList = new String[index1][index2];
             for(int i=0;i<fileCont.size();i++){
                 for(int j=0;j<fileCont.get(i).size();j++){
                     sortedList[i][j]=fileCont.get(i).get(j);
