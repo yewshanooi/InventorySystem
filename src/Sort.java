@@ -57,7 +57,7 @@ public class Sort {
             }
         }
 
-        String[][] validDatesString = new String[validDates.size()][];
+        String[][] validDatesString = new String[validDates.size()][validDates.get(0).size()];
 
         for(int i=0;i<validDates.size();i++){
             for(int j=0;j<validDates.get(i).size();j++){
