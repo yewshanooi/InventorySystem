@@ -189,7 +189,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(sortByAmountButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortByDateButton)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         viewFiltersPanelLayout.setVerticalGroup(
             viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,7 +256,7 @@ public class Dashboard extends javax.swing.JFrame {
             viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(l9)
@@ -264,9 +264,9 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(viewAllRefresh))
-                    .addComponent(viewFiltersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewFiltersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewDatabasePanelLayout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1192,17 +1192,8 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void sortByDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByDateButtonActionPerformed
         // TODO add your handling code here:
-        
-        Sort st = new Sort();
-        String startDate = "10-10-2024";
-        String endDate = "12-10-2024";
-
-        try {
-            st.validRange(startDate, endDate);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
+        DatePicker dp = new DatePicker();
+        dp.setVisible(true);
         
 //        String[] header = {"Date", "Item ID", "Amount", "From / To", "User ID", "Time"};
 //        
@@ -1217,8 +1208,33 @@ public class Dashboard extends javax.swing.JFrame {
 //        }
 //
 //        viewAllTable.setModel(new DefaultTableModel(content, header));
+
+        
     }//GEN-LAST:event_sortByDateButtonActionPerformed
 
+//    public void dateLogic() {
+//        Sort st = new Sort();
+//        // access the String startDate and pass it in this
+//        try {
+//            String vR = st.validRange(startDate, endDate);
+//            System.out.println(vR);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+    
+    public void viewDates() {
+        String startDate = DatePicker.startDate;
+        String endDate = DatePicker.endDate;
+        
+        if (startDate != null && endDate != null) {
+            System.out.println("Start Date: " + startDate);
+            System.out.println("End Date: " + endDate);
+        } else {
+            System.out.println("Dates are not properly selected");
+        }
+    }
+    
     public void resetViewUserPopup() {  
         viewUserPopup.setVisible(false);
         
