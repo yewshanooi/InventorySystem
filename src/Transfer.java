@@ -22,6 +22,7 @@ public class Transfer {
     
     // Sending items to hospital
     public void itemTransfer(String[][] value, String hpID, Component parent) {
+        boolean msgOut = true;
         
         for (int i=0;i<value.length;i++) {
             try {
@@ -43,10 +44,16 @@ public class Transfer {
                                     break;
                                 } else if (temp < 25) {
                                     JOptionPane.showMessageDialog(parent, "Quantity of items is lower than 25\nRemaining quantity: " + temp, "Warning", JOptionPane.WARNING_MESSAGE);
-                                    JOptionPane.showMessageDialog(parent, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
+                                    if (msgOut) {
+                                        JOptionPane.showMessageDialog(parent, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
+                                    }
+                                    msgOut = false;
                                     itemManip(validValue, hpID);
                                 } else {
-                                    JOptionPane.showMessageDialog(parent, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
+                                    if (msgOut) {
+                                        JOptionPane.showMessageDialog(parent, "Successfully send items", "Send", JOptionPane.INFORMATION_MESSAGE);
+                                    }
+                                    msgOut = false;
                                     itemManip(validValue, hpID);
                                 }
                             }
