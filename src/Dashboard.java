@@ -39,8 +39,10 @@ public class Dashboard extends javax.swing.JFrame {
         viewFiltersPanel = new javax.swing.JPanel();
         searchAllField = new javax.swing.JTextField();
         searchAllButton = new javax.swing.JButton();
+        sortByPanel = new javax.swing.JPanel();
         sortByAmountButton = new javax.swing.JButton();
         sortByDateButton = new javax.swing.JButton();
+        sortByText = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         userAccess = new javax.swing.JLabel();
         userSettings = new javax.swing.JComboBox<>();
@@ -131,7 +133,7 @@ public class Dashboard extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -179,30 +181,57 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        sortByText.setText("Sort by");
+
+        javax.swing.GroupLayout sortByPanelLayout = new javax.swing.GroupLayout(sortByPanel);
+        sortByPanel.setLayout(sortByPanelLayout);
+        sortByPanelLayout.setHorizontalGroup(
+            sortByPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sortByPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(sortByText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(sortByAmountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sortByDateButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        sortByPanelLayout.setVerticalGroup(
+            sortByPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sortByPanelLayout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addGroup(sortByPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sortByText)
+                    .addComponent(sortByAmountButton)
+                    .addComponent(sortByDateButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout viewFiltersPanelLayout = new javax.swing.GroupLayout(viewFiltersPanel);
         viewFiltersPanel.setLayout(viewFiltersPanelLayout);
         viewFiltersPanelLayout.setHorizontalGroup(
             viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewFiltersPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(searchAllButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sortByAmountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sortByDateButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(sortByPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         viewFiltersPanelLayout.setVerticalGroup(
             viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewFiltersPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchAllButton)
-                    .addComponent(sortByAmountButton)
-                    .addComponent(sortByDateButton))
+                .addGroup(viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewFiltersPanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchAllButton)))
+                    .addGroup(viewFiltersPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(sortByPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -262,18 +291,20 @@ public class Dashboard extends javax.swing.JFrame {
                     .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(l9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(viewAllRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(viewFiltersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(viewAllRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(viewFiltersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         viewDatabasePanelLayout.setVerticalGroup(
@@ -288,9 +319,9 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(viewAllRefresh))
                 .addGap(15, 15, 15)
                 .addComponent(viewFiltersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(5, 5, 5)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("View Database", viewDatabasePanel);
@@ -1379,6 +1410,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField sendSC;
     private javax.swing.JButton sortByAmountButton;
     private javax.swing.JButton sortByDateButton;
+    private javax.swing.JPanel sortByPanel;
+    private javax.swing.JLabel sortByText;
     private javax.swing.JLabel userAccess;
     private javax.swing.JComboBox<String> userSettings;
     private javax.swing.JComboBox<String> viewAllDropdown;
