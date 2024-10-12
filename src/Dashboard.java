@@ -151,7 +151,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        viewAllRefresh.setText("Refresh");
+        viewAllRefresh.setText("🔃");
         viewAllRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewAllRefreshActionPerformed(evt);
@@ -185,12 +185,12 @@ public class Dashboard extends javax.swing.JFrame {
             viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewFiltersPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(searchAllButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sortByAmountButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(sortByAmountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(sortByDateButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -267,8 +267,8 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addComponent(l9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(viewAllRefresh))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(viewAllRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(viewFiltersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(viewDatabasePanelLayout.createSequentialGroup()
@@ -305,6 +305,10 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel4.setText("Glove");
 
+        receiveFS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        receiveGL.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         receiveButton.setText("Submit");
         receiveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,9 +318,17 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel7.setText("Gown");
 
+        receiveGW.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        receiveHC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         jLabel8.setText("Head Cover");
 
         jLabel9.setText("Mask");
+
+        receiveMS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        receiveSC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel10.setText("Shoe Cover");
 
@@ -393,6 +405,10 @@ public class Dashboard extends javax.swing.JFrame {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        sendSC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        sendGL.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         jLabel14.setText("Shoe Cover");
 
         jLabel6.setText("Glove");
@@ -400,6 +416,10 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel11.setText("Head Cover");
 
         jLabel12.setText("Mask");
+
+        sendGW.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        sendMS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         sendButton.setText("Submit");
         sendButton.addActionListener(new java.awt.event.ActionListener() {
@@ -410,7 +430,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel5.setText("Face Shield");
 
+        sendHC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         jLabel13.setText("Gown");
+
+        sendFS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -561,7 +585,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        viewUserRefresh.setText("Refresh");
+        viewUserRefresh.setText("🔃");
         viewUserRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewUserRefreshActionPerformed(evt);
@@ -575,13 +599,13 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(searchUserField, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchUserField)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(searchUserButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(viewUserRefresh)))
+                        .addComponent(viewUserRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -1184,9 +1208,9 @@ public class Dashboard extends javax.swing.JFrame {
         sortOrder = !sortOrder;
         
         if (sortOrder) {
-            sortByAmountButton.setText("Descending ↓");
+            sortByAmountButton.setText("Descending ⬇️");
         } else {
-            sortByAmountButton.setText("Ascending ↑");
+            sortByAmountButton.setText("Ascending ⬆️");
         }
 
         String[]header = {"Item ID", "Quantity", "Supplier ID", "Item Name"};
