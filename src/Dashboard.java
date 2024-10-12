@@ -167,7 +167,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        sortByAmountButton.setText("Asc / Desc");
+        sortByAmountButton.setText("Quantity");
         sortByAmountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sortByAmountButtonActionPerformed(evt);
@@ -188,13 +188,13 @@ public class Dashboard extends javax.swing.JFrame {
         sortByPanelLayout.setHorizontalGroup(
             sortByPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sortByPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(3, 3, 3)
                 .addComponent(sortByText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sortByAmountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sortByAmountButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sortByDateButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         sortByPanelLayout.setVerticalGroup(
             sortByPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,15 +223,12 @@ public class Dashboard extends javax.swing.JFrame {
         viewFiltersPanelLayout.setVerticalGroup(
             viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewFiltersPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
                 .addGroup(viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(viewFiltersPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchAllButton)))
-                    .addGroup(viewFiltersPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(sortByPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(viewFiltersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(searchAllField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchAllButton))
+                    .addComponent(sortByPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -298,8 +295,7 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(viewAllDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(viewAllRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(viewAllRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(viewDatabasePanelLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(viewDatabasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,7 +427,7 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(jLabel10))))
                 .addGap(70, 70, 70)
                 .addComponent(receiveButton)
-                .addGap(58, 58, 58))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -533,7 +529,7 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(jLabel14))))
                 .addGap(70, 70, 70)
                 .addComponent(sendButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jLabel16.setText("Hospital");
@@ -548,10 +544,9 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(manageTransactionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(manageTransactionsPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addGroup(manageTransactionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(manageTransactionsPanelLayout.createSequentialGroup()
@@ -566,24 +561,26 @@ public class Dashboard extends javax.swing.JFrame {
         manageTransactionsPanelLayout.setVerticalGroup(
             manageTransactionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageTransactionsPanelLayout.createSequentialGroup()
-                .addGroup(manageTransactionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(manageTransactionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(manageTransactionsPanelLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(manageTransactionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageTransactionsPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(manageTransactionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(sendHospitalID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16))
-                        .addGap(18, 18, 18)))
-                .addGroup(manageTransactionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator2)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(100, Short.MAX_VALUE))
+                        .addGroup(manageTransactionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(manageTransactionsPanelLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(manageTransactionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addGap(20, 20, 20))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageTransactionsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(manageTransactionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(sendHospitalID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel16))
+                                .addGap(18, 18, 18)))
+                        .addGroup(manageTransactionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Manage Transaction", manageTransactionsPanel);
@@ -895,11 +892,11 @@ public class Dashboard extends javax.swing.JFrame {
         String[][] content;
         String[] header;
         
-        filterVisibility(false, false, false, false, false);
+        filterVisibility(false, false, false, false, false, false);
 
         switch (db.toString()) {
             case "hospitals.txt":
-                filterVisibility(true, true, true, false, false);
+                filterVisibility(true, true, true, false, false, false);
 
                 content = fh.readFile("hospitals.txt", 3, this);
                 header = new String[]{"Hospital ID", "Item ID", "Quantity"};
@@ -908,7 +905,7 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "hospital";
                 break;
             case "ppe.txt":
-                filterVisibility(true, true, true, true, false);
+                filterVisibility(true, true, true, true, true, false);
 
                 content = fh.readFile("ppe.txt", 4, this);
                 header = new String[]{"Item ID", "Quantity", "Supplier ID", "Item Name"};
@@ -917,7 +914,7 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "item";
                 break;
             case "suppliers.txt":
-                filterVisibility(true, true, true, false, false);
+                filterVisibility(true, true, true, false, false, false);
  
                 content = fh.readFile("suppliers.txt", 3, this);
                 header = new String[]{"Supplier ID", "Item ID", "Quantity"};
@@ -926,7 +923,7 @@ public class Dashboard extends javax.swing.JFrame {
                 currentDB = "supplier";
                 break;
             case "transactions.txt":
-                filterVisibility(true, false, false, false, true);
+                filterVisibility(true, false, false, true, false, true);
                  
                 content = fh.readFile("transactions.txt", 6, this);
                 header = new String[]{"Date", "Item ID", "Amount", "From / To", "User ID", "Time"};
@@ -942,12 +939,13 @@ public class Dashboard extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_viewAllDropdownActionPerformed
     
-    private void filterVisibility(boolean a, boolean b, boolean c, boolean d, boolean e) {
+    private void filterVisibility(boolean a, boolean b, boolean c, boolean d, boolean e, boolean f) {
         viewFiltersPanel.setVisible(a);
         searchAllField.setVisible(b);
         searchAllButton.setVisible(c);
-        sortByAmountButton.setVisible(d);
-        sortByDateButton.setVisible(e);
+        sortByPanel.setVisible(d);
+        sortByAmountButton.setVisible(e);
+        sortByDateButton.setVisible(f);
     }
     
     private void searchUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUserButtonActionPerformed
@@ -1050,7 +1048,7 @@ public class Dashboard extends javax.swing.JFrame {
         searchAllField.setText("");
 
         sortOrder = true;
-        sortByAmountButton.setText("Asc / Desc");
+        sortByAmountButton.setText("Quantity");
     }//GEN-LAST:event_viewAllRefreshActionPerformed
 
     private void receiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiveButtonActionPerformed
