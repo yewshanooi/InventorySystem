@@ -1,71 +1,52 @@
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class Sort {
     // Call this method to use this class
-    public void validRange(String startDate, String endDate) {
-        try {
-            String[] startString = startDate.split("-");
-            String[] endString = endDate.split("-");
-            int[] start = new int[3];
-            int[] end = new int[3];
-    
-            for (int i = 0; i < 3; i++) {
-                start[i] = Integer.parseInt(startString[i]);
-                end[i] = Integer.parseInt(endString[i]);
-            }
-    
-            if (start[2] == end[2] && start[1] == end[1] && (end[0] - start[0] < 8)) {
-                DateRange(start, end);
-            } else {
-                // Print out invalid date or out of range (Maximum 7 days)
-                System.out.println("Invalid Date");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Dont call this
-    public String[][] DateRange(int[] startDate, int[] endDate) throws Exception {
-        String file = "transactions.txt";
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        FileHandler fh = new FileHandler();
-
-        ArrayList<String> fileCont = new ArrayList<String>();
-        fileCont = fh.toArray(file);
-        String[] fileDate = new String[1];
+    public String[][] dateRange(String s, String e) throws Exception {
         ArrayList<ArrayList<String>> validDates = new ArrayList<>();
+
+        String[] startString = s.split("-");
+        String[] endString = e.split("-");
+        int[] start = new int[3];
+        int[] end = new int[3];
+
+        for (int i = 0; i < 3; i++) {
+            start[i] = Integer.parseInt(startString[i]);
+            end[i] = Integer.parseInt(endString[i]);
+        }
         
-        for (int i = 0; i < fileCont.size(); i++) {
-            fileDate = fileCont.get(i).split(";");
-            String[] dateString = fileDate[0].split("-");
-            int[] data = new int[3];
-            for (int d = 0; d < 3; d++) {
-                data[d] = Integer.parseInt(dateString[d]);
-            }
-            
-            if (data[2] == startDate[2] && data[2] == endDate[2] && data[1] == startDate[1] && data[1] == endDate[1] && data[0] > (startDate[0] - 1) && data[0] < (endDate[0] + 1)) {
-                ArrayList<String> validDate = new ArrayList<>();
-                validDate.add(data[0] + "-" + data[1] + "-" + data[2]);
-                validDate.add(fileDate[1]);
-                validDate.add(fileDate[2]);
-                validDate.add(fileDate[3]);
-                validDate.add(fileDate[4]);
-                validDates.add(validDate);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate startDate = LocalDate.of(start[2], start[1], start[0]);  
+        LocalDate endDate = LocalDate.of(end[2], end[1], end[0]);  
+        long numOfDaysBetween = ChronoUnit.DAYS.between(startDate, endDate);  
+        
+        // iterate through the dates between start and end dates  
+        for (int i = 0; i < numOfDaysBetween+1; i++) {  
+            String file = "transactions.txt";
+            LocalDate betweenDate = startDate.plusDays(i);
+            FileHandler fh = new FileHandler();
+
+            ArrayList<ArrayList<String>> fileCont = fh.to2dArray(file);
+            for (ArrayList<String> date : fileCont) {
+                if (betweenDate.format(formatter).equals(date.get(0))) {
+                    validDates.add(date);
+                }
             }
         }
 
         String[][] validDatesString = new String[validDates.size()][validDates.get(0).size()];
-
+    
         for(int i=0;i<validDates.size();i++){
             for(int j=0;j<validDates.get(i).size();j++){
                 validDatesString[i][j]=validDates.get(i).get(j);
             }
         }
 
-        br.close();
         return validDatesString;
     }
 
