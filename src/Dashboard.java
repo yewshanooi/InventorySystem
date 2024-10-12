@@ -1207,9 +1207,8 @@ public class Dashboard extends javax.swing.JFrame {
                     viewDates();
                 }
             });
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            // [TODO] Pop up message saying "No transactions between these 2 dates"
         }
     }//GEN-LAST:event_sortByDateButtonActionPerformed
 
@@ -1226,7 +1225,7 @@ public class Dashboard extends javax.swing.JFrame {
 
                 viewAllTable.setModel(new DefaultTableModel(content, header));
             } catch (Exception e) {
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "No transactions found", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(this, "There was a problem retrieving the dates", "Error", JOptionPane.ERROR_MESSAGE);
