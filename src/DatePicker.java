@@ -1,5 +1,6 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class DatePicker extends javax.swing.JFrame {
 
@@ -34,7 +35,8 @@ public class DatePicker extends javax.swing.JFrame {
         setTitle("Date");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Select dates (maximum of 7 days apart)");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Select dates");
 
         jLabel2.setText("Start Date");
 
@@ -60,18 +62,18 @@ public class DatePicker extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(startDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(endDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(4, 4, 4)
                         .addComponent(jLabel2)
                         .addGap(29, 29, 29)
                         .addComponent(jLabel3)))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         getDatesButton.setText("Submit");
@@ -85,17 +87,16 @@ public class DatePicker extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
                         .addComponent(getDatesButton)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -106,9 +107,9 @@ public class DatePicker extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(getDatesButton)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -122,19 +123,19 @@ public class DatePicker extends javax.swing.JFrame {
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         
-        if (startDate != null) {
+        if (getStartDate != null) {
             startDate = sdf.format(getStartDate);
-            System.out.println("Start Date: " + startDate);
+            // System.out.println(startDate);
         } else {
-            System.out.println("You have not selected a start date");
+            JOptionPane.showMessageDialog(this, "You have not selected a start date", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
-        if (endDate != null) {
+        if (getEndDate != null) {
             endDate = sdf.format(getEndDate);
-            System.out.println("Start Date: " + endDate);
+            // System.out.println(endDate);
         } else {
-            System.out.println("You have not selected an end date");
+            JOptionPane.showMessageDialog(this, "You have not selected an end date", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         

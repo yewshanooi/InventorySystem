@@ -1,8 +1,11 @@
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 public class Dashboard extends javax.swing.JFrame {
 
@@ -1194,44 +1197,37 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         DatePicker dp = new DatePicker();
         dp.setVisible(true);
-        
-//        String[] header = {"Date", "Item ID", "Amount", "From / To", "User ID", "Time"};
-//        
-//        int numRows = validDate.size();
-//        int numColumns = header.length;
-//        
-//        Object[][] content = new Object[numRows][numColumns];
-//        
-//        for (int i = 0; i < numRows; i++) {
-//            String[] trnsDtls = validDate.get(i).split(";");
-//            System.arraycopy(trnsDtls, 0, data[i], 0, Math.min(trnsDtls.length, numColumns))
-//        }
-//
-//        viewAllTable.setModel(new DefaultTableModel(content, header));
 
-        
+        try {
+            dp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dp.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    viewDates();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_sortByDateButtonActionPerformed
 
-//    public void dateLogic() {
-//        Sort st = new Sort();
-//        // access the String startDate and pass it in this
-//        try {
-//            String vR = st.validRange(startDate, endDate);
-//            System.out.println(vR);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-    
     public void viewDates() {
-        String startDate = DatePicker.startDate;
-        String endDate = DatePicker.endDate;
+        String fetchStartDate = DatePicker.startDate;
+        String fetchEndDate = DatePicker.endDate;
         
-        if (startDate != null && endDate != null) {
-            System.out.println("Start Date: " + startDate);
-            System.out.println("End Date: " + endDate);
+        if (fetchStartDate != null && fetchEndDate != null) {
+            Sort st = new Sort();
+
+            try {
+                String[][] content = st.dateRange(fetchStartDate, fetchEndDate);
+                String[] header = {"Date", "Item ID", "Amount", "From / To", "User ID", "Time"};
+
+                viewAllTable.setModel(new DefaultTableModel(content, header));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
-            System.out.println("Dates are not properly selected");
+            JOptionPane.showMessageDialog(this, "There was a problem retrieving the dates", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
