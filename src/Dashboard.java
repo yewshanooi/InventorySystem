@@ -1198,7 +1198,7 @@ public class Dashboard extends javax.swing.JFrame {
         String endDate = "12-10-2024";
 
         try {
-            st.validRange(startDate, endDate);
+            st.dateRange(startDate, endDate);
         } catch (Exception e) {
             e.printStackTrace();
         }
