@@ -79,8 +79,7 @@ public class Sort {
         return dataInArray;
     }
 
-    public String[][] SortBy(String file, boolean asc) {
-        try {
+    public String[][] SortBy(String file, boolean asc) throws Exception {
             BufferedReader br = new BufferedReader(new FileReader(file));
             FileHandler fh = new FileHandler();
             ArrayList<ArrayList<String>> fileCont = fh.to2dArray(file);;
@@ -131,10 +130,5 @@ public class Sort {
 
             br.close();
             return sortedList;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
     }
-    
 }

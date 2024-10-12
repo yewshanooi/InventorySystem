@@ -2,6 +2,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 public class Dashboard extends javax.swing.JFrame {
 
@@ -1164,8 +1165,18 @@ public class Dashboard extends javax.swing.JFrame {
     private void sortByAmountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByAmountButtonActionPerformed
         // TODO add your handling code here:
         Sort st = new Sort();
+        FileHandler fh = new FileHandler();
+
+        String file = "ppe.txt";
+        ArrayList<ArrayList<String>> fileCont = fh.to2dArray(file);
         
-        String[][] content = st.SortBy("ppe.txt", sortOrder);
+        String[][] content = new String[fileCont.size()][fileCont.get(1).size()];
+        try {
+            content = st.SortBy(file, sortOrder);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         sortOrder = !sortOrder;
         
         if (sortOrder) {
@@ -1183,8 +1194,8 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Sort st = new Sort();
-        String startDate = "2024-10-01";
-        String endDate = "2024-10-07";
+        String startDate = "05-10-2024";
+        String endDate = "12-10-2024";
 
         try {
             st.validRange(startDate, endDate);
