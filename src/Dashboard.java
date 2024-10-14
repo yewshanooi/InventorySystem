@@ -893,6 +893,7 @@ public class Dashboard extends javax.swing.JFrame {
         String[] header;
         
         filterVisibility(false, false, false, false, false, false);
+        searchAllField.setText("");
 
         switch (db.toString()) {
             case "hospitals.txt":
